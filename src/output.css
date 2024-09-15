@@ -616,13 +616,6 @@ video {
   margin-top: 1rem;
 }
 
-.line-clamp-3 {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-}
-
 .block {
   display: block;
 }
@@ -691,10 +684,6 @@ video {
   grid-template-columns: 1fr 2fr;
 }
 
-.grid-cols-\[1fr_5fr\] {
-  grid-template-columns: 1fr 5fr;
-}
-
 .flex-row {
   flex-direction: row;
 }
@@ -719,26 +708,12 @@ video {
   gap: 0.25rem;
 }
 
-.gap-3 {
-  gap: 0.75rem;
-}
-
 .gap-4 {
   gap: 1rem;
 }
 
 .overflow-hidden {
   overflow: hidden;
-}
-
-.overflow-y-auto {
-  overflow-y: auto;
-}
-
-.truncate {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .text-wrap {
@@ -874,6 +849,10 @@ video {
 
 .pl-3 {
   padding-left: 0.75rem;
+}
+
+.pb-4 {
+  padding-bottom: 1rem;
 }
 
 .text-center {
@@ -1172,13 +1151,52 @@ video {
   text-decoration-line: underline;
 }
 
+@media (min-width: 640px) {
+  .sm\:flex {
+    display: flex;
+  }
+
+  .sm\:flex-col {
+    flex-direction: column;
+  }
+
+  .sm\:rounded-2xl {
+    border-radius: 1rem;
+  }
+
+  .sm\:bg-slate-50 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(248 250 252 / var(--tw-bg-opacity));
+  }
+
+  .sm\:pb-5 {
+    padding-bottom: 1.25rem;
+  }
+
+  .sm\:\!pb-5 {
+    padding-bottom: 1.25rem !important;
+  }
+}
+
 @media (min-width: 768px) {
   .md\:flex {
     display: flex;
   }
 
+  .md\:grid {
+    display: grid;
+  }
+
   .md\:w-\[75vw\] {
     width: 75vw;
+  }
+
+  .md\:grid-cols-\[1fr_5fr\] {
+    grid-template-columns: 1fr 5fr;
+  }
+
+  .md\:gap-3 {
+    gap: 0.75rem;
   }
 }
 
@@ -1203,13 +1221,6 @@ video {
     grid-column: span 1 / span 1;
   }
 
-  .lg\:line-clamp-3 {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-  }
-
   .lg\:line-clamp-2 {
     overflow: hidden;
     display: -webkit-box;
@@ -1219,14 +1230,6 @@ video {
 
   .lg\:grid {
     display: grid;
-  }
-
-  .lg\:h-16 {
-    height: 4rem;
-  }
-
-  .lg\:h-32 {
-    height: 8rem;
   }
 
   .lg\:min-h-40 {
@@ -1243,12 +1246,6 @@ video {
 
   .lg\:items-start {
     align-items: flex-start;
-  }
-
-  .lg\:truncate {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
   }
 
   .lg\:text-sm {
