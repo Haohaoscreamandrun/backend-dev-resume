@@ -8,7 +8,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
 </head>
-<body class="bg-gray-200 md:flex flex-col items-center lg:grid grid-cols-[1fr_2fr] gap-4 w-[90vw] mx-auto lg:items-start">
+<body class="bg-gray-200 w-[90vw] flex flex-col items-center mx-auto lg:grid lg:grid-cols-[1fr_2fr] lg:gap-4 lg:items-start">
   <div class="md:w-[75vw] lg:col-span-1 lg:w-auto">
     <!-- Personal detail - Picture Container -->
     <div class="rounded-t-2xl min-h-80 w-full mt-4 relative overflow-hidden lg:order-1 lg:w-full lg:min-h-40">
@@ -24,53 +24,82 @@
       <!-- Details - Gray block -->
       <div class="gray-block">
         <!-- Details - Summary -->
-        <p class="gray-block-word lg:line-clamp-2 lg:hover:cursor-pointer">
+        <p class="gray-block-word line-clamp-2 hover:cursor-pointer">
           Graduate of Wehelp batch #5. Developed a web server as a parking lot solution in 6 months through self-learning skills. Determined to change the course of life at the age of 30 and enter web development industry.
         </p>
-        <!-- Details - Skills -->
-        <p class="skill">Python</p>
-        <p class="skill">JavaScript</p>
-        <p class="skill">FastAPI</p>
-        <p class="skill">Docker</p>
-        <p class="skill">Redis</p>
-        <p class="skill">Nginx</p>
-        <p class="skill">AWS</p>
-        <p class="skill">MySQL</p>
-        <p class="skill">Git</p>
         <!-- Details - Download button -->
         <div class="mt-3 py-1 rounded bg-blue-600 border-black border-2 text-white text-center transition duration-200 hover:bg-blue-700 cursor-pointer" id="downLoad">
           <span class="font-sans font-medium text-sm mr-1">Download CV</span>
           <i class="fa-solid fa-angles-down"></i>
         </div>
-      </div>
-    </div>
-    <!-- About me -->
-    <div class="white-block lg:order-3">
-      <span class="title-indicator"></span>
-      <p class="title">About me</p>
-      <div class="gray-block">
-        <p class="gray-block-word lg:line-clamp-2 lg:hover:cursor-pointer">
-          I hold a Master’s degree in Horticulture Science from NTU and have extensive experience in managing timelines and product commercialization schedules as a Regulatory Specialist at leading agro-chemical companies. My journey into backend development was driven by a passion for technology and problem-solving. Over the past six months, I have developed a
-          personal web server project from scratch, utilizing technologies such as Python, FastAPI, and Docker. This hands-on experience, coupled with my experience in backend tools and frameworks, underscores my commitment to excellence and continuous growth in the backend development field.
-        </p>
         <div class="separation"></div>
-        <a href="https://www.linkedin.com/in/hao-chen-804a8315a/" target="_blank" class="inline-block mr-4 transition duration-300 hover:text-blue-500">
+        <!-- Contact me -->
+        <a href="https://www.linkedin.com/in/hao-chen-804a8315a/" target="_blank"
+          class="inline-block mr-4 transition duration-300 hover:text-blue-500">
           <i class="fa-brands fa-linkedin"></i>
           <span class="link-word">LinkedIn</span>
         </a>
-        <a href="mailto: J842671395@gmail.com?subject=Your%20Subject&body=Hello,%20I%20would%20like%20to%20discuss%20..." class="inline-block mr-4 transition duration-300 hover:text-orange-500">
+        <a href="mailto: J842671395@gmail.com?subject=Your%20Subject&body=Hello,%20I%20would%20like%20to%20discuss%20..."
+          class="inline-block mr-4 transition duration-300 hover:text-orange-500">
           <i class="fa-regular fa-envelope"></i>
           <span class="link-word">Email</span>
         </a>
-        <a href="http://line.me/ti/p/Sm-aphwset" target="_blank" class="inline-block mr-4 transition duration-300 hover:text-green-500">
+        <a href="http://line.me/ti/p/Sm-aphwset" target="_blank"
+          class="inline-block mr-4 transition duration-300 hover:text-green-500">
           <i class="fa-brands fa-line"></i>
           <span class="link-word">Line</span>
         </a>
-        <a href="https://github.com/Haohaoscreamandrun/ParkingLotManagementSystem" target="_blank" class="inline-block mr-4 transition duration-300 hover:text-purple-500">
+        <a href="https://github.com/Haohaoscreamandrun/ParkingLotManagementSystem" target="_blank"
+          class="inline-block mr-4 transition duration-300 hover:text-purple-500">
           <i class="fa-brands fa-github"></i>
           <span class="link-word">GitHub</span>
         </a>
       </div>
+    </div>
+    <!-- Skills -->
+    <div class="white-block">
+      <span class="title-indicator"></span>
+      <p class="title">Skill Set</p>
+      
+      <div class="gray-block lg:text-sm">
+        <div class="grid grid-cols-4 gap-2 text-center">
+          <p>Backend</p>
+          <p>Frontend</p>
+          <p>Cloud</p>
+          <p>Toolkit</p>
+          <div class="flex flex-col">
+            <p class="skill">Python (FastAPI)</p>
+            <p class="skill">RESTful APIs</p>
+            <p class="skill">MySQL</p>
+            <p class="skill">Linux (Ubuntu)</p>
+            <p class="skill">Redis</p>
+            <p class="skill">Nginx</p>
+          </div>
+          <div class="flex flex-col">
+            <p class="skill">HTML</p>
+            <p class="skill">CSS (tailwind)</p>
+            <p class="skill">JavaScript</p>
+            <p class="skill">Bootstrap</p>
+          </div>
+          <div class="flex flex-col">
+            <p class="skill">EC2</p>
+            <p class="skill">RDS</p>
+            <p class="skill">S3</p>
+            <p class="skill">CloudFront</p>
+            <p class="skill">ELB</p>
+            <p class="skill">Route53</p>
+          </div>
+          <div class="flex flex-col">
+            <p class="skill">Git</p>
+            <p class="skill">Docker</p>
+            <p class="skill">SSL (certbot)</p>
+            <p class="skill">Google Map API</p>
+            <p class="skill">Tesseract</p>
+            <p class="skill">OpenCV</p>
+          </div>
+        </div>    
+      </div>
+      
     </div>
     <!-- Information -->
     <div class="white-block lg:order-4">
@@ -102,85 +131,12 @@
   <div class="md:w-[75vw] lg:col-span-1 lg:w-auto">
     <!-- Panel -->
     <div class="white-block grid grid-cols-3 gap-1 font-sans font-semibold" id="panel">
-      <p class="panel-option active">Resume</p>
-      <p class="panel-option">Project</p>
+      <p class="panel-option">Resume</p>
+      <p class="panel-option active">Project</p>
       <p class="panel-option">Blog</p>
     </div>
-    <!-- Experience -->
-    <div class="white-block resume">
-      <span class="title-indicator"></span>
-      <p class="title">Experience</p>
-      <!-- Corteva -->
-      <div class="gray-block">
-        <div class="md:grid md:grid-cols-[1fr_5fr] md:gap-3 sm:flex sm:flex-col">
-          <!-- Comapy Logo -->
-          <div class="flex flex-col items-center justify-start pb-4">
-            <div class="w-20 h-20 border-2 border-slate-50 bg-corteva-logo bg-cover bg-center rounded-full">
-            </div>
-          </div>
-          <!-- Project Information -->
-          <div class="font-sans">
-            <!-- Position -->
-            <div class="flex flex-row justify-between">
-              <p class="inline-block font-semibold">Regulatory Affairs Specialist</p>
-              <p class="skill">Full-time</p>
-            </div>
-            <!-- Company & Duration -->
-            <div class="font-normal text-xs">
-              <i class="fa-solid fa-suitcase"></i>
-              <p class="px-2 inline-block">Corteva Agriscience</p>
-              <i class="fa-regular fa-calendar"></i>
-              <p class="px-2 inline-block">Aug 2021 - Apr 2024</p>
-            </div>
-            <!-- Job description -->
-            <ul class="mt-2 list-disc list-outside ml-5">
-              <li class="list-item">Set goals, arrange field trials, coordinate submissions of global new active Adavelt®
-                and other fungicides.</li>
-              <li class="list-item">Manage 30+ license renewal, sourcing and other actions according to global LER projects.
-              </li>
-              <li class="list-item">Build relations with government officials and customer while proactively leading
-                conversations.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <!-- BASF -->
-      <div class="gray-block">
-        <div class="md:grid md:grid-cols-[1fr_5fr] md:gap-3 sm:flex sm:flex-col">
-          <!-- Comapy Logo -->
-          <div class="flex flex-col items-center justify-start pb-4">
-            <div class="w-20 h-20 border-2 border-slate-50 bg-basf-logo bg-cover bg-center rounded-full">
-            </div>
-          </div>
-          <!-- Company Information -->
-          <div class="font-sans">
-            <!-- Position -->
-            <div class="flex flex-row justify-between">
-              <p class="inline-block font-semibold">Import Tolerance & Regulatory Specialist</p>
-              <p class="skill">Full-time</p>
-            </div>
-            <!-- Company & Duration -->
-            <div class="font-normal text-xs">
-              <i class="fa-solid fa-suitcase"></i>
-              <p class="px-2 inline-block">BASF Taiwan</p>
-              <i class="fa-regular fa-calendar"></i>
-              <p class="px-2 inline-block">Feb 2020 - Aug 2021</p>
-            </div>
-            <!-- Job description -->
-            <ul class="mt-2 list-disc list-outside ml-5">
-              <li class="list-item">Product stewardship, dossier submission and license maintenance for Agriculture
-                Solutions.</li>
-              <li class="list-item">Regulatory advocacy with Croplife Asia and incident management with regulatory issue.
-              </li>
-              <li class="list-item">Managing the import tolerance application, risk-cup calculation and global negotiation.
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
     <!-- Education -->
-    <div class="white-block resume !mb-5">
+    <div class="white-block resume" hidden>
       <span class="title-indicator"></span>
       <p class="title">Education</p>
       <!-- NTU -->
@@ -194,16 +150,20 @@
           <!-- School Information -->
           <div class="font-sans">
             <!-- Position -->
-            <div class="flex flex-row justify-between">
-              <p class="inline-block font-semibold">Master of Horticulture and Landscape Architecture</p>
-              <p class="skill">Master</p>
+            <div class="flex flex-row justify-between items-center">
+              <p class="mb-1 inline-block font-semibold">Master of Horticulture and Landscape Architecture</p>
+              <p class="skill !mb-0">Master</p>
             </div>
             <!-- School & Duration -->
             <div class="font-normal text-xs">
-              <i class="fa-solid fa-graduation-cap"></i>
-              <p class="px-2 inline-block">National Taiwan University (NTU)</p>
-              <i class="fa-regular fa-calendar"></i>
-              <p class="px-2 inline-block">Sep 2016 - Jul 2018</p>
+              <div class="inline-block">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <p class="px-2 inline-block">National Taiwan University (NTU)</p>
+              </div>
+              <div class="inline-block">
+                <i class="fa-regular fa-calendar"></i>
+                <p class="px-2 inline-block">Sep 2016 - Jul 2018</p>
+              </div>
             </div>
             <!-- School description -->
             <ul class="mt-2 list-disc list-outside ml-5">
@@ -225,16 +185,20 @@
           <!-- School Information -->
           <div class="font-sans">
             <!-- Position -->
-            <div class="flex flex-row justify-between">
-              <p class="inline-block font-semibold">Bachelor of Horticulture</p>
-              <p class="skill">Bachelor</p>
+            <div class="flex flex-row justify-between items-center">
+              <p class="mb-1 inline-block font-semibold">Bachelor of Horticulture</p>
+              <p class="skill !mb-0">Bachelor</p>
             </div>
             <!-- School & Duration -->
             <div class="font-normal text-xs">
-              <i class="fa-solid fa-graduation-cap"></i>
-              <p class="px-2 inline-block">National Chung Hsing University (NCHU)</p>
-              <i class="fa-regular fa-calendar"></i>
-              <p class="px-2 inline-block">Sep 2012 - Jul 2016</p>
+              <div class="inline-block">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <p class="px-2 inline-block">National Chung Hsing University (NCHU)</p>
+              </div>
+              <div class="inline-block">
+                <i class="fa-regular fa-calendar"></i>
+                <p class="px-2 inline-block">Sep 2012 - Jul 2016</p>
+              </div>
             </div>
             <!-- School description -->
             <ul class="mt-2 list-disc list-outside ml-5">
@@ -246,8 +210,123 @@
         </div>
       </div>
     </div>
+    <!-- Experience -->
+    <div class="white-block resume !mb-5" hidden>
+      <span class="title-indicator"></span>
+      <p class="title">Experience</p>
+      <!-- Wehelp -->
+      <div class="gray-block">
+        <div class="md:grid md:grid-cols-[1fr_5fr] md:gap-3 sm:flex sm:flex-col">
+          <!-- Company Logo -->
+          <div class="flex flex-col items-center justify-start pb-4">
+            <div class="w-20 h-20 border-2 border-slate-50 bg-wehelp-logo bg-cover bg-center rounded-full">
+            </div>
+          </div>
+          <!-- Project Information -->
+          <div class="font-sans">
+            <!-- Position -->
+            <div class="flex flex-row justify-between items-center">
+              <p class="mb-1 inline-block font-semibold">Wehelp #5 Bootcamp</p>
+              <p class="skill !mb-0">Trainee</p>
+            </div>
+            <!-- Company & Duration -->
+            <div class="font-normal text-xs">
+              <div class="inline-block">
+                <i class="fa-solid fa-suitcase"></i>
+                <p class="px-2 inline-block">Padax, LTD</p>
+              </div>
+              <div class="inline-block">
+                <i class="fa-regular fa-calendar"></i>
+                <p class="px-2 inline-block">Apr 2024 - Sep 2024</p>
+              </div>
+            </div>
+            <!-- Job description -->
+            <ul class="mt-2 list-disc list-outside ml-5">
+              <li class="list-item">
+                Completed 16 weeks of comprehensive fundamental web development training followed by 8 weeks of specialized backend development.
+              </li>
+              <li class="list-item">
+                Develop an e-commerce tourism web application, "Taipei Day Trip", over a 2 months period, incorporating toolkit and UI guidance.
+              </li>
+              <li class="list-item">
+                Collaborated with 3 peers to develop a weather report web application within one week.
+              </li>
+              <li class="list-item">
+                Independently created a parking lot management system (PLMS) from scratch within one month.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- Corteva -->
+      <div class="gray-block">
+        <div class="md:grid md:grid-cols-[1fr_5fr] md:gap-3 sm:flex sm:flex-col">
+          <!-- Comapy Logo -->
+          <div class="flex flex-col items-center justify-start pb-4">
+            <div class="w-20 h-20 border-2 border-slate-50 bg-corteva-logo bg-cover bg-center rounded-full">
+            </div>
+          </div>
+          <!-- Project Information -->
+          <div class="font-sans">
+            <!-- Position -->
+            <div class="flex flex-row justify-between items-center">
+              <p class="mb-1 inline-block font-semibold">Regulatory Affairs Specialist</p>
+              <p class="skill !mb-0">Full-time</p>
+            </div>
+            <!-- Company & Duration -->
+            <div class="font-normal text-xs">
+              <div class="inline-block">
+                <i class="fa-solid fa-suitcase"></i>
+                <p class="px-2 inline-block">Corteva Agriscience</p>
+              </div>
+              <div class="inline-block">
+                <i class="fa-regular fa-calendar"></i>
+                <p class="px-2 inline-block">Aug 2021 - Apr 2024</p>
+              </div>
+            </div>
+            <!-- Job description -->
+            <ul class="mt-2 list-disc list-outside ml-5">
+              <li class="list-item">Lead and coordinate project activities, including field trials, license renewals, and stakeholder engagement, for Adavelt® and other fungicides.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- BASF -->
+      <div class="gray-block">
+        <div class="md:grid md:grid-cols-[1fr_5fr] md:gap-3 sm:flex sm:flex-col">
+          <!-- Comapy Logo -->
+          <div class="flex flex-col items-center justify-start pb-4">
+            <div class="w-20 h-20 border-2 border-slate-50 bg-basf-logo bg-cover bg-center rounded-full">
+            </div>
+          </div>
+          <!-- Company Information -->
+          <div class="font-sans">
+            <!-- Position -->
+            <div class="flex flex-row justify-between items-center">
+              <p class="mb-1 inline-block font-semibold">Import Tolerance & Regulatory Specialist</p>
+              <p class="skill !mb-0">Full-time</p>
+            </div>
+            <!-- Company & Duration -->
+            <div class="font-normal text-xs">
+              <div class="inline-block">
+                <i class="fa-solid fa-suitcase"></i>
+                <p class="px-2 inline-block">BASF Taiwan</p>
+              </div>
+              <div class="inline-block">
+                <i class="fa-regular fa-calendar"></i>
+                <p class="px-2 inline-block">Feb 2020 - Aug 2021</p>
+              </div>
+            </div>
+            <!-- Job description -->
+            <ul class="mt-2 list-disc list-outside ml-5">
+              <li class="list-item">Support government negotiations and regulatory advocacy efforts to secure compliance and support for Agriculture Solutions.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Projects -->
-    <div class="mb-4 project white-block" hidden>
+    <div class="mb-4 project white-block">
       <span class="title-indicator"></span>
       <p class="title">Projects</p>
       <!-- PLMS -->
@@ -261,29 +340,144 @@
           <!-- Project Information -->
           <div class="font-sans">
             <!-- Project name -->
-            <div class="pb-1 flex flex-row justify-between">
+            <div class="pb-1 flex flex-row justify-start">
               <p class="inline-block font-semibold">Parking Lot Management System</p>
+              <i class="inline-block fa-solid fa-star mt-1 pl-2"></i>
             </div>
             <!-- Project & Duration -->
             <div class="font-normal text-xs">
-              <i class="fa-regular fa-folder-open"></i>
-              <p class="px-2 inline-block">Automated parking solution</p>
-              <i class="fa-regular fa-user"></i>
-              <p class="px-2 inline-block">Personal project</p>
-              <i class="fa-regular fa-calendar"></i>
-              <p class="px-2 inline-block">Sep 2024</p>
+              <div class="inline-block">
+                <i class="fa-regular fa-folder-open"></i>
+                <p class="px-2 inline-block">Automated parking solution</p>
+              </div>
+              <div class="inline-block">
+                <i class="fa-regular fa-user"></i>
+                <p class="px-2 inline-block">Personal project</p>
+              </div>
+              <div class="inline-block">
+                <i class="fa-regular fa-calendar"></i>
+                <p class="px-2 inline-block">Sep 2024</p>
+              </div>
             </div>
             <!-- Project description -->
             <p class="my-2">
-              PLMS can help you manage a parking lot as an administrative, or provide e-payment method to your customer.
-              User can look up the parking lot through map and get real time vacancy information.
+              PLMS offers comprehensive parking lot management with administrative tools and e-payment options, allowing users to view real-time vacancy information via a map.
             </p>
+            <div class="separation"></div>
+            <p class="font-semibold">Backend Skills</p>
+            <ul class="mt-1 list-disc list-outside ml-5">
+              <li class="list-item">
+                Design <span class="font-medium text-slate-500">RESTful APIs</span> and implement the <span class="font-medium text-slate-500">MVC</span> pattern for separation of concern and improve maintainability. 
+              </li>
+              <li class="list-item">
+                Acquired a domain name through<span class="font-medium text-slate-500"> GoDaddy</span>, hosted and managed DNS with <span class="font-medium text-slate-500">AWS Route53</span>.
+              </li>
+              <li class="list-item">
+                Developed backend APIs using <span class="font-medium text-slate-500">Python/FastAPI</span>, with automatic Swagger documentation.
+              </li>
+              <li class="list-item">
+                Implemented <span class="font-medium text-slate-500">JWT</span> for secure token encoding/decoding and admin authentication.
+              </li>
+              <li class="list-item">
+                Utilized <span class="font-medium text-slate-500">RDS/MySQL</span> with spatial indexing to enhance query performance by up to 6 times.
+              </li>
+              <li class="list-item">
+                Deploy on <span class="font-medium text-slate-500">AWS EC2</span> using Docker containers, with caching provided by <span class="font-medium text-slate-500">Redis</span>.
+              </li>
+              <li class="list-item">
+                Configured <span class="font-medium text-slate-500">Nginx</span> for reverse proxy, SSL termination with <span class="font-medium text-slate-500">certbot</span>.
+              </li>
+              <li class="list-item">
+                Managed dynamic load distribution with <span class="font-medium text-slate-500">AWS Load Balancer</span> to ensure scalability.
+              </li>
+              <li class="list-item">
+                Enabled image storage and delivery via <span class="font-medium text-slate-500">AWS S3</span> with presigned URLs and optimized delivery using <span class="font-medium text-slate-500">AWS CloudFront</span>.
+              </li>
+            </ul>
+            <div class="separation"></div>
+            <p class="font-semibold">Frontend Skills</p>
+            <ul class="mt-1 list-disc list-outside ml-5">
+              <li class="list-item">
+                Designed the user interface with <span class="font-medium text-slate-500">Bootstrap</span>.
+              </li>
+              <li class="list-item">
+                Integrated <span class="font-medium text-slate-500">Google Maps API</span> for interactive location services.
+              </li>
+              <li class="list-item">
+                Employed <span class="font-medium text-slate-500">OpenCV</span> for image processing and <span class="font-medium text-slate-500">Tesseract.js</span> for optical characters recognition.
+              </li>
+            </ul>
+            <div class="separation"></div>
+            <div class="max-w-xl mx-auto">
+              <img src="./backend-structure.png" class="rounded-lg max-w-full">
+            </div>
+            <div class="separation"></div>
             <a href="https://parkinglot.haohaoscreamandrun.online/" class="text-blue-600 text-wrap" target="_blank">
               <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              <span class="pl-2 text-wrap">https:// parkinglot.haohaoscreamandrun. online/</span>
+              <span class="pl-2 text-wrap break-all">https://parkinglot.haohaoscreamandrun.online/</span>
             </a>
             <br>
             <a href="https://github.com/Haohaoscreamandrun/ParkingLotManagementSystem" class="text-purple-600"
+              target="_blank">
+              <i class="fa-brands fa-github"></i>
+              <span class="pl-2">Link to project GitHub</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- Taipei day trip -->
+      <div class="gray-block">
+        <div class="md:grid md:grid-cols-[1fr_5fr] md:gap-3 sm:flex sm:flex-col">
+          <!-- Project Logo -->
+          <div class="flex flex-col items-center justify-start pb-4">
+            <div class="w-20 h-20 border-2 border-slate-50 bg-taipeidaytrip-logo bg-cover bg-center rounded-full">
+            </div>
+          </div>
+          <!-- Project Information -->
+          <div class="font-sans">
+            <!-- Project name -->
+            <div class="pb-1 flex flex-row justify-between">
+              <p class="inline-block font-semibold">Taipei Day Trip</p>
+            </div>
+            <!-- Project & Duration -->
+            <div class="font-normal text-xs">
+              <div class="inline-block">
+                <i class="fa-regular fa-folder-open"></i>
+                <p class="px-2 inline-block">Tourism E-commerce</p>
+              </div>
+              <div class="inline-block">
+                <i class="fa-regular fa-user"></i>
+                <p class="px-2 inline-block">Guided project</p>
+              </div>
+              <div class="inline-block">
+                <i class="fa-regular fa-calendar"></i>
+                <p class="px-2 inline-block">Sep 2024</p>
+              </div>
+            </div>
+            <!-- Project description -->
+            <p class="my-2">
+              A comprehensive e-commerce platform for discovering Taipei’s tourist attractions and easily booking sightseeing tours.
+            </p>
+            <div class="separation"></div>
+            <p class="font-semibold">Skills Highlight</p>
+            <ul class="mt-1 list-disc list-outside ml-5">
+              <li class="list-item">
+                Experience in developing web interfaces using vanilla HTML and CSS, ensuring accurate implementation and adherence to Figma UI designs.
+              </li>
+              <li class="list-item">
+                Implement the Intersection Observer API to create a seamless infinite scroll effect, allowing content to load dynamically as the user scrolls down.
+              </li>
+              <li class="list-item">
+                Integrate third-party payment solutions, utilize the TapPay SDK to facilitate secure and efficient transactions.
+              </li>
+            </ul>
+            <div class="separation"></div>
+            <a href="https://taipeidaytrip.haohaoscreamandrun.online/" class="text-blue-600 text-wrap" target="_blank">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              <span class="pl-2 text-wrap break-all">https://taipeidaytrip.haohaoscreamandrun.online/</span>
+            </a>
+            <br>
+            <a href="https://github.com/Haohaoscreamandrun/WehelpStage2" class="text-purple-600"
               target="_blank">
               <i class="fa-brands fa-github"></i>
               <span class="pl-2">Link to project GitHub</span>
@@ -307,22 +501,44 @@
             </div>
             <!-- Project & Duration -->
             <div class="font-normal text-xs">
-              <i class="fa-regular fa-folder-open"></i>
-              <p class="px-2 inline-block">Weather forecast</p>
-              <i class="fa-regular fa-user"></i>
-              <p class="px-2 inline-block">Group project</p>
-              <i class="fa-regular fa-calendar"></i>
-              <p class="px-2 inline-block">Jul 2024</p>
+              <div class="inline-block">
+                <i class="fa-regular fa-folder-open"></i>
+                <p class="px-2 inline-block">Weather forecast</p>
+              </div>
+              <div class="inline-block">
+                <i class="fa-regular fa-user"></i>
+                <p class="px-2 inline-block">Group project</p>
+              </div>
+              <div class="inline-block">
+                <i class="fa-regular fa-calendar"></i>
+                <p class="px-2 inline-block">Jul 2024</p>
+              </div>
             </div>
             <!-- Project description -->
             <p class="my-2">
-              The app provides a comprehensive weather overview for Taiwan, including a 36-hour forecast with temperature
-              and rainfall data, and displays UV index and heat warning levels for each city. It features interactive tables
-              for detailed regional data and integrates with APIs to fetch and render real-time weather information.
+              The app offers a complete weather overview for Taiwan, including a 36-hour forecast with temperature, rainfall, UV index, and heat warnings.
             </p>
+            <div class="separation"></div>
+            <p class="font-semibold">Skills Highlight</p>
+            <ul class="mt-1 list-disc list-outside ml-5">
+              <li class="list-item">
+                Hands-on experience in team-based development, designing and implementing the MVC pattern without conflicts, and adhering to an <span class="font-medium text-slate-500">agile</span> development schedule.
+              </li>
+              <li class="list-item">
+                Determine the appropriate caching duration when dealing with a frequently updated API to ensure that the cached data remains relevant and accurate.
+              </li>
+              <li class="list-item">
+                Experience in using Discord bot webhooks to integrate and automate interactions with Discord channels and servers.
+              </li>
+            </ul>
+            <div class="separation"></div>
+            <div class="max-w-lg mx-auto">
+              <img src="./weather_app_screenshot.png" class="rounded-lg max-w-full">
+            </div>
+            <div class="separation"></div>
             <a href="https://wehelp-groupproject.onrender.com/" class="text-blue-600 text-wrap" target="_blank">
               <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              <span class="pl-2 text-wrap">https://wehelp-groupproject.onrender.com/</span>
+              <span class="pl-2 text-wrap break-all">https://wehelp-groupproject.onrender.com/</span>
             </a>
             <br>
             <a href="https://github.com/Haohaoscreamandrun/Wehelp_GroupProject" class="text-purple-600" target="_blank">
@@ -435,11 +651,31 @@
   let panel = document.getElementById('panel')
   let clampWords = document.querySelectorAll('.gray-block-word')
   
+  // Function to handle the intersection
+  const handleIntersection = (entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.remove('line-clamp-2');
+      } else {
+        // Add the class when element is out of view
+        entry.target.classList.add('line-clamp-2');
+      }
+    })
+  }
+
+  // Create an Intersection Observer
+  const observer = new IntersectionObserver(handleIntersection, {
+    root: null, // Use the viewport as the root
+    rootMargin: '-25% 0px -25% 0px',
+    threshold: 0
+  });
+
   // toggle clamp
   clampWords.forEach(clampWord =>{
     clampWord.addEventListener('click', ()=>{
-        clampWord.classList.toggle('lg:line-clamp-2')
+        clampWord.classList.toggle('line-clamp-2')
       })
+    observer.observe(clampWord)
   })
   
   // pdf download
