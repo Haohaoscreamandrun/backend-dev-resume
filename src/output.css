@@ -578,6 +578,10 @@ img {
   left: 1rem;
 }
 
+.bottom-0 {
+  bottom: 0px;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -632,6 +636,18 @@ img {
   margin-top: 1rem;
 }
 
+.ml-2 {
+  margin-left: 0.5rem;
+}
+
+.ml-3 {
+  margin-left: 0.75rem;
+}
+
+.mt-5 {
+  margin-top: 1.25rem;
+}
+
 .line-clamp-2 {
   overflow: hidden;
   display: -webkit-box;
@@ -671,8 +687,16 @@ img {
   height: auto;
 }
 
+.h-32 {
+  height: 8rem;
+}
+
 .min-h-80 {
   min-height: 20rem;
+}
+
+.min-h-32 {
+  min-height: 8rem;
 }
 
 .w-20 {
@@ -685,6 +709,18 @@ img {
 
 .w-full {
   width: 100%;
+}
+
+.w-px {
+  width: 1px;
+}
+
+.w-32 {
+  width: 8rem;
+}
+
+.min-w-32 {
+  min-width: 8rem;
 }
 
 .max-w-full {
@@ -727,12 +763,20 @@ img {
   flex-direction: column;
 }
 
+.items-end {
+  align-items: flex-end;
+}
+
 .items-center {
   align-items: center;
 }
 
 .justify-start {
   justify-content: flex-start;
+}
+
+.justify-end {
+  justify-content: flex-end;
 }
 
 .justify-between {
@@ -745,6 +789,18 @@ img {
 
 .gap-2 {
   gap: 0.5rem;
+}
+
+.place-self-end {
+  place-self: end;
+}
+
+.self-start {
+  align-self: flex-start;
+}
+
+.self-end {
+  align-self: flex-end;
 }
 
 .overflow-hidden {
@@ -1257,6 +1313,10 @@ the line-break gets rendered thus adding an unnecessary space in the resulting i
 
   .lg\:order-4 {
     order: 4;
+  }
+
+  .lg\:order-5 {
+    order: 5;
   }
 
   .lg\:col-span-1 {

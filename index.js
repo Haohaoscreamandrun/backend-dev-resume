@@ -54,6 +54,16 @@
       })
     observer.observe(clampWord)
   })
+
+  // make QRcode
+  let qrcode = new QRCode(document.getElementById('QRcode'),{
+      text: "https://haohaoscreamandrun.github.io/backend-dev-resume/index.html",
+      width: 124,
+      height: 124,
+      colorDark: "#000000",
+      colorLight : "#ffffff",
+      // correctLevel : QRCode.CorrectLevel.H
+    })
   
   // pdf download
   downLoadBtn.addEventListener('click', async()=>{
@@ -71,6 +81,10 @@
     project.hidden = false
     blogs.hidden = false
     panel.hidden = true
+
+    // unhide QRcode
+    let qrcodeBlock = document.getElementById('QRcodeBlock')
+    qrcodeBlock.hidden = false
 
     let canvas = await html2canvas(document.body, {
       backgroundColor: "#e5e7eb",
@@ -105,8 +119,8 @@
     downloadIcon.hidden = false
     spinnerIcon.hidden = true
 
-    resume.forEach(element => element.hidden = false)
-    resume.hidden = true
+    resume.forEach(element => element.hidden = true)
     blogs.hidden = true
     panel.hidden = false
+    qrcodeBlock.hidden = true
   })
