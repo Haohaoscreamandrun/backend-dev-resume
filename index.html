@@ -5,8 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hao Chen</title>
   <link rel="stylesheet" href="./src/output.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"
+    integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
+    integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body class="bg-gray-200 w-[90vw] flex flex-col items-center mx-auto lg:grid lg:grid-cols-[1fr_2fr] lg:gap-4 lg:items-start">
   <div class="md:w-[75vw] lg:col-span-1 lg:w-auto">
@@ -619,114 +622,5 @@
   </div>
 </body>
 <script src="https://kit.fontawesome.com/698455ed47.js" crossorigin="anonymous"></script>
-<script>
-  // panel switch
-  let options = document.querySelectorAll('.panel-option')
-  let resume = document.querySelectorAll('.resume')
-  let project = document.querySelector('.project')
-  let blogs = document.querySelector('.blogs')
-  options.forEach(option =>{
-    option.addEventListener('click', ()=>{
-      options.forEach(element=>element.classList.remove('active'))
-      option.classList.add('active')
-      if (option.innerText === 'Resume'){
-        resume.forEach(element=>element.hidden = false)
-        project.hidden = true
-        blogs.hidden = true
-      }else if(option.innerText === 'Project'){
-        resume.forEach(element => element.hidden = true)
-        project.hidden = false
-        blogs.hidden = true
-      } else if (option.innerText === 'Blog'){
-        resume.forEach(element => element.hidden = true)
-        project.hidden = true
-        blogs.hidden = false
-      }
-    })
-  })
-
-  
-  
-  let downLoadBtn = document.getElementById('downLoad')
-  let panel = document.getElementById('panel')
-  let clampWords = document.querySelectorAll('.gray-block-word')
-  
-  // Function to handle the intersection
-  const handleIntersection = (entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.remove('line-clamp-2');
-      } else {
-        // Add the class when element is out of view
-        entry.target.classList.add('line-clamp-2');
-      }
-    })
-  }
-
-  // Create an Intersection Observer
-  const observer = new IntersectionObserver(handleIntersection, {
-    root: null, // Use the viewport as the root
-    rootMargin: '-25% 0px -25% 0px',
-    threshold: 0
-  });
-
-  // toggle clamp
-  clampWords.forEach(clampWord =>{
-    clampWord.addEventListener('click', ()=>{
-        clampWord.classList.toggle('line-clamp-2')
-      })
-    observer.observe(clampWord)
-  })
-  
-  // pdf download
-  downLoadBtn.addEventListener('click', async()=>{
-    let { jsPDF } = window.jspdf;
-    
-    // unhide all elements
-    clampWords.forEach(clampWord => {
-      clampWord.classList.add('lg:line-clamp-2')
-      clampWord.classList.remove('lg:line-clamp-2')
-    })
-    resume.forEach(element => element.hidden = false)
-    project.hidden = false
-    blogs.hidden = false
-    panel.hidden = true
-
-    // Define margins in mm
-    const topMargin = 10;
-    const bottomMargin = 10;
-    const leftMargin = 3;
-    const rightMargin = 3;
-
-    let canvas = await html2canvas(document.body, { scale:2 })
-    let imgData = canvas.toDataURL('image/png')
-
-    let pdf = new jsPDF('p', 'mm', 'a4')
-     // Set the Helvetica font
-    pdf.setFont("Helvetica");
-
-    const imgWidth = 210; // A4 width in mm
-    const pageHeight = pdf.internal.pageSize.getHeight()
-    const imgHeight = (canvas.height * imgWidth) / canvas.width
-    const totalPageSize = Math.ceil(imgHeight / pageHeight)
-    let yPosition = 10
-
-    pdf.addImage(imgData, 'PNG', 0, yPosition, imgWidth, imgHeight)
-
-    for (let pageIndex = 1; pageIndex < totalPageSize; pageIndex++){
-      yPosition = -pageIndex * pageHeight + 10
-      pdf.addPage()
-      pdf.addImage(imgData, 'PNG', 0, yPosition, imgWidth, imgHeight)
-    }
-
-
-    pdf.save('CV_hao_chen.pdf');
-  
-    
-    resume.forEach(element => element.hidden = false)
-    project.hidden = true
-    blogs.hidden = true
-    panel.hidden = false
-  })
-</script>
+<script type="module" src="./index.js"></script>
 </html>
