@@ -446,6 +446,10 @@ video {
   display: none;
 }
 
+img {
+  display: inline-block;
+}
+
 *, ::before, ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
@@ -989,6 +993,11 @@ video {
 .duration-300 {
   transition-duration: 300ms;
 }
+
+/* Tailwind CSS sets the display property of the img tag to display: block;
+during preflight. This introduces a line-break below the element which is not seen in the UI render. But,
+when you convert the same HTML to Image using html2canvas,
+the line-break gets rendered thus adding an unnecessary space in the resulting image. */
 
 /* Online Indicator */
 

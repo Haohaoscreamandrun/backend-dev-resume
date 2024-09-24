@@ -72,12 +72,13 @@
     blogs.hidden = false
     panel.hidden = true
 
-    let canvas = await html2canvas(document.body, { 
-      windowWidth: 1500,
+    let canvas = await html2canvas(document.body, {
+      backgroundColor: "#e5e7eb",
+      windowWidth: 1300,
       windowHeight: 4000,
       scrollY: 0
      })
-    let imgData = canvas.toDataURL('image/png')
+    let imgData = canvas.toDataURL('image/jpeg', 1.0)
 
     let pdf = new jsPDF('p', 'mm', 'a4')
      // Set the Helvetica font
@@ -88,12 +89,12 @@
     const pageHeight = pdf.internal.pageSize.getHeight()
     const imgHeight = (canvas.height * imgWidth) / canvas.width
     const totalPageSize = Math.ceil(imgHeight / pageHeight)
-    let yPosition = 10
+    let yPosition = 0
 
     pdf.addImage(imgData, 'PNG', 0, yPosition, imgWidth, imgHeight)
 
     for (let pageIndex = 1; pageIndex < totalPageSize; pageIndex++){
-      yPosition = -pageIndex * pageHeight + 10
+      yPosition = -pageIndex * pageHeight
       pdf.addPage()
       pdf.addImage(imgData, 'PNG', 0, yPosition, imgWidth, imgHeight)
     }
