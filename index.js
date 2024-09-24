@@ -57,7 +57,11 @@
   
   // pdf download
   downLoadBtn.addEventListener('click', async()=>{
-        
+    // hide downloadIcon and show spinner
+    let spinnerIcon = document.getElementById('spinnerIcon')
+    let downloadIcon = document.getElementById('downloadIcon')
+    downloadIcon.hidden = true
+    spinnerIcon.hidden = false
     // unhide all elements
     clampWords.forEach(clampWord => {
       clampWord.classList.add('lg:line-clamp-2')
@@ -67,12 +71,6 @@
     project.hidden = false
     blogs.hidden = false
     panel.hidden = true
-
-    // Define margins in mm
-    const topMargin = 10;
-    const bottomMargin = 10;
-    const leftMargin = 0;
-    const rightMargin = 0;
 
     let canvas = await html2canvas(document.body, { 
       windowWidth: 1500,
@@ -103,9 +101,11 @@
 
     pdf.save('CV_hao_chen.pdf');
   
-    
+    downloadIcon.hidden = false
+    spinnerIcon.hidden = true
+
     resume.forEach(element => element.hidden = false)
-    project.hidden = true
+    resume.hidden = true
     blogs.hidden = true
     panel.hidden = false
   })
