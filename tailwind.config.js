@@ -9,6 +9,7 @@ module.exports = {
         'wehelp-logo':"url('./wehelp_logo.png')",
         'corteva-logo':"url('./corteva_logo.jpg')",
         'basf-logo': "url('./BASF-Logo.jpg')",
+        'techs-logo': "url('./techs_logo.png')",
         'ntu-logo':"url('./ntu_logo.jpg')",
         'nchu-logo':"url('./nchu_logo.jpg')",
         'parkinglot-logo': "url('./parkinglot_logo.png')",

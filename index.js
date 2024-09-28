@@ -92,7 +92,7 @@
       windowHeight: 4000,
       scrollY: 0
      })
-    let imgData = canvas.toDataURL('image/jpeg', 1.0)
+    let imgData = canvas.toDataURL('image/jpeg', 0.7)
 
     let pdf = new jsPDF('p', 'mm', 'a4')
      // Set the Helvetica font
