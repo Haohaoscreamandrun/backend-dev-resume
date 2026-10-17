@@ -16,6 +16,10 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <!-- qrcode.js -->
   <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js" defer></script>
+  <!-- Application Scripts: ordered deferred execution for seamless file:// and http:// support -->
+  <script defer src="./constants.js"></script>
+  <script defer src="./resumeData.js"></script>
+  <script defer src="./index.js"></script>
   <!-- Alpine.js -->
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script>
   <!-- bootstrap -->
@@ -264,7 +268,7 @@
                   <p class="font-semibold" x-text="sec.heading"></p>
                   <ul class="mt-1 list-disc list-outside ml-5">
                     <template x-for="item in sec.items" :key="item">
-                      <li class="list-item" x-html="item"></li>
+                      <li class="list-item" x-text="item"></li>
                     </template>
                   </ul>
                 </div>
@@ -301,5 +305,4 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/698455ed47.js" crossorigin="anonymous"></script>
-<script type="module" src="./index.js"></script>
 </html>
