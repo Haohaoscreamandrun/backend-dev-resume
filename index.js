@@ -4,8 +4,36 @@ import {
   bindLinksAndResources,
   setupEmailCopy,
 } from './constants.js';
+import {
+  SKILLS_DATA,
+  INFO_DATA,
+  EDUCATION_DATA,
+  EXPERIENCE_DATA,
+  PROJECTS_DATA,
+} from './resumeData.js';
 
-// Bind dynamic links and resources to the DOM
+// Expose structured resume data to Alpine.js
+window.SKILLS_DATA = SKILLS_DATA;
+window.INFO_DATA = INFO_DATA;
+window.EDUCATION_DATA = EDUCATION_DATA;
+window.EXPERIENCE_DATA = EXPERIENCE_DATA;
+window.PROJECTS_DATA = PROJECTS_DATA;
+
+const registerAlpineData = () => {
+  if (window.Alpine) {
+    Alpine.data('resumeApp', () => ({
+      skills: SKILLS_DATA,
+      info: INFO_DATA,
+      education: EDUCATION_DATA,
+      experience: EXPERIENCE_DATA,
+      projects: PROJECTS_DATA,
+    }));
+  }
+};
+document.addEventListener('alpine:init', registerAlpineData);
+registerAlpineData();
+
+// Bind static links and resources to the DOM
 bindLinksAndResources();
 
 // Setup click-to-copy email interaction
@@ -99,10 +127,6 @@ downLoadBtn.addEventListener('click', async () => {
   let imgData = canvas.toDataURL('image/jpeg', 1.0);
 
   let pdf = new jsPDF('p', 'mm', 'a4');
-  // Set the Helvetica font
-  // pdf.setFont("helvetica", 'italic');
-  // console.log("Show all fonts in jsPDF:", pdf.getFontList())
-
   const imgWidth = 210; // A4 width in mm
   const pageHeight = pdf.internal.pageSize.getHeight();
   const imgHeight = (canvas.height * imgWidth) / canvas.width;

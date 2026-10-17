@@ -16,13 +16,15 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <!-- qrcode.js -->
   <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js" defer></script>
+  <!-- Alpine.js -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script>
   <!-- bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <!-- tailwindcss -->
   <link rel="stylesheet" href="./src/output.css">
 </head>
-<body class="bg-gray-200 w-[90vw] flex flex-col items-center mx-auto lg:grid lg:grid-cols-[1fr_2fr] lg:gap-4 lg:items-start">
+<body class="bg-gray-200 w-[90vw] flex flex-col items-center mx-auto lg:grid lg:grid-cols-[1fr_2fr] lg:gap-4 lg:items-start" x-data="resumeApp">
   <div class="md:w-[75vw] lg:col-span-1 lg:w-auto">
     <!-- Personal detail - Picture Container -->
     <div class="rounded-t-2xl min-h-80 w-full mt-4 relative overflow-hidden lg:order-1 lg:w-full lg:min-h-40">
@@ -84,68 +86,31 @@
       
       <div class="gray-block lg:text-sm">
         <div class="grid grid-cols-4 gap-2 text-center">
-          <p>Backend</p>
-          <p>Frontend</p>
-          <p>Cloud</p>
-          <p>Toolkit</p>
-          <div class="flex flex-col">
-            <p class="skill">Python (FastAPI)</p>
-            <p class="skill">RESTful APIs</p>
-            <p class="skill">MySQL</p>
-            <p class="skill">Linux (Ubuntu)</p>
-            <p class="skill">Redis</p>
-            <p class="skill">Nginx</p>
-          </div>
-          <div class="flex flex-col">
-            <p class="skill">HTML</p>
-            <p class="skill">CSS (tailwind)</p>
-            <p class="skill">JavaScript</p>
-            <p class="skill">Bootstrap</p>
-          </div>
-          <div class="flex flex-col">
-            <p class="skill">EC2</p>
-            <p class="skill">RDS</p>
-            <p class="skill">S3</p>
-            <p class="skill">CloudFront</p>
-            <p class="skill">ELB</p>
-            <p class="skill">Route53</p>
-          </div>
-          <div class="flex flex-col">
-            <p class="skill">Git</p>
-            <p class="skill">Docker</p>
-            <p class="skill">SSL (certbot)</p>
-            <p class="skill">Google Map API</p>
-            <p class="skill">Tesseract</p>
-            <p class="skill">OpenCV</p>
-          </div>
-        </div>    
+          <template x-for="col in skills" :key="col.category">
+            <div class="flex flex-col">
+              <p x-text="col.category"></p>
+              <template x-for="skill in col.items" :key="skill">
+                <p class="skill" x-text="skill"></p>
+              </template>
+            </div>
+          </template>
+        </div>
       </div>
-      
     </div>
     <!-- Information -->
     <div class="white-block lg:order-4">
       <span class="title-indicator"></span>
       <p class="title">Information</p>
       <div class="gray-block text-nowrap lg:text-sm">
-        <div class="flex flex-row justify-between">
-          <p class="inline-block font-sans">Work Experience</p>
-          <p class="inline-block font-sans font-semibold">>5 years</p>
-        </div>
-        <div class="separation"></div>
-        <div class="flex flex-row justify-between">
-          <p class="inline-block font-sans">Location of work</p>
-          <p class="inline-block font-sans font-semibold">Taipei, Taoyuan / Hybrid</p>
-        </div>
-        <div class="separation"></div>
-        <div class="flex flex-row justify-between">
-          <p class="inline-block font-sans">Availability</p>
-          <p class="inline-block font-sans font-semibold">In one week</p>
-        </div>
-        <div class="separation"></div>
-        <div class="flex flex-row justify-between">
-          <p class="inline-block font-sans">Language</p>
-          <p class="inline-block font-sans font-semibold">TOEIC 910 / IELTS 6.5</p>
-        </div>
+        <template x-for="(item, index) in info" :key="item.label">
+          <div>
+            <div class="flex flex-row justify-between">
+              <p class="inline-block font-sans" x-text="item.label"></p>
+              <p class="inline-block font-sans font-semibold" x-text="item.value"></p>
+            </div>
+            <div class="separation" x-show="index < info.length - 1"></div>
+          </div>
+        </template>
       </div>
     </div>
     <!-- QRcode block -->
@@ -172,413 +137,164 @@
     <div class="white-block resume" hidden>
       <span class="title-indicator"></span>
       <p class="title">Education</p>
-      <!-- NTU -->
-      <div class="gray-block">
-        <div class="md:grid md:grid-cols-[1fr_5fr] md:gap-3 sm:flex sm:flex-col">
-          <!-- School Logo -->
-          <div class="flex flex-col items-center justify-start pb-4">
-            <div class="w-20 h-20 border-2 border-slate-50 bg-ntu-logo bg-cover bg-center rounded-full">
-            </div>
-          </div>
-          <!-- School Information -->
-          <div class="font-sans">
-            <!-- Position -->
-            <div class="flex flex-row justify-between items-center">
-              <p class="mb-1 inline-block font-semibold">Master of Horticulture and Landscape Architecture</p>
-              <p class="skill !mb-0">Master</p>
-            </div>
-            <!-- School & Duration -->
-            <div class="font-normal text-xs">
-              <div class="inline-block">
-                <i class="fa-solid fa-graduation-cap"></i>
-                <p class="px-2 inline-block">National Taiwan University (NTU)</p>
-              </div>
-              <div class="inline-block">
-                <i class="fa-regular fa-calendar"></i>
-                <p class="px-2 inline-block">Sep 2016 - Jul 2018</p>
+      <template x-for="edu in education" :key="edu.school">
+        <div class="gray-block">
+          <div class="md:grid md:grid-cols-[1fr_5fr] md:gap-3 sm:flex sm:flex-col">
+            <!-- School Logo -->
+            <div class="flex flex-col items-center justify-start pb-4">
+              <div class="w-20 h-20 border-2 border-slate-50 bg-cover bg-center rounded-full"
+                :class="edu.logoClass">
               </div>
             </div>
-            <!-- School description -->
-            <ul class="mt-2 list-disc list-outside ml-5">
-              <li class="list-item">GPA: 3.98/ 49 credits</li>
-              <li class="list-item">Specialty: Plant Breeding, Hydroponic, Plant Physiology</li>
-              <li class="list-item">Scholarship: Know-you Social Welfare Foundation Scholarship</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <!-- NCHU -->
-      <div class="gray-block">
-        <div class="md:grid md:grid-cols-[1fr_5fr] md:gap-3 sm:flex sm:flex-col">
-          <!-- School Logo -->
-          <div class="flex flex-col items-center justify-start pb-4">
-            <div class="w-20 h-20 border-2 border-slate-50 bg-nchu-logo bg-cover bg-center rounded-full">
-            </div>
-          </div>
-          <!-- School Information -->
-          <div class="font-sans">
-            <!-- Position -->
-            <div class="flex flex-row justify-between items-center">
-              <p class="mb-1 inline-block font-semibold">Bachelor of Horticulture</p>
-              <p class="skill !mb-0">Bachelor</p>
-            </div>
-            <!-- School & Duration -->
-            <div class="font-normal text-xs">
-              <div class="inline-block">
-                <i class="fa-solid fa-graduation-cap"></i>
-                <p class="px-2 inline-block">National Chung Hsing University (NCHU)</p>
+            <!-- School Information -->
+            <div class="font-sans">
+              <!-- Position -->
+              <div class="flex flex-row justify-between items-center">
+                <p class="mb-1 inline-block font-semibold" x-text="edu.degree"></p>
+                <p class="skill !mb-0" x-text="edu.badge"></p>
               </div>
-              <div class="inline-block">
-                <i class="fa-regular fa-calendar"></i>
-                <p class="px-2 inline-block">Sep 2012 - Jul 2016</p>
+              <!-- School & Duration -->
+              <div class="font-normal text-xs">
+                <div class="inline-block">
+                  <i class="fa-solid fa-graduation-cap"></i>
+                  <p class="px-2 inline-block" x-text="edu.school"></p>
+                </div>
+                <div class="inline-block">
+                  <i class="fa-regular fa-calendar"></i>
+                  <p class="px-2 inline-block" x-text="edu.duration"></p>
+                </div>
               </div>
+              <!-- Highlights -->
+              <ul class="mt-2 list-disc list-outside ml-5">
+                <template x-for="item in edu.highlights" :key="item">
+                  <li class="list-item" x-text="item"></li>
+                </template>
+              </ul>
             </div>
-            <!-- School description -->
-            <ul class="mt-2 list-disc list-outside ml-5">
-              <li class="list-item">GPA: 3.85/ 154 credits</li>
-              <li class="list-item">Internship: Yu, Su-May's lab, the Institute of Molecular Biology, Academia Sinica</li>
-              <li class="list-item">Extra Curriculum: Deputy Director, International Agriculture Service Mission, NCHU</li>
-            </ul>
           </div>
         </div>
-      </div>
+      </template>
     </div>
     <!-- Experience -->
     <div class="white-block resume !mb-5" hidden>
       <span class="title-indicator"></span>
       <p class="title">Experience</p>
-      <!-- Wehelp -->
-      <div class="gray-block">
-        <div class="md:grid md:grid-cols-[1fr_5fr] md:gap-3 sm:flex sm:flex-col">
-          <!-- Company Logo -->
-          <div class="flex flex-col items-center justify-start pb-4">
-            <div class="w-20 h-20 border-2 border-slate-50 bg-wehelp-logo bg-no-repeat bg-center rounded-full" style=" background-size: 70%; background-color: white; mix-blend-mode: normal;">
-            </div>
-          </div>
-          <!-- Project Information -->
-          <div class="font-sans">
-            <!-- Position -->
-            <div class="flex flex-row justify-between items-center">
-              <p class="mb-1 inline-block font-semibold">Wehelp #5 Bootcamp</p>
-              <p class="skill !mb-0">Trainee</p>
-            </div>
-            <!-- Company & Duration -->
-            <div class="font-normal text-xs">
-              <div class="inline-block">
-                <i class="fa-solid fa-suitcase"></i>
-                <p class="px-2 inline-block">Padax, LTD</p>
-              </div>
-              <div class="inline-block">
-                <i class="fa-regular fa-calendar"></i>
-                <p class="px-2 inline-block">Apr 2024 - Sep 2024</p>
+      <template x-for="exp in experience" :key="exp.company + exp.role">
+        <div class="gray-block">
+          <div class="md:grid md:grid-cols-[1fr_5fr] md:gap-3 sm:flex sm:flex-col">
+            <!-- Company Logo -->
+            <div class="flex flex-col items-center justify-start pb-4">
+              <div class="w-20 h-20 border-2 border-slate-50 rounded-full"
+                :class="exp.logoClass"
+                :style="exp.logoStyle || ''">
               </div>
             </div>
-            <!-- Job description -->
-            <ul class="mt-2 list-disc list-outside ml-5">
-              <li class="list-item">
-                Completed 16 weeks of comprehensive fundamental web development training followed by 8 weeks of specialized backend development.
-              </li>
-              <li class="list-item">
-                Develop an e-commerce tourism web application, "Taipei Day Trip", over a 2 months period, incorporating toolkit and UI guidance.
-              </li>
-              <li class="list-item">
-                Collaborated with 3 peers to develop a weather report web application within one week.
-              </li>
-              <li class="list-item">
-                Independently created a parking lot management system (PLMS) from scratch within one month.
-              </li>
-            </ul>
+            <!-- Position Information -->
+            <div class="font-sans">
+              <div class="flex flex-row justify-between items-center">
+                <p class="mb-1 inline-block font-semibold" x-text="exp.role"></p>
+                <p class="skill !mb-0" x-text="exp.badge"></p>
+              </div>
+              <!-- Company & Duration -->
+              <div class="font-normal text-xs">
+                <div class="inline-block">
+                  <i class="fa-solid fa-suitcase"></i>
+                  <p class="px-2 inline-block" x-text="exp.company"></p>
+                </div>
+                <div class="inline-block">
+                  <i class="fa-regular fa-calendar"></i>
+                  <p class="px-2 inline-block" x-text="exp.duration"></p>
+                </div>
+              </div>
+              <!-- Job Description -->
+              <ul class="mt-2 list-disc list-outside ml-5">
+                <template x-for="bullet in exp.bullets" :key="bullet">
+                  <li class="list-item" x-text="bullet"></li>
+                </template>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-      <!-- Corteva -->
-      <div class="gray-block">
-        <div class="md:grid md:grid-cols-[1fr_5fr] md:gap-3 sm:flex sm:flex-col">
-          <!-- Comapy Logo -->
-          <div class="flex flex-col items-center justify-start pb-4">
-            <div class="w-20 h-20 border-2 border-slate-50 bg-corteva-logo bg-cover bg-center rounded-full">
-            </div>
-          </div>
-          <!-- Project Information -->
-          <div class="font-sans">
-            <!-- Position -->
-            <div class="flex flex-row justify-between items-center">
-              <p class="mb-1 inline-block font-semibold">Regulatory Affairs Specialist</p>
-              <p class="skill !mb-0">Full-time</p>
-            </div>
-            <!-- Company & Duration -->
-            <div class="font-normal text-xs">
-              <div class="inline-block">
-                <i class="fa-solid fa-suitcase"></i>
-                <p class="px-2 inline-block">Corteva Agriscience</p>
-              </div>
-              <div class="inline-block">
-                <i class="fa-regular fa-calendar"></i>
-                <p class="px-2 inline-block">Aug 2021 - Apr 2024</p>
-              </div>
-            </div>
-            <!-- Job description -->
-            <ul class="mt-2 list-disc list-outside ml-5">
-              <li class="list-item">Lead and coordinate project activities, including field trials, license renewals, and stakeholder engagement, for Adavelt® and other fungicides.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <!-- BASF -->
-      <div class="gray-block">
-        <div class="md:grid md:grid-cols-[1fr_5fr] md:gap-3 sm:flex sm:flex-col">
-          <!-- Comapy Logo -->
-          <div class="flex flex-col items-center justify-start pb-4">
-            <div class="w-20 h-20 border-2 border-slate-50 bg-basf-logo bg-cover bg-center rounded-full">
-            </div>
-          </div>
-          <!-- Company Information -->
-          <div class="font-sans">
-            <!-- Position -->
-            <div class="flex flex-row justify-between items-center">
-              <p class="mb-1 inline-block font-semibold">Import Tolerance & Regulatory Specialist</p>
-              <p class="skill !mb-0">Full-time</p>
-            </div>
-            <!-- Company & Duration -->
-            <div class="font-normal text-xs">
-              <div class="inline-block">
-                <i class="fa-solid fa-suitcase"></i>
-                <p class="px-2 inline-block">BASF Taiwan</p>
-              </div>
-              <div class="inline-block">
-                <i class="fa-regular fa-calendar"></i>
-                <p class="px-2 inline-block">Feb 2020 - Aug 2021</p>
-              </div>
-            </div>
-            <!-- Job description -->
-            <ul class="mt-2 list-disc list-outside ml-5">
-              <li class="list-item">Support government negotiations and regulatory advocacy efforts to secure compliance and support for Agriculture Solutions.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      </template>
     </div>
     <!-- Projects -->
     <div class="mb-4 project white-block">
       <span class="title-indicator"></span>
       <p class="title">Projects</p>
-      <!-- PLMS -->
-      <div class="gray-block">
-        <div class="md:grid md:grid-cols-[1fr_5fr] md:gap-3 sm:flex sm:flex-col">
-          <!-- Project Logo -->
-          <div class="flex flex-col items-center justify-start pb-4">
-            <div class="w-20 h-20 border-2 border-slate-50 bg-parkinglot-logo bg-cover bg-center rounded-full">
-            </div>
-          </div>
-          <!-- Project Information -->
-          <div class="font-sans">
-            <!-- Project name -->
-            <div class="pb-1 flex flex-row justify-start">
-              <p class="inline-block font-semibold">Parking Lot Management System</p>
-              <i class="inline-block fa-solid fa-star mt-1 pl-2"></i>
-            </div>
-            <!-- Project & Duration -->
-            <div class="font-normal text-xs">
-              <div class="inline-block">
-                <i class="fa-regular fa-folder-open"></i>
-                <p class="px-2 inline-block">Automated parking solution</p>
-              </div>
-              <div class="inline-block">
-                <i class="fa-regular fa-user"></i>
-                <p class="px-2 inline-block">Personal project</p>
-              </div>
-              <div class="inline-block">
-                <i class="fa-regular fa-calendar"></i>
-                <p class="px-2 inline-block">Sep 2024</p>
+      <template x-for="proj in projects" :key="proj.name">
+        <div class="gray-block">
+          <div class="md:grid md:grid-cols-[1fr_5fr] md:gap-3 sm:flex sm:flex-col">
+            <!-- Project Logo -->
+            <div class="flex flex-col items-center justify-start pb-4">
+              <div class="w-20 h-20 border-2 border-slate-50 bg-cover bg-center rounded-full"
+                :class="proj.logoClass">
               </div>
             </div>
-            <!-- Project description -->
-            <p class="my-2">
-              PLMS offers comprehensive parking lot management with administrative tools and e-payment options, allowing users to view real-time vacancy information via a map.
-            </p>
-            <div class="separation"></div>
-            <p class="font-semibold">Backend Skills</p>
-            <ul class="mt-1 list-disc list-outside ml-5">
-              <li class="list-item">
-                Design <span class="font-medium text-slate-500">RESTful APIs</span> and implement the <span class="font-medium text-slate-500">MVC</span> pattern for separation of concern and improve maintainability. 
-              </li>
-              <li class="list-item">
-                Acquired a domain name through<span class="font-medium text-slate-500"> GoDaddy</span>, hosted and managed DNS with <span class="font-medium text-slate-500">AWS Route53</span>.
-              </li>
-              <li class="list-item">
-                Developed backend APIs using <span class="font-medium text-slate-500">Python/FastAPI</span>, with automatic Swagger documentation.
-              </li>
-              <li class="list-item">
-                Implemented <span class="font-medium text-slate-500">JWT</span> for secure token encoding/decoding and admin authentication.
-              </li>
-              <li class="list-item">
-                Utilized <span class="font-medium text-slate-500">RDS/MySQL</span> with spatial indexing to enhance query performance by up to 6 times.
-              </li>
-              <li class="list-item">
-                Deploy on <span class="font-medium text-slate-500">AWS EC2</span> using Docker containers, with caching provided by <span class="font-medium text-slate-500">Redis</span>.
-              </li>
-              <li class="list-item">
-                Configured <span class="font-medium text-slate-500">Nginx</span> for reverse proxy, SSL termination with <span class="font-medium text-slate-500">certbot</span>.
-              </li>
-              <li class="list-item">
-                Managed dynamic load distribution with <span class="font-medium text-slate-500">AWS Load Balancer</span> to ensure scalability.
-              </li>
-              <li class="list-item">
-                Enabled image storage and delivery via <span class="font-medium text-slate-500">AWS S3</span> with presigned URLs and optimized delivery using <span class="font-medium text-slate-500">AWS CloudFront</span>.
-              </li>
-            </ul>
-            <div class="separation"></div>
-            <p class="font-semibold">Frontend Skills</p>
-            <ul class="mt-1 list-disc list-outside ml-5">
-              <li class="list-item">
-                Designed the user interface with <span class="font-medium text-slate-500">Bootstrap</span>.
-              </li>
-              <li class="list-item">
-                Integrated <span class="font-medium text-slate-500">Google Maps API</span> for interactive location services.
-              </li>
-              <li class="list-item">
-                Employed <span class="font-medium text-slate-500">OpenCV</span> for image processing and <span class="font-medium text-slate-500">Tesseract.js</span> for optical characters recognition.
-              </li>
-            </ul>
-            <div class="separation"></div>
-            <div class="max-w-xl mx-auto">
-              <img data-src="PLMS_BACKEND_STRUCTURE" alt="Parking Lot Management System Architecture" class="rounded-lg max-w-full">
+            <!-- Project Information -->
+            <div class="font-sans">
+              <!-- Project name -->
+              <div class="pb-1 flex flex-row justify-start items-center">
+                <p class="inline-block font-semibold" x-text="proj.name"></p>
+                <template x-if="proj.isFeatured">
+                  <i class="inline-block fa-solid fa-star pl-2 mt-1"></i>
+                </template>
+              </div>
+              <!-- Project & Duration -->
+              <div class="font-normal text-xs">
+                <div class="inline-block">
+                  <i class="fa-regular fa-folder-open"></i>
+                  <p class="px-2 inline-block" x-text="proj.category"></p>
+                </div>
+                <div class="inline-block">
+                  <i class="fa-regular fa-user"></i>
+                  <p class="px-2 inline-block" x-text="proj.type"></p>
+                </div>
+                <div class="inline-block">
+                  <i class="fa-regular fa-calendar"></i>
+                  <p class="px-2 inline-block" x-text="proj.duration"></p>
+                </div>
+              </div>
+              <!-- Project description -->
+              <p class="my-2" x-text="proj.description"></p>
+              
+              <!-- Skill sections -->
+              <template x-for="sec in proj.skillSections" :key="sec.heading">
+                <div>
+                  <div class="separation"></div>
+                  <p class="font-semibold" x-text="sec.heading"></p>
+                  <ul class="mt-1 list-disc list-outside ml-5">
+                    <template x-for="item in sec.items" :key="item">
+                      <li class="list-item" x-html="item"></li>
+                    </template>
+                  </ul>
+                </div>
+              </template>
+
+              <!-- Preview image (optional) -->
+              <template x-if="proj.image">
+                <div>
+                  <div class="separation"></div>
+                  <div :class="proj.image.containerClass || 'max-w-xl mx-auto'">
+                    <img :src="proj.image.src" :alt="proj.image.alt || proj.name" class="rounded-lg max-w-full">
+                  </div>
+                </div>
+              </template>
+
+              <!-- Links -->
+              <div class="separation"></div>
+              <a :href="proj.demoUrl" class="text-blue-600 text-wrap" target="_blank" rel="noopener noreferrer">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                <span class="pl-2 text-wrap break-all" x-text="proj.demoUrl"></span>
+              </a>
+              <br>
+              <a :href="proj.githubUrl" class="text-purple-600" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github"></i>
+                <span class="pl-2">Link to project GitHub</span>
+              </a>
             </div>
-            <div class="separation"></div>
-            <a data-link="PLMS_DEMO" class="text-blue-600 text-wrap" target="_blank" rel="noopener noreferrer">
-              <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              <span data-link-text="PLMS_DEMO" class="pl-2 text-wrap break-all"></span>
-            </a>
-            <br>
-            <a data-link="PLMS_GITHUB" class="text-purple-600" target="_blank" rel="noopener noreferrer">
-              <i class="fa-brands fa-github"></i>
-              <span class="pl-2">Link to project GitHub</span>
-            </a>
           </div>
         </div>
-      </div>
-      <!-- Taipei day trip -->
-      <div class="gray-block">
-        <div class="md:grid md:grid-cols-[1fr_5fr] md:gap-3 sm:flex sm:flex-col">
-          <!-- Project Logo -->
-          <div class="flex flex-col items-center justify-start pb-4">
-            <div class="w-20 h-20 border-2 border-slate-50 bg-taipeidaytrip-logo bg-cover bg-center rounded-full">
-            </div>
-          </div>
-          <!-- Project Information -->
-          <div class="font-sans">
-            <!-- Project name -->
-            <div class="pb-1 flex flex-row justify-between">
-              <p class="inline-block font-semibold">Taipei Day Trip</p>
-            </div>
-            <!-- Project & Duration -->
-            <div class="font-normal text-xs">
-              <div class="inline-block">
-                <i class="fa-regular fa-folder-open"></i>
-                <p class="px-2 inline-block">Tourism E-commerce</p>
-              </div>
-              <div class="inline-block">
-                <i class="fa-regular fa-user"></i>
-                <p class="px-2 inline-block">Guided project</p>
-              </div>
-              <div class="inline-block">
-                <i class="fa-regular fa-calendar"></i>
-                <p class="px-2 inline-block">Sep 2024</p>
-              </div>
-            </div>
-            <!-- Project description -->
-            <p class="my-2">
-              A comprehensive e-commerce platform for discovering Taipei’s tourist attractions and easily booking sightseeing tours.
-            </p>
-            <div class="separation"></div>
-            <p class="font-semibold">Skills Highlight</p>
-            <ul class="mt-1 list-disc list-outside ml-5">
-              <li class="list-item">
-                Experience in developing web interfaces using vanilla HTML and CSS, ensuring accurate implementation and adherence to Figma UI designs.
-              </li>
-              <li class="list-item">
-                Implement the Intersection Observer API to create a seamless infinite scroll effect, allowing content to load dynamically as the user scrolls down.
-              </li>
-              <li class="list-item">
-                Integrate third-party payment solutions, utilize the TapPay SDK to facilitate secure and efficient transactions.
-              </li>
-            </ul>
-            <div class="separation"></div>
-            <a data-link="TAIPEI_DAY_TRIP_DEMO" class="text-blue-600 text-wrap" target="_blank" rel="noopener noreferrer">
-              <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              <span data-link-text="TAIPEI_DAY_TRIP_DEMO" class="pl-2 text-wrap break-all"></span>
-            </a>
-            <br>
-            <a data-link="TAIPEI_DAY_TRIP_GITHUB" class="text-purple-600" target="_blank" rel="noopener noreferrer">
-              <i class="fa-brands fa-github"></i>
-              <span class="pl-2">Link to project GitHub</span>
-            </a>
-          </div>
-        </div>
-      </div>
-      <!-- Weather group project -->
-      <div class="gray-block">
-        <div class="md:grid md:grid-cols-[1fr_5fr] md:gap-3 sm:flex sm:flex-col">
-          <!-- Project Logo -->
-          <div class="flex flex-col items-center justify-start pb-4">
-            <div class="w-20 h-20 border-2 border-slate-50 bg-weatherapp-logo bg-cover bg-center rounded-full">
-            </div>
-          </div>
-          <!-- Project Information -->
-          <div class="font-sans">
-            <!-- Project name -->
-            <div class="pb-1 flex flex-row justify-between">
-              <p class="inline-block font-semibold">Weather forecast APP</p>
-            </div>
-            <!-- Project & Duration -->
-            <div class="font-normal text-xs">
-              <div class="inline-block">
-                <i class="fa-regular fa-folder-open"></i>
-                <p class="px-2 inline-block">Weather forecast</p>
-              </div>
-              <div class="inline-block">
-                <i class="fa-regular fa-user"></i>
-                <p class="px-2 inline-block">Group project</p>
-              </div>
-              <div class="inline-block">
-                <i class="fa-regular fa-calendar"></i>
-                <p class="px-2 inline-block">Jul 2024</p>
-              </div>
-            </div>
-            <!-- Project description -->
-            <p class="my-2">
-              The app offers a complete weather overview for Taiwan, including a 36-hour forecast with temperature, rainfall, UV index, and heat warnings.
-            </p>
-            <div class="separation"></div>
-            <p class="font-semibold">Skills Highlight</p>
-            <ul class="mt-1 list-disc list-outside ml-5">
-              <li class="list-item">
-                Hands-on experience in team-based development, designing and implementing the MVC pattern without conflicts, and adhering to an <span class="font-medium text-slate-500">agile</span> development schedule.
-              </li>
-              <li class="list-item">
-                Determine the appropriate caching duration when dealing with a frequently updated API to ensure that the cached data remains relevant and accurate.
-              </li>
-              <li class="list-item">
-                Experience in using Discord bot webhooks to integrate and automate interactions with Discord channels and servers.
-              </li>
-            </ul>
-            <div class="separation"></div>
-            <div class="max-w-lg mx-auto">
-              <img data-src="WEATHER_APP_SCREENSHOT" alt="Weather Forecast App Screenshot" class="rounded-lg max-w-full">
-            </div>
-            <div class="separation"></div>
-            <a data-link="WEATHER_APP_DEMO" class="text-blue-600 text-wrap" target="_blank" rel="noopener noreferrer">
-              <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              <span data-link-text="WEATHER_APP_DEMO" class="pl-2 text-wrap break-all"></span>
-            </a>
-            <br>
-            <a data-link="WEATHER_APP_GITHUB" class="text-purple-600" target="_blank" rel="noopener noreferrer">
-              <i class="fa-brands fa-github"></i>
-              <span class="pl-2">Link to project GitHub</span>
-            </a>
-          </div>
-        </div>
-      </div>
+      </template>
     </div>
   </div>
 </body>
