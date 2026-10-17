@@ -10,7 +10,7 @@
 
   /** @type {Record<string, any>} */
   const root = typeof window !== 'undefined' ? window : globalThis;
-  /** @type {ResumeConstants | Record<string, any>} */
+  /** @type {Record<string, any>} */
   const constants = root.ResumeConstants || {};
   /** @type {Record<string, any>} */
   const data = root.ResumeData || {};

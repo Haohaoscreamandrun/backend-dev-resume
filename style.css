@@ -460,6 +460,9 @@ img {
   border: 2px solid #f8fafc;
   background-size: cover;
   background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .timeline-header {
@@ -586,6 +589,21 @@ img {
   text-decoration: underline;
 }
 
+.project-badge-internal {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: #64748b;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  background-color: #f1f5f9;
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-md);
+  border: 1px solid #e2e8f0;
+  width: fit-content;
+  margin-top: 0.25rem;
+}
+
 .project,
 .resume {
   margin-bottom: 1.5rem;
@@ -638,6 +656,11 @@ img {
 .bg-parkinglot-logo  { background-image: url('./src/parkinglot_logo.png'); }
 .bg-taipeidaytrip-logo { background-image: url('./src/taipei_icon.png'); }
 .bg-weatherapp-logo  { background-image: url('./src/weatherapp_logo.webp'); }
+.bg-imc-logo         { background-image: url('./src/imc_logo.png'); background-color: #0f172a; background-size: 80%; background-position: center; background-repeat: no-repeat; }
+.bg-techs-logo       { background-image: url('./src/techs_logo.png'); background-color: #ffffff; background-size: 85%; background-position: center; background-repeat: no-repeat; }
+.bg-crossmelon-logo  { background-color: #059669; color: #ffffff; font-size: 1.75rem; }
+.bg-camera3a-logo    { background-color: #0f172a; color: #38bdf8; font-size: 1.75rem; }
+.bg-diffing-logo     { background-color: #1e1e2f; color: #c084fc; font-size: 1.75rem; }
 
 /* ----------------------------------------------------------------------------
  * 13. UI Helper Utilities (Spinner, Transitions, Accessibility)

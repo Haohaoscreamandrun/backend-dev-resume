@@ -37,12 +37,12 @@
     <div class="profile-card">
       <p class="title">Hao Chen ( Jimmy )</p>
       <span class="online-indicator"></span>
-      <p class="profile-subtitle">Junior backend developer</p>
+      <p class="profile-subtitle">Full-Stack Software Engineer (TypeScript / Angular / Python / gRPC)</p>
       <!-- Details - Gray block -->
       <div class="gray-block">
         <!-- Details - Summary -->
         <p class="gray-block-word line-clamp-2">
-          Graduate of Wehelp batch #5. Developed a web server as a parking lot solution in 6 months through self-learning skills. Determined to change the course of life at the age of 30 and enter web development industry.
+          Full-Stack Software Engineer with over 5 years of experience in quantitative systems and web development. Architected high-throughput browser-to-cloud data transfer systems and reactive visual comparison tools supporting Google Camera 3A across Angular Signals, TypeScript, Python gRPC, and WebUSB, reducing data transfer latency by 76%–81%. Certified Google TypeScript Readability reviewer with professional expertise spanning modern reactive frontend interfaces, distributed RPC services, and cloud architectures.
         </p>
         <!-- Details - Download button -->
         <div class="cv-download-btn" id="downLoad">
@@ -111,12 +111,12 @@
     <!-- QRcode block -->
     <div class="white-block" id="QRcodeBlock" hidden>
       <span class="title-indicator"></span>
-      <p class="title">View on-line</p>
+      <p class="title">View Online</p>
       <div class="gray-block qrcode-box">
         <div class="qrcode-target" id="QRcode"></div>
         <div class="qrcode-desc">
-          <p class="qrcode-title">Get latest information!</p>
-          <p>This resume is available online, scan QRcode on left to check.</p>
+          <p class="qrcode-title">Access Latest Version</p>
+          <p>This resume is available online; scan the QR code on the left to view the latest version.</p>
           <p class="qrcode-caption">@created by qrcode.js</p>
         </div>
       </div>
@@ -180,6 +180,9 @@
               <div class="timeline-logo"
                 :class="exp.logoClass"
                 :style="exp.logoStyle || ''">
+                <template x-if="exp.logoIcon">
+                  <i :class="exp.logoIcon"></i>
+                </template>
               </div>
             </div>
             <!-- Position Information -->
@@ -219,7 +222,13 @@
           <div class="timeline-grid">
             <!-- Project Logo -->
             <div class="timeline-logo-col">
-              <div class="timeline-logo" :class="proj.logoClass"></div>
+              <div class="timeline-logo"
+                :class="proj.logoClass"
+                :style="proj.logoStyle || ''">
+                <template x-if="proj.logoIcon">
+                  <i :class="proj.logoIcon"></i>
+                </template>
+              </div>
             </div>
             <!-- Project Information -->
             <div class="timeline-content">
@@ -273,16 +282,28 @@
 
               <!-- Links -->
               <div class="separation"></div>
-              <div class="project-links">
-                <a :href="proj.demoUrl" class="project-link-demo" target="_blank" rel="noopener noreferrer">
-                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                  <span x-text="proj.demoUrl"></span>
-                </a>
-                <a :href="proj.githubUrl" class="project-link-github" target="_blank" rel="noopener noreferrer">
-                  <i class="fa-brands fa-github"></i>
-                  <span>Link to project GitHub</span>
-                </a>
-              </div>
+              <template x-if="proj.isInternal">
+                <div class="project-badge-internal">
+                  <i class="fa-solid fa-lock"></i>
+                  <span x-text="proj.internalNote || 'Google Internal Platform (Proprietary)'"></span>
+                </div>
+              </template>
+              <template x-if="!proj.isInternal">
+                <div class="project-links">
+                  <template x-if="proj.demoUrl">
+                    <a :href="proj.demoUrl" class="project-link-demo" target="_blank" rel="noopener noreferrer">
+                      <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                      <span x-text="proj.demoUrl"></span>
+                    </a>
+                  </template>
+                  <template x-if="proj.githubUrl">
+                    <a :href="proj.githubUrl" class="project-link-github" target="_blank" rel="noopener noreferrer">
+                      <i class="fa-brands fa-github"></i>
+                      <span>View GitHub Repository</span>
+                    </a>
+                  </template>
+                </div>
+              </template>
             </div>
           </div>
         </div>
