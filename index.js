@@ -2,10 +2,14 @@ import {
   ONLINE_RESUME_URL,
   CV_FILE_NAME,
   bindLinksAndResources,
+  setupEmailCopy,
 } from './constants.js';
 
 // Bind dynamic links and resources to the DOM
 bindLinksAndResources();
+
+// Setup click-to-copy email interaction
+setupEmailCopy();
 
 // panel switch
 let options = document.querySelectorAll('.panel-option');

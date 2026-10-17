@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hao Chen</title>
+  <!-- Anti-crawling & search engine privacy directives -->
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+  <meta name="googlebot" content="noindex, nofollow, noarchive">
   <!-- jsPDF -->
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"
     integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
@@ -53,10 +56,14 @@
           <i class="fa-brands fa-linkedin"></i>
           <span class="link-word">LinkedIn</span>
         </a>
-        <a data-link="EMAIL"
-          class="inline-block mr-4 transition duration-300 hover:text-orange-500">
+        <a id="copyEmailBtn" role="button" tabindex="0" title="Click to copy email address"
+          class="inline-block mr-4 transition duration-300 hover:text-orange-500 cursor-pointer relative select-none">
           <i class="fa-regular fa-envelope"></i>
           <span class="link-word">Email</span>
+          <span id="emailTooltip"
+            class="absolute -top-7 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs px-2 py-0.5 rounded opacity-0 transition-opacity duration-200 pointer-events-none whitespace-nowrap shadow">
+            Copied!
+          </span>
         </a>
         <a data-link="LINE" target="_blank" rel="noopener noreferrer"
           class="inline-block mr-4 transition duration-300 hover:text-green-500">
