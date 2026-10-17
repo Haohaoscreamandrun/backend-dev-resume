@@ -22,34 +22,31 @@
   <script defer src="./index.js"></script>
   <!-- Alpine.js -->
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script>
-  <!-- bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <!-- tailwindcss -->
-  <link rel="stylesheet" href="./src/output.css">
+  <!-- Semantic Stylesheet -->
+  <link rel="stylesheet" href="./style.css">
 </head>
-<body class="bg-gray-200 w-[90vw] flex flex-col items-center mx-auto lg:grid lg:grid-cols-[1fr_2fr] lg:gap-4 lg:items-start" x-data="resumeApp">
-  <div class="md:w-[75vw] lg:col-span-1 lg:w-auto">
+<body class="resume-body" x-data="resumeApp">
+  <div class="resume-sidebar">
     <!-- Personal detail - Picture Container -->
-    <div class="rounded-t-2xl min-h-80 w-full mt-4 relative overflow-hidden lg:order-1 lg:w-full lg:min-h-40">
-      <div class="absolute inset-0 bg-modal-pattern bg-cover bg-center"></div>
-      <div class="absolute inset-0 bg-gradient-to-b from-transparent to-white"></div>
-      <div class="absolute bottom-4 left-4 w-20 h-20 border-2 border-slate-50 bg-cv-avatar bg-cover bg-center rounded-full"></div>
+    <div class="profile-banner">
+      <div class="banner-pattern"></div>
+      <div class="banner-gradient"></div>
+      <div class="avatar-circle"></div>
     </div>
     <!-- Personal detail - Details Container -->
-    <div class="rounded-b-2xl h-auto w-full p-2 bg-white lg:order-2">
+    <div class="profile-card">
       <p class="title">Hao Chen ( Jimmy )</p>
       <span class="online-indicator"></span>
-      <p class="font-sans text-l font-light pl-3">Junior backend developer</p>
+      <p class="profile-subtitle">Junior backend developer</p>
       <!-- Details - Gray block -->
       <div class="gray-block">
         <!-- Details - Summary -->
-        <p class="gray-block-word line-clamp-2 hover:cursor-pointer">
+        <p class="gray-block-word line-clamp-2">
           Graduate of Wehelp batch #5. Developed a web server as a parking lot solution in 6 months through self-learning skills. Determined to change the course of life at the age of 30 and enter web development industry.
         </p>
         <!-- Details - Download button -->
-        <div class="mt-3 py-1 rounded bg-blue-600 border-black border-2 text-white text-center transition duration-200 hover:bg-blue-700 cursor-pointer" id="downLoad">
-          <span class="font-sans font-medium text-sm mr-1">Download CV</span>
+        <div class="cv-download-btn" id="downLoad">
+          <span>Download CV</span>
           <i class="fa-solid fa-angles-down" id="downloadIcon"></i>
           <div class="spinner-border spinner-border-sm text-light" role="status" id="spinnerIcon" hidden>
             <span class="visually-hidden">Loading...</span>
@@ -57,42 +54,36 @@
         </div>
         <div class="separation"></div>
         <!-- Contact me -->
-        <a data-link="LINKEDIN" target="_blank" rel="noopener noreferrer"
-          class="inline-block mr-4 transition duration-300 hover:text-blue-500">
-          <i class="fa-brands fa-linkedin"></i>
-          <span class="link-word">LinkedIn</span>
-        </a>
-        <a id="copyEmailBtn" role="button" tabindex="0" title="Click to copy email address"
-          class="inline-block mr-4 transition duration-300 hover:text-orange-500 cursor-pointer relative select-none">
-          <i class="fa-regular fa-envelope"></i>
-          <span class="link-word">Email</span>
-          <span id="emailTooltip"
-            class="absolute -top-7 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs px-2 py-0.5 rounded opacity-0 transition-opacity duration-200 pointer-events-none whitespace-nowrap shadow">
-            Copied!
-          </span>
-        </a>
-        <a data-link="LINE" target="_blank" rel="noopener noreferrer"
-          class="inline-block mr-4 transition duration-300 hover:text-green-500">
-          <i class="fa-brands fa-line"></i>
-          <span class="link-word">Line</span>
-        </a>
-        <a data-link="GITHUB_PROFILE" target="_blank" rel="noopener noreferrer"
-          class="inline-block mr-4 transition duration-300 hover:text-purple-500">
-          <i class="fa-brands fa-github"></i>
-          <span class="link-word">GitHub</span>
-        </a>
+        <div class="contact-links">
+          <a data-link="LINKEDIN" target="_blank" rel="noopener noreferrer" class="contact-link linkedin">
+            <i class="fa-brands fa-linkedin"></i>
+            <span class="link-word">LinkedIn</span>
+          </a>
+          <a id="copyEmailBtn" role="button" tabindex="0" title="Click to copy email address" class="contact-link email">
+            <i class="fa-regular fa-envelope"></i>
+            <span class="link-word">Email</span>
+            <span id="emailTooltip" class="tooltip-badge">Copied!</span>
+          </a>
+          <a data-link="LINE" target="_blank" rel="noopener noreferrer" class="contact-link line">
+            <i class="fa-brands fa-line"></i>
+            <span class="link-word">Line</span>
+          </a>
+          <a data-link="GITHUB_PROFILE" target="_blank" rel="noopener noreferrer" class="contact-link github">
+            <i class="fa-brands fa-github"></i>
+            <span class="link-word">GitHub</span>
+          </a>
+        </div>
       </div>
     </div>
     <!-- Skills -->
     <div class="white-block">
       <span class="title-indicator"></span>
       <p class="title">Skill Set</p>
-      
-      <div class="gray-block lg:text-sm">
-        <div class="grid grid-cols-4 gap-2 text-center">
+      <div class="gray-block">
+        <div class="skills-grid">
           <template x-for="col in skills" :key="col.category">
-            <div class="flex flex-col">
-              <p x-text="col.category"></p>
+            <div class="skill-col">
+              <p class="skill-category-title" x-text="col.category"></p>
               <template x-for="skill in col.items" :key="skill">
                 <p class="skill" x-text="skill"></p>
               </template>
@@ -102,15 +93,15 @@
       </div>
     </div>
     <!-- Information -->
-    <div class="white-block lg:order-4">
+    <div class="white-block">
       <span class="title-indicator"></span>
       <p class="title">Information</p>
-      <div class="gray-block text-nowrap lg:text-sm">
+      <div class="gray-block info-block">
         <template x-for="(item, index) in info" :key="item.label">
           <div>
-            <div class="flex flex-row justify-between">
-              <p class="inline-block font-sans" x-text="item.label"></p>
-              <p class="inline-block font-sans font-semibold" x-text="item.value"></p>
+            <div class="info-row">
+              <p class="info-label" x-text="item.label"></p>
+              <p class="info-value" x-text="item.value"></p>
             </div>
             <div class="separation" x-show="index < info.length - 1"></div>
           </div>
@@ -118,22 +109,22 @@
       </div>
     </div>
     <!-- QRcode block -->
-    <div class="white-block lg:order-5" id="QRcodeBlock" hidden>
+    <div class="white-block" id="QRcodeBlock" hidden>
       <span class="title-indicator"></span>
       <p class="title">View on-line</p>
-      <div class="gray-block flex flex-row justify-start ">
-        <div class="inline-block min-w-32 min-h-32" id="QRcode"></div>
-        <div class="ml-3 font-sans flex flex-col justify-end">
-          <p class="font-semibold mb-1">Get latest information!</p>
+      <div class="gray-block qrcode-box">
+        <div class="qrcode-target" id="QRcode"></div>
+        <div class="qrcode-desc">
+          <p class="qrcode-title">Get latest information!</p>
           <p>This resume is available online, scan QRcode on left to check.</p>
-          <p class="font-semibold mt-1">@created by qrcode.js</p>
+          <p class="qrcode-caption">@created by qrcode.js</p>
         </div>
       </div>
     </div>
   </div>
-  <div class="md:w-[75vw] lg:col-span-1 lg:w-auto">
+  <div class="resume-main">
     <!-- Panel -->
-    <div class="white-block grid grid-cols-2 gap-1 font-sans font-semibold" id="panel">
+    <div class="white-block panel-switch" id="panel">
       <p class="panel-option">Resume</p>
       <p class="panel-option active">Project</p>
     </div>
@@ -143,33 +134,31 @@
       <p class="title">Education</p>
       <template x-for="edu in education" :key="edu.school">
         <div class="gray-block">
-          <div class="md:grid md:grid-cols-[1fr_5fr] md:gap-3 sm:flex sm:flex-col">
+          <div class="timeline-grid">
             <!-- School Logo -->
-            <div class="flex flex-col items-center justify-start pb-4">
-              <div class="w-20 h-20 border-2 border-slate-50 bg-cover bg-center rounded-full"
-                :class="edu.logoClass">
-              </div>
+            <div class="timeline-logo-col">
+              <div class="timeline-logo" :class="edu.logoClass"></div>
             </div>
             <!-- School Information -->
-            <div class="font-sans">
+            <div class="timeline-content">
               <!-- Position -->
-              <div class="flex flex-row justify-between items-center">
-                <p class="mb-1 inline-block font-semibold" x-text="edu.degree"></p>
-                <p class="skill !mb-0" x-text="edu.badge"></p>
+              <div class="timeline-header">
+                <p class="timeline-title" x-text="edu.degree"></p>
+                <p class="skill skill-badge" x-text="edu.badge"></p>
               </div>
               <!-- School & Duration -->
-              <div class="font-normal text-xs">
-                <div class="inline-block">
+              <div class="timeline-meta">
+                <div class="timeline-meta-item">
                   <i class="fa-solid fa-graduation-cap"></i>
-                  <p class="px-2 inline-block" x-text="edu.school"></p>
+                  <span x-text="edu.school"></span>
                 </div>
-                <div class="inline-block">
+                <div class="timeline-meta-item">
                   <i class="fa-regular fa-calendar"></i>
-                  <p class="px-2 inline-block" x-text="edu.duration"></p>
+                  <span x-text="edu.duration"></span>
                 </div>
               </div>
               <!-- Highlights -->
-              <ul class="mt-2 list-disc list-outside ml-5">
+              <ul class="timeline-list">
                 <template x-for="item in edu.highlights" :key="item">
                   <li class="list-item" x-text="item"></li>
                 </template>
@@ -180,38 +169,38 @@
       </template>
     </div>
     <!-- Experience -->
-    <div class="white-block resume !mb-5" hidden>
+    <div class="white-block resume" hidden>
       <span class="title-indicator"></span>
       <p class="title">Experience</p>
       <template x-for="exp in experience" :key="exp.company + exp.role">
         <div class="gray-block">
-          <div class="md:grid md:grid-cols-[1fr_5fr] md:gap-3 sm:flex sm:flex-col">
+          <div class="timeline-grid">
             <!-- Company Logo -->
-            <div class="flex flex-col items-center justify-start pb-4">
-              <div class="w-20 h-20 border-2 border-slate-50 rounded-full"
+            <div class="timeline-logo-col">
+              <div class="timeline-logo"
                 :class="exp.logoClass"
                 :style="exp.logoStyle || ''">
               </div>
             </div>
             <!-- Position Information -->
-            <div class="font-sans">
-              <div class="flex flex-row justify-between items-center">
-                <p class="mb-1 inline-block font-semibold" x-text="exp.role"></p>
-                <p class="skill !mb-0" x-text="exp.badge"></p>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <p class="timeline-title" x-text="exp.role"></p>
+                <p class="skill skill-badge" x-text="exp.badge"></p>
               </div>
               <!-- Company & Duration -->
-              <div class="font-normal text-xs">
-                <div class="inline-block">
+              <div class="timeline-meta">
+                <div class="timeline-meta-item">
                   <i class="fa-solid fa-suitcase"></i>
-                  <p class="px-2 inline-block" x-text="exp.company"></p>
+                  <span x-text="exp.company"></span>
                 </div>
-                <div class="inline-block">
+                <div class="timeline-meta-item">
                   <i class="fa-regular fa-calendar"></i>
-                  <p class="px-2 inline-block" x-text="exp.duration"></p>
+                  <span x-text="exp.duration"></span>
                 </div>
               </div>
               <!-- Job Description -->
-              <ul class="mt-2 list-disc list-outside ml-5">
+              <ul class="timeline-list">
                 <template x-for="bullet in exp.bullets" :key="bullet">
                   <li class="list-item" x-text="bullet"></li>
                 </template>
@@ -222,51 +211,49 @@
       </template>
     </div>
     <!-- Projects -->
-    <div class="mb-4 project white-block">
+    <div class="white-block project">
       <span class="title-indicator"></span>
       <p class="title">Projects</p>
       <template x-for="proj in projects" :key="proj.name">
         <div class="gray-block">
-          <div class="md:grid md:grid-cols-[1fr_5fr] md:gap-3 sm:flex sm:flex-col">
+          <div class="timeline-grid">
             <!-- Project Logo -->
-            <div class="flex flex-col items-center justify-start pb-4">
-              <div class="w-20 h-20 border-2 border-slate-50 bg-cover bg-center rounded-full"
-                :class="proj.logoClass">
-              </div>
+            <div class="timeline-logo-col">
+              <div class="timeline-logo" :class="proj.logoClass"></div>
             </div>
             <!-- Project Information -->
-            <div class="font-sans">
+            <div class="timeline-content">
               <!-- Project name -->
-              <div class="pb-1 flex flex-row justify-start items-center">
-                <p class="inline-block font-semibold" x-text="proj.name"></p>
+              <div class="project-header">
+                <p class="timeline-title" x-text="proj.name"></p>
                 <template x-if="proj.isFeatured">
-                  <i class="inline-block fa-solid fa-star pl-2 mt-1"></i>
+                  <i class="fa-solid fa-star project-star"></i>
                 </template>
               </div>
               <!-- Project & Duration -->
-              <div class="font-normal text-xs">
-                <div class="inline-block">
+              <div class="timeline-meta">
+                <div class="timeline-meta-item">
                   <i class="fa-regular fa-folder-open"></i>
-                  <p class="px-2 inline-block" x-text="proj.category"></p>
+                  <span x-text="proj.category"></span>
                 </div>
-                <div class="inline-block">
+                <div class="timeline-meta-item">
                   <i class="fa-regular fa-user"></i>
-                  <p class="px-2 inline-block" x-text="proj.type"></p>
+                  <span x-text="proj.type"></span>
                 </div>
-                <div class="inline-block">
+                <div class="timeline-meta-item">
                   <i class="fa-regular fa-calendar"></i>
-                  <p class="px-2 inline-block" x-text="proj.duration"></p>
+                  <span x-text="proj.duration"></span>
                 </div>
               </div>
               <!-- Project description -->
-              <p class="my-2" x-text="proj.description"></p>
+              <p class="project-description" x-text="proj.description"></p>
               
               <!-- Skill sections -->
               <template x-for="sec in proj.skillSections" :key="sec.heading">
                 <div>
                   <div class="separation"></div>
-                  <p class="font-semibold" x-text="sec.heading"></p>
-                  <ul class="mt-1 list-disc list-outside ml-5">
+                  <p class="project-skill-heading" x-text="sec.heading"></p>
+                  <ul class="timeline-list">
                     <template x-for="item in sec.items" :key="item">
                       <li class="list-item" x-text="item"></li>
                     </template>
@@ -278,23 +265,24 @@
               <template x-if="proj.image">
                 <div>
                   <div class="separation"></div>
-                  <div :class="proj.image.containerClass || 'max-w-xl mx-auto'">
-                    <img :src="proj.image.src" :alt="proj.image.alt || proj.name" class="rounded-lg max-w-full">
+                  <div class="project-image-box" :class="proj.image.containerClass || 'max-w-xl mx-auto'">
+                    <img :src="proj.image.src" :alt="proj.image.alt || proj.name" class="project-img">
                   </div>
                 </div>
               </template>
 
               <!-- Links -->
               <div class="separation"></div>
-              <a :href="proj.demoUrl" class="text-blue-600 text-wrap" target="_blank" rel="noopener noreferrer">
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                <span class="pl-2 text-wrap break-all" x-text="proj.demoUrl"></span>
-              </a>
-              <br>
-              <a :href="proj.githubUrl" class="text-purple-600" target="_blank" rel="noopener noreferrer">
-                <i class="fa-brands fa-github"></i>
-                <span class="pl-2">Link to project GitHub</span>
-              </a>
+              <div class="project-links">
+                <a :href="proj.demoUrl" class="project-link-demo" target="_blank" rel="noopener noreferrer">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  <span x-text="proj.demoUrl"></span>
+                </a>
+                <a :href="proj.githubUrl" class="project-link-github" target="_blank" rel="noopener noreferrer">
+                  <i class="fa-brands fa-github"></i>
+                  <span>Link to project GitHub</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -302,7 +290,5 @@
     </div>
   </div>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/698455ed47.js" crossorigin="anonymous"></script>
 </html>
