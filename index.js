@@ -1,7 +1,7 @@
 // @ts-check
 /**
  * Main Application Orchestrator
- * Connects data, UI interactions, Alpine.js registration, and PDF export.
+ * Connects data, UI interactions, Alpine.js registration, bilingual localization, and PDF export.
  * Supports universal browser execution (file:// and http://) without module/CORS restrictions.
  */
 
@@ -20,18 +20,21 @@
   const bindLinksAndResources = constants.bindLinksAndResources;
   const setupEmailCopy = constants.setupEmailCopy;
 
-  const SKILLS_DATA = data.SKILLS_DATA || [];
-  const INFO_DATA = data.INFO_DATA || [];
-  const EDUCATION_DATA = data.EDUCATION_DATA || [];
-  const EXPERIENCE_DATA = data.EXPERIENCE_DATA || [];
-  const PROJECTS_DATA = data.PROJECTS_DATA || [];
-
-  // Expose structured resume data to global scope for Alpine.js
-  root.SKILLS_DATA = SKILLS_DATA;
-  root.INFO_DATA = INFO_DATA;
-  root.EDUCATION_DATA = EDUCATION_DATA;
-  root.EXPERIENCE_DATA = EXPERIENCE_DATA;
-  root.PROJECTS_DATA = PROJECTS_DATA;
+  /**
+   * Determine initial language preference from localStorage or default to 'en'
+   * @returns {'en' | 'zh'}
+   */
+  const getInitialLang = () => {
+    try {
+      const stored = localStorage.getItem('resume_lang');
+      if (stored === 'zh' || stored === 'en') {
+        return stored;
+      }
+    } catch (e) {
+      // Ignore localStorage access exceptions in restrictive iframe environments
+    }
+    return 'en';
+  };
 
   /**
    * Format markdown-style **emphasis** markers into styled HTML
@@ -52,11 +55,39 @@
   const registerAlpineData = () => {
     if (root.Alpine) {
       root.Alpine.data('resumeApp', () => ({
-        skills: SKILLS_DATA,
-        info: INFO_DATA,
-        education: EDUCATION_DATA,
-        experience: EXPERIENCE_DATA,
-        projects: PROJECTS_DATA,
+        lang: getInitialLang(),
+        init() {
+          document.documentElement.lang = this.lang === 'zh' ? 'zh-TW' : 'en';
+        },
+        get currentBundle() {
+          const langData = data[this.lang];
+          return langData || data.en || data;
+        },
+        get ui() {
+          return this.currentBundle.UI_TEXT || (data.en && data.en.UI_TEXT) || {};
+        },
+        get skills() {
+          return this.currentBundle.SKILLS_DATA || [];
+        },
+        get info() {
+          return this.currentBundle.INFO_DATA || [];
+        },
+        get education() {
+          return this.currentBundle.EDUCATION_DATA || [];
+        },
+        get experience() {
+          return this.currentBundle.EXPERIENCE_DATA || [];
+        },
+        get projects() {
+          return this.currentBundle.PROJECTS_DATA || [];
+        },
+        toggleLang() {
+          this.lang = this.lang === 'en' ? 'zh' : 'en';
+          document.documentElement.lang = this.lang === 'zh' ? 'zh-TW' : 'en';
+          try {
+            localStorage.setItem('resume_lang', this.lang);
+          } catch (e) {}
+        },
         formatEmphasis,
       }));
     }
@@ -93,10 +124,11 @@
       option.addEventListener('click', () => {
         options.forEach(element => element.classList.remove('active'));
         option.classList.add('active');
-        if (option.textContent && option.textContent.trim() === 'Resume') {
+        const tab = option.getAttribute('data-tab');
+        if (tab === 'resume') {
           resume.forEach(element => (/** @type {HTMLElement} */ (element).hidden = false));
           if (project) /** @type {HTMLElement} */ (project).hidden = true;
-        } else if (option.textContent && option.textContent.trim() === 'Project') {
+        } else if (tab === 'project') {
           resume.forEach(element => (/** @type {HTMLElement} */ (element).hidden = true));
           if (project) /** @type {HTMLElement} */ (project).hidden = false;
         }
@@ -152,8 +184,14 @@
       downLoadBtn.addEventListener('click', async () => {
         const spinnerIcon = document.getElementById('spinnerIcon');
         const downloadIcon = document.getElementById('downloadIcon');
+        const langBtn = document.querySelector('.lang-toggle-btn');
         if (downloadIcon) downloadIcon.hidden = true;
         if (spinnerIcon) spinnerIcon.hidden = false;
+        if (langBtn) /** @type {HTMLElement} */ (langBtn).hidden = true;
+
+        // Remember which tab was currently active so we can restore it accurately
+        const activeOption = document.querySelector('.panel-option.active');
+        const activeTab = activeOption ? activeOption.getAttribute('data-tab') : 'project';
 
         clampWords.forEach(clampWord => {
           clampWord.classList.remove('line-clamp-2');
@@ -200,8 +238,16 @@
         } finally {
           if (downloadIcon) downloadIcon.hidden = false;
           if (spinnerIcon) spinnerIcon.hidden = true;
+          if (langBtn) /** @type {HTMLElement} */ (langBtn).hidden = false;
 
-          resume.forEach(element => (/** @type {HTMLElement} */ (element).hidden = true));
+          // Restore previous active tab state
+          if (activeTab === 'resume') {
+            resume.forEach(element => (/** @type {HTMLElement} */ (element).hidden = false));
+            if (project) /** @type {HTMLElement} */ (project).hidden = true;
+          } else {
+            resume.forEach(element => (/** @type {HTMLElement} */ (element).hidden = true));
+            if (project) /** @type {HTMLElement} */ (project).hidden = false;
+          }
           if (panel) panel.hidden = false;
           if (qrcodeBlock) qrcodeBlock.hidden = true;
         }

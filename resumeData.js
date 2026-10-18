@@ -1,8 +1,8 @@
 // @ts-check
 /**
- * Structured Resume Data Store
+ * Structured Resume Data Store (Bilingual: English & 繁體中文)
  * Central repository of skills, quick info, education, experience, and projects.
- * Formatted with formal English vocabulary adhering to standard educational and professional English.
+ * Formatted with formal English and professional Traditional Chinese (Taiwan localization).
  * Visual emphasis is focused strictly on quantifiable metrics, scale, and key achievements.
  * Supports universal browser execution (file:// and http://) without module/CORS restrictions.
  */
@@ -80,12 +80,43 @@
  */
 
 /**
- * @typedef {Object} ResumeData
+ * @typedef {Object} UIText
+ * @property {string} profileSubtitle
+ * @property {string} summary
+ * @property {string} downloadCv
+ * @property {string} skillSet
+ * @property {string} information
+ * @property {string} viewOnline
+ * @property {string} accessLatestVersion
+ * @property {string} qrcodeDesc
+ * @property {string} resumeTab
+ * @property {string} projectTab
+ * @property {string} education
+ * @property {string} experience
+ * @property {string} projects
+ * @property {string} viewGithub
+ */
+
+/**
+ * @typedef {Object} ResumeLocaleData
+ * @property {UIText} UI_TEXT
  * @property {readonly SkillColumn[]} SKILLS_DATA
  * @property {readonly InfoItem[]} INFO_DATA
  * @property {readonly EducationItem[]} EDUCATION_DATA
  * @property {readonly ExperienceItem[]} EXPERIENCE_DATA
  * @property {readonly ProjectItem[]} PROJECTS_DATA
+ */
+
+/**
+ * @typedef {Object} ResumeData
+ * @property {ResumeLocaleData} en
+ * @property {ResumeLocaleData} zh
+ * @property {readonly SkillColumn[]} SKILLS_DATA
+ * @property {readonly InfoItem[]} INFO_DATA
+ * @property {readonly EducationItem[]} EDUCATION_DATA
+ * @property {readonly ExperienceItem[]} EXPERIENCE_DATA
+ * @property {readonly ProjectItem[]} PROJECTS_DATA
+ * @property {UIText} UI_TEXT
  */
 
 (function () {
@@ -101,11 +132,29 @@
   const PLMS_BACKEND_STRUCTURE_IMG = constants.PLMS_BACKEND_STRUCTURE_IMG || "./src/backend-structure.png";
 
   // ============================================================================
-  // Data Constants (Formal Standard English with Metric-Focused Emphasis)
+  // English Dataset (en)
   // ============================================================================
 
+  /** @type {UIText} */
+  const EN_UI_TEXT = Object.freeze({
+    profileSubtitle: "Full-Stack Software Engineer (TypeScript / Angular / Python / gRPC)",
+    summary: "Full-Stack Software Engineer with 2+ years of production web engineering experience and over 3 years in quantitative systems research. Architected high-throughput browser-to-cloud data transfer systems and reactive visual comparison tools supporting Google Camera 3A across Angular Signals, TypeScript, Python gRPC, and WebUSB, reducing data transfer latency by **76%–81%**. Certified **Google TypeScript Readability** reviewer with professional expertise spanning modern reactive frontend interfaces, distributed RPC services, and cloud architectures.",
+    downloadCv: "Download CV",
+    skillSet: "Skill Set",
+    information: "Information",
+    viewOnline: "View Online",
+    accessLatestVersion: "Access Latest Version",
+    qrcodeDesc: "This resume is available online; scan the QR code on the left to view the latest version.",
+    resumeTab: "Resume",
+    projectTab: "Project",
+    education: "Education",
+    experience: "Experience",
+    projects: "Projects",
+    viewGithub: "View GitHub Repository",
+  });
+
   /** @type {readonly SkillColumn[]} */
-  const SKILLS_DATA = Object.freeze([
+  const EN_SKILLS_DATA = Object.freeze([
     {
       category: "Languages",
       items: [
@@ -153,7 +202,7 @@
   ]);
 
   /** @type {readonly InfoItem[]} */
-  const INFO_DATA = Object.freeze([
+  const EN_INFO_DATA = Object.freeze([
     { label: "Software Engineering", value: "2+ years" },
     { label: "Quantitative Systems & IoT", value: "3+ years" },
     { label: "Location", value: "Taipei, Taiwan" },
@@ -162,7 +211,7 @@
   ]);
 
   /** @type {readonly EducationItem[]} */
-  const EDUCATION_DATA = Object.freeze([
+  const EN_EDUCATION_DATA = Object.freeze([
     {
       degree: "Master of Science (M.S.), Horticulture and Landscape Architecture",
       badge: "Master",
@@ -191,7 +240,7 @@
   ]);
 
   /** @type {readonly ExperienceItem[]} */
-  const EXPERIENCE_DATA = Object.freeze([
+  const EN_EXPERIENCE_DATA = Object.freeze([
     {
       role: "Full-Stack Software Engineer",
       badge: "Full-time",
@@ -246,7 +295,7 @@
   ]);
 
   /** @type {readonly ProjectItem[]} */
-  const PROJECTS_DATA = Object.freeze([
+  const EN_PROJECTS_DATA = Object.freeze([
     {
       name: "Camera 3A Data Transfer & Telemetry Platform (Supporting Google)",
       isFeatured: true,
@@ -343,16 +392,300 @@
     },
   ]);
 
-  // ==========================================
+  // ============================================================================
+  // Traditional Chinese Dataset (繁體中文 - 台灣資訊專業語境)
+  // ============================================================================
+
+  /** @type {UIText} */
+  const ZH_UI_TEXT = Object.freeze({
+    profileSubtitle: "全端軟體工程師 (TypeScript / Angular / Python / gRPC)",
+    summary: "具備 2 年以上正式線上 Web 系統工程實戰經驗與 3 年以上量化系統研究背景之全端軟體工程師。專注於支援 Google Camera 3A 之高輸送量瀏覽器至雲端資料傳輸系統與響應式視覺比對平台，技術涵蓋 Angular Signals、TypeScript、Python gRPC 與 WebUSB，成功將端到端資料傳輸延遲降低 **76%–81%**。持有 **Google TypeScript Readability (可讀性認證)**，專精於現代響應式前端介面架構、分散式 RPC 服務與高可用雲端系統設計。",
+    downloadCv: "下載 PDF 履歷",
+    skillSet: "專業技能",
+    information: "基本資訊",
+    viewOnline: "線上查閱",
+    accessLatestVersion: "查閱最新線上版本",
+    qrcodeDesc: "本履歷持續更新於線上網頁；手機掃描左側 QR Code 即可即時查閱最新版本。",
+    resumeTab: "個人履歷",
+    projectTab: "精選專案",
+    education: "學歷背景",
+    experience: "工作經歷",
+    projects: "專案成果",
+    viewGithub: "前往 GitHub 原始碼存放庫",
+  });
+
+  /** @type {readonly SkillColumn[]} */
+  const ZH_SKILLS_DATA = Object.freeze([
+    {
+      category: "程式語言 (Languages)",
+      items: [
+        "TypeScript",
+        "Python 3",
+        "JavaScript (ES6+)",
+        "SQL (MySQL)",
+        "HTML5 / CSS3",
+        "R",
+      ],
+    },
+    {
+      category: "前端與 Web 系統 (Frontend)",
+      items: [
+        "Angular (Signals, CDK)",
+        "RxJS",
+        "WebUSB / WebADB API",
+        "IndexedDB",
+        "Semantic CSS / Bootstrap",
+        "OpenCV.js / Tesseract.js",
+      ],
+    },
+    {
+      category: "後端與分散式系統 (Backend)",
+      items: [
+        "Python (gRPC, FastAPI)",
+        "Protocol Buffers (v3)",
+        "並行 I/O 處理 (Concurrent I/O)",
+        "MySQL 空間索引 (Spatial Indexing)",
+        "Redis",
+        "OAuth 2.0 / JWT",
+      ],
+    },
+    {
+      category: "雲端架構、維運與工具 (DevOps)",
+      items: [
+        "AWS (EC2, RDS, S3, CloudFront)",
+        "Docker / Nginx",
+        "Linux (Ubuntu)",
+        "Bazel",
+        "Git / Gerrit",
+        "自動化測試套件 (Automated Test Suites)",
+      ],
+    },
+  ]);
+
+  /** @type {readonly InfoItem[]} */
+  const ZH_INFO_DATA = Object.freeze([
+    { label: "軟體工程經驗", value: "2+ 年" },
+    { label: "量化系統與物聯網", value: "3+ 年" },
+    { label: "所在地區", value: "台灣台北" },
+    { label: "語言能力", value: "英文 (多益金色 910 分) / 中文 (母語)" },
+    { label: "專業認證", value: "Google TypeScript 可讀性認證 (Readability)" },
+  ]);
+
+  /** @type {readonly EducationItem[]} */
+  const ZH_EDUCATION_DATA = Object.freeze([
+    {
+      degree: "園藝暨景觀學系 碩士 (M.S.)",
+      badge: "碩士",
+      school: "國立臺灣大學 (NTU)",
+      duration: "2016 年 9 月 – 2018 年 7 月",
+      logoClass: "bg-ntu-logo",
+      highlights: [
+        "學業成績 GPA：**3.98 / 4.30** (49 學分) | 研究領域：量化建模與感測器控制系統",
+        "榮譽獲獎：**財團法人農友社會福利基金會獎學金**",
+        "創業經歷：共同創辦人，Cross Melon (**臺大創創車庫 NTU Garage 孵化器**，2016–2017) — 研發基於感測器之水耕生長環境自動化控制系統。",
+        "學術論文：Chen, H. and H. S. Lo (2017). Quantitative modeling of root-zone thermal control on hydroponic system growth dynamics (臺灣園藝 64: 276–277)。",
+      ],
+    },
+    {
+      degree: "園藝學系 學士 (B.S.)",
+      badge: "學士",
+      school: "國立中興大學 (NCHU)",
+      duration: "2012 年 9 月 – 2016 年 7 月",
+      logoClass: "bg-nchu-logo",
+      highlights: [
+        "學業成績 GPA：**3.85 / 4.30** (154 學分)",
+        "研究實習：中央研究院 分子生物研究所 余淑美院士實驗室",
+        "學生組織領導：國立中興大學 國際農業服務團 副團長",
+      ],
+    },
+  ]);
+
+  /** @type {readonly ExperienceItem[]} */
+  const ZH_EXPERIENCE_DATA = Object.freeze([
+    {
+      role: "全端軟體工程師 (Full-Stack Software Engineer)",
+      badge: "正職",
+      company: "Intelligent Manpower Corp. (支援 Google — Camera 3A 相機演算法與影像平台團隊)",
+      duration: "2024 年 11 月 – 至今",
+      logoClass: "bg-imc-logo",
+      bullets: [
+        "設計並開發全新 Angular 與 Python gRPC Web 平台，將原本繁瑣的 4 道手動命令列與伺服器搬運流程精簡為**一鍵式瀏覽器至雲端自動化管線**，將相機影像端到端傳輸延遲降低 **76%–81%** (由每張 43–59 秒大幅降至 **10–11 秒**)。",
+        "設計三層式 WebUSB 至 HTTP 傳輸佇列架構，搭配即時物件記憶體釋放機制，徹底解決多 GB 大容量上傳時的瀏覽器記憶體崩潰問題，將客戶端記憶體佔用嚴密限制於 **105 MB 以內**。",
+        "實作 Python gRPC 高並行資料處理管線，整合批次 URL 檢索與安全 OAuth 2.0 憑證授權機制，加速雲端儲存與跨叢集分散式檔案系統間**數千筆檔案**的索引與遷移作業。",
+        "建立單檔 Checkpoint 斷點續傳追蹤、指數退避重試機制與嚴格 gRPC 狀態檢驗，避免不穩定網路環境下的資料損毀與重複上傳，**確保重試過程零重複傳輸**。",
+        "採用 Angular Signals 響應式狀態架構搭配自訂物件比對與 **24 小時本機 IndexedDB 快取**，消除多版本遙測數據與影像比對時對後端伺服器的冗餘請求。",
+        "為全系統**超過 150 個全端模組**建構高可靠度自動化測試與回歸防護網，並獲取 **Google TypeScript Readability (可讀性認證)**；打造可重用依賴注入測試套件、Angular CDK 元件測試 Harness 及獨立 Bazel 單元測試。",
+      ],
+    },
+    {
+      role: "軟體工程培訓生 (後端與雲端系統專攻 — 第五屆)",
+      badge: "培訓",
+      company: "WeHelp 軟體工程培訓營 (彭彭科技有限公司 Padax Ltd.)",
+      duration: "2024 年 4 月 – 2024 年 9 月",
+      logoClass: "bg-wehelp-logo bg-no-repeat bg-center",
+      logoStyle: "background-size: 70%; background-color: white; mix-blend-mode: normal;",
+      bullets: [
+        "完成為期 24 週的高強度軟體工程實戰訓練，專攻後端架構設計、關聯式資料庫規劃與雲端基礎設施部署。",
+        "獨立開發「停車場即時管理系統 (PLMS)」，導入 MySQL (AWS RDS) 空間索引、Redis 高效快取與 Python FastAPI RESTful 服務，搭配 Docker、Nginx 與 AWS (EC2, ELB, S3, CloudFront, Route53)，將地理空間空位查詢效能提升**高達 6 倍**。",
+        "整合 **OpenCV.js (WebAssembly)** 影像前處理、Tesseract.js 光學字元辨識、Google Maps API 與基於 JWT 之角色權限控管 (RBAC)，實現瀏覽器端車牌自動辨識與即時空位地圖導航。",
+        "獨立規劃關聯式資料庫 Schema、RESTful MVC API 端點、整合第三方支付金流 (TapPay SDK) 與前端動態載入體驗。",
+      ],
+    },
+    {
+      role: "法規專案與數據專員 (Regulatory Project & Data Specialist)",
+      badge: "正職",
+      company: "ActiveHire 躍晉 (派駐服務 Corteva Agriscience 科迪華農業科技 與 BASF 台灣巴斯夫)",
+      duration: "2020 年 2 月 – 2024 年 4 月",
+      logoClass: "bg-activehire-logo",
+      bullets: [
+        "主導植保產品 (包含 Adavelt™) 多試驗點田間試驗數據管線、法規合規資料集與量化研發實驗標準，跨國協同 Corteva Agriscience 全球法規科學與工程團隊推進專案生命週期。",
+        "統籌主管機關溝通、法規數據呈審及營運合規程序，確保 BASF 農業解決方案產品順利通過審查並符合官方登記標準。",
+      ],
+    },
+    {
+      role: "數據與研發分析師 (工業物聯網感測與製程)",
+      badge: "正職",
+      company: "德勝科技股份有限公司 (TECHS TECH Co., Ltd.)",
+      duration: "2018 年 10 月 – 2020 年 1 月",
+      logoClass: "bg-techs-logo",
+      bullets: [
+        "開發 R 語言資料清洗、統計建模與可視化程式，針對工業發酵機台感測器數據進行即時生產日誌異常偵測與自動化分析。",
+        "運用多變量統計分析與製程參數最佳化，在**超過 15 組實驗試驗**中驗證配方效能，顯著提升產品品質穩定性與量產效率。",
+      ],
+    },
+  ]);
+
+  /** @type {readonly ProjectItem[]} */
+  const ZH_PROJECTS_DATA = Object.freeze([
+    {
+      name: "Camera 3A 資料傳輸與遙測平台 (支援 Google)",
+      isFeatured: true,
+      category: "硬體至雲端資料傳輸平台",
+      type: "企業級內部平台",
+      duration: "2024 年 11 月 – 至今",
+      logoClass: "bg-camera3a-logo",
+      logoIcon: "fa-solid fa-camera",
+      description: "高輸送量之瀏覽器端硬體擷取與分散式雲端儲存傳輸平台。將原本需 4 道繁瑣手動指令的命令列流程，重構為流暢的一鍵式 Web 自動化傳輸管線，使資料傳輸延遲大幅降低 **76%–81%** (由每張 43–59 秒降至 **10–11 秒**)。",
+      skillSections: [
+        {
+          heading: "前端與硬體整合架構",
+          items: [
+            "實作會話級別之 WebUSB 與 WebADB 協定通訊，實現瀏覽器端對硬體裝置的無縫直連存取。",
+            "設計三層式傳輸排程器 (循序 USB 擷取、平行分塊上傳與 15 檔案 In-Flight 佇列)，在數 GB 大檔案傳輸時將記憶體佔用嚴格限制在 **105 MB 以內**。",
+            "實現 Protocol Buffers 二進位解碼、客戶端影像 Metadata 提取及即時記憶體回收釋放機制。",
+          ],
+        },
+        {
+          heading: "後端 RPC 與儲存基礎架構",
+          items: [
+            "以 Python gRPC 架構多執行緒並行服務管線，支援跨叢集分散式儲存傳輸。",
+            "導入安全 OAuth 2.0 與權限型憑證委派機制，確保雲端檔案傳輸授權與鑑別安全性。",
+            "透過單檔 Checkpoint 斷點追蹤與嚴密交易狀態驗證，防範網路中斷重試時的重複傳輸與資料毀損。",
+          ],
+        },
+      ],
+      isInternal: true,
+      internalNote: "Google 內部機密系統 (Proprietary)",
+    },
+    {
+      name: "視覺比對與 3A 遙測分析引擎 (支援 Google)",
+      isFeatured: false,
+      category: "調校與演算法評估工具",
+      type: "企業級 Web 應用系統",
+      duration: "2024 年 11 月 – 至今",
+      logoClass: "bg-diffing-logo",
+      logoIcon: "fa-solid fa-sliders",
+      description: "專為相機 3A 影像調校與演算法評估打造的響應式視覺比對與數據分析工具。透過導入擷取資料庫之決定性配對 ID (Pair-ID) 追蹤與索引，徹底解決不同演算法版本間影像錯位的長年調校瓶頸，確保影像比較 100% 精準對齊。",
+      skillSections: [
+        {
+          heading: "前端響應式架構與遙測分析",
+          items: [
+            "導入擷取資料庫之決定性配對 ID (Pair-ID) 追蹤機制，徹底消除影像比對錯位，使相機調校工程師能在絕對保證 1:1 對齊基準下檢視演算法差異。",
+            "基於 Angular Signals 架構細粒度狀態管理，結合自訂相等性比對機制，徹底消除不必要的重複計算。",
+            "整合 **24 小時本機 IndexedDB 快取**，大幅減少影像比對與遙測資料重複抓取時的後端伺服器負載。",
+            "打造支援 **19 項指標的除錯日誌解析器**與多屬性排序引擎，深入分析自動白平衡增益 (AWB Gains)、色溫與曝光等關鍵相機調校參數。",
+            "設計具備響應式即時驗證之動態表單，滿足複雜相機資料集的檢索與篩選工作流。",
+          ],
+        },
+      ],
+      isInternal: true,
+      internalNote: "Google 內部機密系統 (Proprietary)",
+    },
+    {
+      name: "停車場即時管理系統 (PLMS)",
+      isFeatured: true,
+      category: "智慧停車解決方案",
+      type: "個人全端專案",
+      duration: "2024 年 9 月",
+      logoClass: "bg-parkinglot-logo",
+      description: "PLMS 提供整合管理員維運工具與線上支付功能的完整停車場管理平台，使用者可透過互動式地圖即時掌握剩餘車位與車牌識別導航。",
+      skillSections: [
+        {
+          heading: "後端技術",
+          items: [
+            "遵循 MVC 設計模式打造 RESTful API，實現高內聚低耦合之系統架構與可維護性。",
+            "使用 AWS Route53 配置自訂網域名稱並管理全域 DNS 路由。",
+            "以 Python 與 FastAPI 框架開發高效能後端 API，並自動產生互動式 API 文件。",
+            "整合 JWT (JSON Web Token) 機制，落實安全的管理員身份驗證與角色權限控管。",
+            "運用 AWS RDS (MySQL) 空間索引 (Spatial Indexing) 優化地理空間查詢，使周邊空位檢索效能提升**高達 6 倍**。",
+            "採用 Docker 容器化技術將服務部署於 AWS EC2，並導入 Redis 實現高命中率資料快取。",
+            "配置 Nginx 反向代理伺服器與 SSL 憑證自動化管理，保障全站傳輸安全。",
+            "建置 AWS Elastic Load Balancer (ELB) 動態分配流量，確保系統高可用性 (High Availability)。",
+            "利用 AWS S3 搭配 Presigned URL 安全託管影像儲存，並藉由 AWS CloudFront CDN 加速全球靜態資源分發。",
+          ],
+        },
+        {
+          heading: "前端技術",
+          items: [
+            "運用 Bootstrap 打造兼具行動端與桌面端相容性之響應式使用者介面 (RWD)。",
+            "整合 Google Maps API 提供流暢之互動式停車場地圖定位與標記服務。",
+            "導入 **OpenCV.js (WebAssembly)** 於瀏覽器端執行影像前處理，並結合 Tesseract.js 實現車牌光學字元辨識 (OCR)。",
+          ],
+        },
+      ],
+      image: {
+        src: PLMS_BACKEND_STRUCTURE_IMG,
+        alt: "停車場即時管理系統架構圖 (PLMS Architecture)",
+        containerClass: "max-w-xl mx-auto",
+      },
+      demoUrl: PLMS_DEMO_URL,
+      githubUrl: PLMS_GITHUB_URL,
+    },
+  ]);
+
+  // ============================================================================
   // Public Namespace Export
-  // ==========================================
+  // ============================================================================
+
+  const enBundle = Object.freeze({
+    UI_TEXT: EN_UI_TEXT,
+    SKILLS_DATA: EN_SKILLS_DATA,
+    INFO_DATA: EN_INFO_DATA,
+    EDUCATION_DATA: EN_EDUCATION_DATA,
+    EXPERIENCE_DATA: EN_EXPERIENCE_DATA,
+    PROJECTS_DATA: EN_PROJECTS_DATA,
+  });
+
+  const zhBundle = Object.freeze({
+    UI_TEXT: ZH_UI_TEXT,
+    SKILLS_DATA: ZH_SKILLS_DATA,
+    INFO_DATA: ZH_INFO_DATA,
+    EDUCATION_DATA: ZH_EDUCATION_DATA,
+    EXPERIENCE_DATA: ZH_EXPERIENCE_DATA,
+    PROJECTS_DATA: ZH_PROJECTS_DATA,
+  });
+
   /** @type {ResumeData} */
   const ResumeData = Object.freeze({
-    SKILLS_DATA,
-    INFO_DATA,
-    EDUCATION_DATA,
-    EXPERIENCE_DATA,
-    PROJECTS_DATA,
+    en: enBundle,
+    zh: zhBundle,
+    // Top-level backward compatibility
+    SKILLS_DATA: EN_SKILLS_DATA,
+    INFO_DATA: EN_INFO_DATA,
+    EDUCATION_DATA: EN_EDUCATION_DATA,
+    EXPERIENCE_DATA: EN_EXPERIENCE_DATA,
+    PROJECTS_DATA: EN_PROJECTS_DATA,
+    UI_TEXT: EN_UI_TEXT,
   });
 
   root.ResumeData = ResumeData;

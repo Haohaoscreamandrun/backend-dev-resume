@@ -31,22 +31,30 @@
     <div class="profile-banner">
       <div class="banner-pattern"></div>
       <div class="banner-gradient"></div>
+      <!-- Language Toggle Button -->
+      <button class="lang-toggle-btn"
+        @click="toggleLang()"
+        :title="lang === 'en' ? '切換至繁體中文' : 'Switch to English'"
+        aria-label="Toggle language">
+        <i class="fa-solid fa-globe"></i>
+        <span x-text="lang === 'en' ? '繁體中文' : 'English'">繁體中文</span>
+      </button>
       <div class="avatar-circle"></div>
     </div>
     <!-- Personal detail - Details Container -->
     <div class="profile-card">
       <p class="title">Hao Chen ( Jimmy )</p>
       <span class="online-indicator"></span>
-      <p class="profile-subtitle">Full-Stack Software Engineer (TypeScript / Angular / Python / gRPC)</p>
+      <p class="profile-subtitle" x-text="ui.profileSubtitle">Full-Stack Software Engineer (TypeScript / Angular / Python / gRPC)</p>
       <!-- Details - Gray block -->
       <div class="gray-block">
         <!-- Details - Summary -->
-        <p class="gray-block-word line-clamp-2">
+        <p class="gray-block-word line-clamp-2" x-html="formatEmphasis(ui.summary)">
           Full-Stack Software Engineer with 2+ years of production web engineering experience and over 3 years in quantitative systems research. Architected high-throughput browser-to-cloud data transfer systems and reactive visual comparison tools supporting Google Camera 3A across Angular Signals, TypeScript, Python gRPC, and WebUSB, reducing data transfer latency by <strong class="emphasis">76%–81%</strong>. Certified <strong class="emphasis">Google TypeScript Readability</strong> reviewer with professional expertise spanning modern reactive frontend interfaces, distributed RPC services, and cloud architectures.
         </p>
         <!-- Details - Download button -->
         <div class="cv-download-btn" id="downLoad">
-          <span>Download CV</span>
+          <span x-text="ui.downloadCv">Download CV</span>
           <i class="fa-solid fa-angles-down" id="downloadIcon"></i>
           <div class="spinner-border spinner-border-sm text-light" role="status" id="spinnerIcon" hidden>
             <span class="visually-hidden">Loading...</span>
@@ -78,7 +86,7 @@
     <!-- Skills -->
     <div class="white-block">
       <span class="title-indicator"></span>
-      <p class="title">Skill Set</p>
+      <p class="title" x-text="ui.skillSet">Skill Set</p>
       <div class="gray-block">
         <div class="skills-grid">
           <template x-for="col in skills" :key="col.category">
@@ -95,7 +103,7 @@
     <!-- Information -->
     <div class="white-block">
       <span class="title-indicator"></span>
-      <p class="title">Information</p>
+      <p class="title" x-text="ui.information">Information</p>
       <div class="gray-block info-block">
         <template x-for="(item, index) in info" :key="item.label">
           <div>
@@ -111,12 +119,12 @@
     <!-- QRcode block -->
     <div class="white-block" id="QRcodeBlock" hidden>
       <span class="title-indicator"></span>
-      <p class="title">View Online</p>
+      <p class="title" x-text="ui.viewOnline">View Online</p>
       <div class="gray-block qrcode-box">
         <div class="qrcode-target" id="QRcode"></div>
         <div class="qrcode-desc">
-          <p class="qrcode-title">Access Latest Version</p>
-          <p>This resume is available online; scan the QR code on the left to view the latest version.</p>
+          <p class="qrcode-title" x-text="ui.accessLatestVersion">Access Latest Version</p>
+          <p x-text="ui.qrcodeDesc">This resume is available online; scan the QR code on the left to view the latest version.</p>
           <p class="qrcode-caption">@created by qrcode.js</p>
         </div>
       </div>
@@ -125,13 +133,13 @@
   <div class="resume-main">
     <!-- Panel -->
     <div class="white-block panel-switch" id="panel">
-      <p class="panel-option">Resume</p>
-      <p class="panel-option active">Project</p>
+      <p class="panel-option" data-tab="resume" x-text="ui.resumeTab">Resume</p>
+      <p class="panel-option active" data-tab="project" x-text="ui.projectTab">Project</p>
     </div>
     <!-- Education -->
     <div class="white-block resume" hidden>
       <span class="title-indicator"></span>
-      <p class="title">Education</p>
+      <p class="title" x-text="ui.education">Education</p>
       <template x-for="edu in education" :key="edu.school">
         <div class="gray-block">
           <div class="timeline-grid">
@@ -171,7 +179,7 @@
     <!-- Experience -->
     <div class="white-block resume" hidden>
       <span class="title-indicator"></span>
-      <p class="title">Experience</p>
+      <p class="title" x-text="ui.experience">Experience</p>
       <template x-for="exp in experience" :key="exp.company + exp.role">
         <div class="gray-block">
           <div class="timeline-grid">
@@ -216,7 +224,7 @@
     <!-- Projects -->
     <div class="white-block project">
       <span class="title-indicator"></span>
-      <p class="title">Projects</p>
+      <p class="title" x-text="ui.projects">Projects</p>
       <template x-for="proj in projects" :key="proj.name">
         <div class="gray-block">
           <div class="timeline-grid">
@@ -299,7 +307,7 @@
                   <template x-if="proj.githubUrl">
                     <a :href="proj.githubUrl" class="project-link-github" target="_blank" rel="noopener noreferrer">
                       <i class="fa-brands fa-github"></i>
-                      <span>View GitHub Repository</span>
+                      <span x-text="ui.viewGithub">View GitHub Repository</span>
                     </a>
                   </template>
                 </div>
