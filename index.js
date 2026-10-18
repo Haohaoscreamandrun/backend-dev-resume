@@ -33,6 +33,21 @@
   root.EXPERIENCE_DATA = EXPERIENCE_DATA;
   root.PROJECTS_DATA = PROJECTS_DATA;
 
+  /**
+   * Format markdown-style **emphasis** markers into styled HTML
+   * Escapes unsafe HTML characters to ensure complete security.
+   * @param {string} str
+   * @returns {string}
+   */
+  const formatEmphasis = (str) => {
+    if (!str) return '';
+    const escaped = String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+    return escaped.replace(/\*\*(.*?)\*\*/g, '<strong class="emphasis">$1</strong>');
+  };
+
   // Alpine Data Registration
   const registerAlpineData = () => {
     if (root.Alpine) {
@@ -42,6 +57,7 @@
         education: EDUCATION_DATA,
         experience: EXPERIENCE_DATA,
         projects: PROJECTS_DATA,
+        formatEmphasis,
       }));
     }
   };

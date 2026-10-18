@@ -509,6 +509,14 @@ img {
   margin-bottom: 0.25rem;
 }
 
+.emphasis {
+  background: #eff6ff;
+  color: #1e40af;
+  padding: 1px 4px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
 /* ----------------------------------------------------------------------------
  * 10. Project Specific Elements
  * ---------------------------------------------------------------------------- */

@@ -3,6 +3,7 @@
  * Structured Resume Data Store
  * Central repository of skills, quick info, education, experience, and projects.
  * Formatted with formal English vocabulary adhering to standard educational and professional English.
+ * Visual emphasis is focused strictly on quantifiable metrics, scale, and key achievements.
  * Supports universal browser execution (file:// and http://) without module/CORS restrictions.
  */
 
@@ -105,7 +106,7 @@
   const WEATHER_APP_SCREENSHOT_IMG = constants.WEATHER_APP_SCREENSHOT_IMG || "./src/weather_app_screenshot.png";
 
   // ============================================================================
-  // Data Constants (Formal Standard English Vocabulary)
+  // Data Constants (Formal Standard English with Metric-Focused Emphasis)
   // ============================================================================
 
   /** @type {readonly SkillColumn[]} */
@@ -173,8 +174,8 @@
       duration: "Sep 2016 – Jul 2018",
       logoClass: "bg-ntu-logo",
       highlights: [
-        "GPA: 3.98 / 4.30 (49 credits) | Focus: Quantitative Modeling & Sensor Control Systems",
-        "Honor: Know-You Social Welfare Foundation Academic Scholarship",
+        "GPA: **3.98 / 4.30** (49 credits) | Focus: Quantitative Modeling & Sensor Control Systems",
+        "Honor: **Know-You Social Welfare Foundation Academic Scholarship**",
         "Publication: Chen, H. and H. S. Lo (2017). Quantitative modeling of root-zone thermal control on hydroponic system growth dynamics (J. Taiw. Soc. Hortic. Sci. 64: 276–277).",
       ],
     },
@@ -185,7 +186,7 @@
       duration: "Sep 2012 – Jul 2016",
       logoClass: "bg-nchu-logo",
       highlights: [
-        "GPA: 3.85 / 4.30 (154 credits)",
+        "GPA: **3.85 / 4.30** (154 credits)",
         "Internship: Yu, Su-May's Lab, Institute of Molecular Biology, Academia Sinica",
         "Leadership: Deputy Director, International Agriculture Service Mission, NCHU",
       ],
@@ -201,12 +202,12 @@
       duration: "Nov 2024 – Present",
       logoClass: "bg-imc-logo",
       bullets: [
-        "Reduced end-to-end camera image transfer latency by 76%–81% (from 43–59s down to 10–11s per image) by designing and developing a new Angular and Python gRPC web platform that replaced 4 manual command-line and server steps (device transfer, server storage, sensor data separation, and cloud upload) with a streamlined single-click browser-to-cloud workflow.",
-        "Eliminated browser out-of-memory errors during large multi-gigabyte uploads, limiting client memory consumption to under 105 MB by designing a three-tier WebUSB-to-HTTP transfer queue with immediate object memory release.",
-        "Accelerated dataset indexing and cross-cluster storage transfers for thousands of files across cloud storage and distributed file systems by implementing concurrent Python gRPC pipelines with batch URL retrieval and secure OAuth 2.0 token authorization.",
-        "Prevented partial data corruption and redundant uploads across unstable connections, eliminating duplicate transfers upon retry through per-file checkpoint tracking, exponential backoff intervals, and strict gRPC status validation.",
-        "Reduced redundant backend server requests during multi-version telemetry and image comparison by developing an Angular Signals reactive state architecture with custom equality comparison and a 24-hour local IndexedDB client cache.",
-        "Maintained reliable automated testing and regression protection across more than 150 full-stack modules and earned Google TypeScript Readability certification, creating reusable dependency-injection test suites, Angular CDK component testing harnesses, and isolated Bazel unit tests.",
+        "Reduced end-to-end camera image transfer latency by **76%–81%** (from 43–59s down to **10–11s per image**) by designing and developing a new Angular and Python gRPC web platform that replaced 4 manual command-line and server steps with a streamlined **single-click browser-to-cloud workflow**.",
+        "Eliminated browser out-of-memory errors during large multi-gigabyte uploads, limiting client memory consumption to **under 105 MB** by designing a three-tier WebUSB-to-HTTP transfer queue with immediate object memory release.",
+        "Accelerated dataset indexing and cross-cluster storage transfers for **thousands of files** across cloud storage and distributed file systems by implementing concurrent Python gRPC pipelines with batch URL retrieval and secure OAuth 2.0 token authorization.",
+        "Prevented partial data corruption and redundant uploads across unstable connections, **eliminating duplicate transfers upon retry** through per-file checkpoint tracking, exponential backoff intervals, and strict gRPC status validation.",
+        "Reduced redundant backend server requests during multi-version telemetry and image comparison by developing an Angular Signals reactive state architecture with custom equality comparison and a **24-hour local IndexedDB client cache**.",
+        "Maintained reliable automated testing and regression protection across **more than 150 full-stack modules** and earned **Google TypeScript Readability certification**, creating reusable dependency-injection test suites, Angular CDK component testing harnesses, and isolated Bazel unit tests.",
       ],
     },
     {
@@ -217,10 +218,10 @@
       logoClass: "bg-wehelp-logo bg-no-repeat bg-center",
       logoStyle: "background-size: 70%; background-color: white; mix-blend-mode: normal;",
       bullets: [
-        "Accelerated geospatial parking vacancy queries by up to 6 times in an independently developed Parking Lot Management System (PLMS) by implementing MySQL (AWS RDS) spatial indexing, Redis caching, and Python FastAPI RESTful services deployed using Docker, Nginx, and AWS (EC2, ELB, S3, CloudFront, Route53).",
+        "Accelerated geospatial parking vacancy queries by **up to 6 times** in an independently developed Parking Lot Management System (PLMS) by implementing MySQL (AWS RDS) spatial indexing, Redis caching, and Python FastAPI RESTful services deployed using Docker, Nginx, and AWS (EC2, ELB, S3, CloudFront, Route53).",
         "Automated browser-side license plate recognition and real-time vacancy mapping in PLMS by integrating OpenCV image preprocessing, Tesseract.js OCR, Google Maps API, and JWT role-based administrator authentication.",
-        "Delivered a full-stack e-commerce booking platform (\"Taipei Day Trip\") over an 8-week development period, implementing RESTful MVC APIs, TapPay SDK payment processing, and Intersection Observer dynamic content loading.",
-        "Collaborated with three team members using agile methodology to deliver a real-time Taiwan weather forecast web application within one week.",
+        "Delivered a full-stack e-commerce booking platform (\"Taipei Day Trip\") over an **8-week development period**, implementing RESTful MVC APIs, TapPay SDK payment processing, and Intersection Observer dynamic content loading.",
+        "Collaborated with three team members using agile methodology to deliver a real-time Taiwan weather forecast web application within **one week**.",
       ],
     },
     {
@@ -251,7 +252,7 @@
       logoClass: "bg-techs-logo",
       bullets: [
         "Automated industrial fermentation machine sensor data analysis and anomaly detection by developing R data cleaning, statistical modeling, and visualization programs for production logs.",
-        "Optimized product formulations and manufacturing efficiency, verifying performance across more than 15 experimental trial groups through multivariate statistical analysis and parameter optimization.",
+        "Optimized product formulations and manufacturing efficiency, verifying performance across **more than 15 experimental trial groups** through multivariate statistical analysis and parameter optimization.",
       ],
     },
     {
@@ -262,7 +263,7 @@
       logoClass: "bg-crossmelon-logo",
       logoIcon: "fa-solid fa-seedling",
       bullets: [
-        "Co-founded an agricultural technology startup selected for the NTU Garage incubator, designing sensor-based automated environmental control systems to optimize plant growth conditions.",
+        "Co-founded an agricultural technology startup selected for the **NTU Garage incubator**, designing sensor-based automated environmental control systems to optimize plant growth conditions.",
       ],
     },
   ]);
@@ -277,13 +278,13 @@
       duration: "Nov 2024 – Present",
       logoClass: "bg-camera3a-logo",
       logoIcon: "fa-solid fa-camera",
-      description: "High-throughput browser-to-cloud device capture and distributed storage transfer platform. Replaced a 4-step manual command-line process with a streamlined single-click web pipeline, reducing data transfer latency by 76%–81% (from 43–59s down to 10–11s per image).",
+      description: "High-throughput browser-to-cloud device capture and distributed storage transfer platform. Replaced a 4-step manual command-line process with a streamlined single-click web pipeline, reducing data transfer latency by **76%–81%** (from 43–59s down to **10–11s per image**).",
       skillSections: [
         {
           heading: "Frontend & Hardware Integration",
           items: [
             "Engineered session-scoped WebUSB and WebADB hardware communication for direct device access in the browser.",
-            "Designed a three-tier transfer scheduler (sequential USB transfer, parallel chunked uploads, and a 15-file in-flight queue), limiting client memory usage to under 105 MB during multi-gigabyte uploads.",
+            "Designed a three-tier transfer scheduler (sequential USB transfer, parallel chunked uploads, and a 15-file in-flight queue), limiting client memory usage to **under 105 MB** during multi-gigabyte uploads.",
             "Implemented Protocol Buffers binary decoding, client-side image metadata extraction, and immediate memory deallocation.",
           ],
         },
@@ -313,8 +314,8 @@
           heading: "Frontend Reactive Architecture",
           items: [
             "Architected fine-grained state management using Angular Signals with custom equality comparison to eliminate redundant recalculations.",
-            "Integrated a 24-hour local IndexedDB client cache to eliminate redundant backend server requests during image and telemetry comparison.",
-            "Built a 19-metric debug log parser and multi-attribute sorting engine for algorithm parameter comparison.",
+            "Integrated a **24-hour local IndexedDB client cache** to eliminate redundant backend server requests during image and telemetry comparison.",
+            "Built a **19-metric debug log parser** and multi-attribute sorting engine for algorithm parameter comparison.",
             "Implemented dynamic forms with reactive validation for complex dataset extraction workflows.",
           ],
         },
@@ -338,7 +339,7 @@
             "Configured custom domain and managed DNS routing using AWS Route53.",
             "Developed backend APIs using Python and FastAPI with automated interactive API documentation.",
             "Implemented JWT tokens for secure administrator authentication and authorization.",
-            "Optimized database queries using MySQL spatial indexing on AWS RDS, improving search performance by up to 6 times.",
+            "Optimized database queries using MySQL spatial indexing on AWS RDS, improving search performance by **up to 6 times**.",
             "Deployed containerized services on AWS EC2 using Docker, with high-performance caching provided by Redis.",
             "Configured Nginx as a reverse proxy with automated SSL certificate management.",
             "Configured an AWS Elastic Load Balancer to distribute traffic dynamically and maintain high availability.",

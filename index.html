@@ -42,7 +42,7 @@
       <div class="gray-block">
         <!-- Details - Summary -->
         <p class="gray-block-word line-clamp-2">
-          Full-Stack Software Engineer with over 5 years of experience in quantitative systems and web development. Architected high-throughput browser-to-cloud data transfer systems and reactive visual comparison tools supporting Google Camera 3A across Angular Signals, TypeScript, Python gRPC, and WebUSB, reducing data transfer latency by 76%–81%. Certified Google TypeScript Readability reviewer with professional expertise spanning modern reactive frontend interfaces, distributed RPC services, and cloud architectures.
+          Full-Stack Software Engineer with over 5 years of experience in quantitative systems and web development. Architected high-throughput browser-to-cloud data transfer systems and reactive visual comparison tools supporting Google Camera 3A across Angular Signals, TypeScript, Python gRPC, and WebUSB, reducing data transfer latency by <strong class="emphasis">76%–81%</strong>. Certified <strong class="emphasis">Google TypeScript Readability</strong> reviewer with professional expertise spanning modern reactive frontend interfaces, distributed RPC services, and cloud architectures.
         </p>
         <!-- Details - Download button -->
         <div class="cv-download-btn" id="downLoad">
@@ -160,7 +160,7 @@
               <!-- Highlights -->
               <ul class="timeline-list">
                 <template x-for="item in edu.highlights" :key="item">
-                  <li class="list-item" x-text="item"></li>
+                  <li class="list-item" x-html="formatEmphasis(item)"></li>
                 </template>
               </ul>
             </div>
@@ -205,7 +205,7 @@
               <!-- Job Description -->
               <ul class="timeline-list">
                 <template x-for="bullet in exp.bullets" :key="bullet">
-                  <li class="list-item" x-text="bullet"></li>
+                  <li class="list-item" x-html="formatEmphasis(bullet)"></li>
                 </template>
               </ul>
             </div>
@@ -255,7 +255,7 @@
                 </div>
               </div>
               <!-- Project description -->
-              <p class="project-description" x-text="proj.description"></p>
+              <p class="project-description" x-html="formatEmphasis(proj.description)"></p>
               
               <!-- Skill sections -->
               <template x-for="sec in proj.skillSections" :key="sec.heading">
@@ -264,7 +264,7 @@
                   <p class="project-skill-heading" x-text="sec.heading"></p>
                   <ul class="timeline-list">
                     <template x-for="item in sec.items" :key="item">
-                      <li class="list-item" x-text="item"></li>
+                      <li class="list-item" x-html="formatEmphasis(item)"></li>
                     </template>
                   </ul>
                 </div>
