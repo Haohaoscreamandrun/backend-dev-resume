@@ -666,6 +666,7 @@ img {
 .bg-weatherapp-logo  { background-image: url('./src/weatherapp_logo.webp'); }
 .bg-imc-logo         { background-image: url('./src/imc_logo.png'); background-color: #0f172a; background-size: 80%; background-position: center; background-repeat: no-repeat; }
 .bg-techs-logo       { background-image: url('./src/techs_logo.png'); background-color: #ffffff; background-size: 85%; background-position: center; background-repeat: no-repeat; }
+.bg-activehire-logo  { background-image: url('./src/activehire_logo.png'); background-color: #ffffff; background-size: 85%; background-position: center; background-repeat: no-repeat; }
 .bg-crossmelon-logo  { background-color: #059669; color: #ffffff; font-size: 1.75rem; }
 .bg-camera3a-logo    { background-color: #0f172a; color: #38bdf8; font-size: 1.75rem; }
 .bg-diffing-logo     { background-color: #1e1e2f; color: #c084fc; font-size: 1.75rem; }

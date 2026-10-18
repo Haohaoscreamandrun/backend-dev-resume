@@ -93,17 +93,12 @@
 
   /** @type {Record<string, any>} */
   const root = typeof window !== 'undefined' ? window : globalThis;
-  /** @type {Record<string, any>} */
+  /** @type {ResumeConstants | Record<string, any>} */
   const constants = root.ResumeConstants || {};
 
   const PLMS_DEMO_URL = constants.PLMS_DEMO_URL || "https://parkinglot.haohaoscreamandrun.online/";
   const PLMS_GITHUB_URL = constants.PLMS_GITHUB_URL || "https://github.com/Haohaoscreamandrun/ParkingLotManagementSystem";
   const PLMS_BACKEND_STRUCTURE_IMG = constants.PLMS_BACKEND_STRUCTURE_IMG || "./src/backend-structure.png";
-  const TAIPEI_DAY_TRIP_DEMO_URL = constants.TAIPEI_DAY_TRIP_DEMO_URL || "https://taipeidaytrip.haohaoscreamandrun.online/";
-  const TAIPEI_DAY_TRIP_GITHUB_URL = constants.TAIPEI_DAY_TRIP_GITHUB_URL || "https://github.com/Haohaoscreamandrun/WehelpStage2";
-  const WEATHER_APP_DEMO_URL = constants.WEATHER_APP_DEMO_URL || "https://wehelp-groupproject.onrender.com/";
-  const WEATHER_APP_GITHUB_URL = constants.WEATHER_APP_GITHUB_URL || "https://github.com/Haohaoscreamandrun/Wehelp_GroupProject";
-  const WEATHER_APP_SCREENSHOT_IMG = constants.WEATHER_APP_SCREENSHOT_IMG || "./src/weather_app_screenshot.png";
 
   // ============================================================================
   // Data Constants (Formal Standard English with Metric-Focused Emphasis)
@@ -130,7 +125,7 @@
         "WebUSB / WebADB API",
         "IndexedDB",
         "Semantic CSS / Bootstrap",
-        "OpenCV / Tesseract.js",
+        "OpenCV.js / Tesseract.js",
       ],
     },
     {
@@ -159,7 +154,8 @@
 
   /** @type {readonly InfoItem[]} */
   const INFO_DATA = Object.freeze([
-    { label: "Work Experience", value: "Over 5 years" },
+    { label: "Software Engineering", value: "2+ years" },
+    { label: "Quantitative Systems & IoT", value: "3+ years" },
     { label: "Location", value: "Taipei, Taiwan" },
     { label: "Languages", value: "English (TOEIC 910 Gold) / Mandarin (Native)" },
     { label: "Certification", value: "Google TypeScript Readability" },
@@ -176,6 +172,7 @@
       highlights: [
         "GPA: **3.98 / 4.30** (49 credits) | Focus: Quantitative Modeling & Sensor Control Systems",
         "Honor: **Know-You Social Welfare Foundation Academic Scholarship**",
+        "Entrepreneurship: Co-Founder, Cross Melon (**NTU Garage Incubator**, 2016–2017) — designed sensor-based automated environmental control systems for hydroponic plant growth.",
         "Publication: Chen, H. and H. S. Lo (2017). Quantitative modeling of root-zone thermal control on hydroponic system growth dynamics (J. Taiw. Soc. Hortic. Sci. 64: 276–277).",
       ],
     },
@@ -218,30 +215,21 @@
       logoClass: "bg-wehelp-logo bg-no-repeat bg-center",
       logoStyle: "background-size: 70%; background-color: white; mix-blend-mode: normal;",
       bullets: [
+        "Completed 24 weeks of intensive software engineering training specializing in backend architecture, relational database design, and cloud infrastructure.",
         "Accelerated geospatial parking vacancy queries by **up to 6 times** in an independently developed Parking Lot Management System (PLMS) by implementing MySQL (AWS RDS) spatial indexing, Redis caching, and Python FastAPI RESTful services deployed using Docker, Nginx, and AWS (EC2, ELB, S3, CloudFront, Route53).",
-        "Automated browser-side license plate recognition and real-time vacancy mapping in PLMS by integrating OpenCV image preprocessing, Tesseract.js OCR, Google Maps API, and JWT role-based administrator authentication.",
-        "Delivered a full-stack e-commerce booking platform (\"Taipei Day Trip\") over an **8-week development period**, implementing RESTful MVC APIs, TapPay SDK payment processing, and Intersection Observer dynamic content loading.",
-        "Collaborated with three team members using agile methodology to deliver a real-time Taiwan weather forecast web application within **one week**.",
+        "Automated browser-side license plate recognition and real-time vacancy mapping in PLMS by integrating **OpenCV.js (WebAssembly)** image preprocessing, Tesseract.js OCR, Google Maps API, and JWT role-based administrator authentication.",
+        "Engineered relational database schemas, RESTful MVC endpoints, third-party payment integration (TapPay SDK), and dynamic client-side loading.",
       ],
     },
     {
-      role: "Technical Project & Regulatory Data Specialist",
+      role: "Regulatory Project & Data Specialist",
       badge: "Full-time",
-      company: "Corteva Agriscience (Dow & DuPont Heritage)",
-      duration: "Aug 2021 – Apr 2024",
-      logoClass: "bg-corteva-logo",
+      company: "ActiveHire (Supporting Corteva Agriscience & BASF Taiwan)",
+      duration: "Feb 2020 – Apr 2024",
+      logoClass: "bg-activehire-logo",
       bullets: [
-        "Led cross-functional data submissions, multi-site experimental trials, and quantitative research protocols for Adavelt™ and other crop protection products, coordinating compliance datasets and lifecycle execution across international engineering and regulatory teams.",
-      ],
-    },
-    {
-      role: "Import Tolerance & Regulatory Specialist",
-      badge: "Full-time",
-      company: "BASF Taiwan",
-      duration: "Feb 2020 – Aug 2021",
-      logoClass: "bg-basf-logo",
-      bullets: [
-        "Supported government communications and regulatory compliance procedures to ensure product registration and operational standards for Agricultural Solutions.",
+        "Spearheaded multi-site experimental trial data pipelines, compliance datasets, and quantitative research protocols for crop protection products (including Adavelt™), coordinating project lifecycle execution with international regulatory and engineering teams across Corteva Agriscience.",
+        "Managed government communications, regulatory data submissions, and operational compliance procedures to ensure product registration and regulatory standards for BASF Agricultural Solutions.",
       ],
     },
     {
@@ -253,17 +241,6 @@
       bullets: [
         "Automated industrial fermentation machine sensor data analysis and anomaly detection by developing R data cleaning, statistical modeling, and visualization programs for production logs.",
         "Optimized product formulations and manufacturing efficiency, verifying performance across **more than 15 experimental trial groups** through multivariate statistical analysis and parameter optimization.",
-      ],
-    },
-    {
-      role: "Co-Founder & Lead Systems Researcher",
-      badge: "Co-Founder",
-      company: "Cross Melon (NTU Garage Startup Incubator)",
-      duration: "2016 – 2017",
-      logoClass: "bg-crossmelon-logo",
-      logoIcon: "fa-solid fa-seedling",
-      bullets: [
-        "Co-founded an agricultural technology startup selected for the **NTU Garage incubator**, designing sensor-based automated environmental control systems to optimize plant growth conditions.",
       ],
     },
   ]);
@@ -308,14 +285,15 @@
       duration: "Nov 2024 – Present",
       logoClass: "bg-diffing-logo",
       logoIcon: "fa-solid fa-sliders",
-      description: "Reactive visual comparison and analysis tool for Camera 3A image tuning and algorithm comparison, enabling engineers to inspect differences between algorithm versions with responsive real-time interaction.",
+      description: "Reactive visual comparison and analysis tool for Camera 3A image tuning and algorithm evaluation. Resolved a critical tuning bottleneck by introducing deterministic pair-ID tracking from the capture database, ensuring camera tuners no longer suffer from misaligned image comparisons across algorithm versions.",
       skillSections: [
         {
-          heading: "Frontend Reactive Architecture",
+          heading: "Frontend Reactive Architecture & Telemetry Analysis",
           items: [
+            "Eliminated image comparison misalignment by introducing and indexing deterministic pair-ID metadata from the capture database, enabling camera tuners to inspect side-by-side differences with guaranteed 1:1 image alignment.",
             "Architected fine-grained state management using Angular Signals with custom equality comparison to eliminate redundant recalculations.",
             "Integrated a **24-hour local IndexedDB client cache** to eliminate redundant backend server requests during image and telemetry comparison.",
-            "Built a **19-metric debug log parser** and multi-attribute sorting engine for algorithm parameter comparison.",
+            "Built a **19-metric debug log parser** and multi-attribute sorting engine analyzing camera tuning parameters (including Auto White Balance gains, color temperature, and exposure metrics).",
             "Implemented dynamic forms with reactive validation for complex dataset extraction workflows.",
           ],
         },
@@ -351,7 +329,7 @@
           items: [
             "Designed a responsive user interface using Bootstrap.",
             "Integrated Google Maps API to provide interactive parking lot location services.",
-            "Employed OpenCV for image preprocessing and Tesseract.js for optical character recognition.",
+            "Employed **OpenCV.js (WebAssembly)** for client-side image preprocessing and Tesseract.js for optical character recognition.",
           ],
         },
       ],
@@ -362,53 +340,6 @@
       },
       demoUrl: PLMS_DEMO_URL,
       githubUrl: PLMS_GITHUB_URL,
-    },
-    {
-      name: "Taipei Day Trip",
-      isFeatured: false,
-      category: "Tourism E-commerce",
-      type: "Guided project",
-      duration: "Sep 2024",
-      logoClass: "bg-taipeidaytrip-logo",
-      description: "A comprehensive e-commerce platform for discovering Taipei tourist attractions and booking sightseeing tours online.",
-      skillSections: [
-        {
-          heading: "Skills Highlight",
-          items: [
-            "Developed web interfaces using semantic HTML and CSS according to Figma design specifications.",
-            "Implemented the Intersection Observer API for smooth dynamic content loading upon scrolling.",
-            "Integrated third-party payment processing using the TapPay SDK to support secure online credit card transactions.",
-          ],
-        },
-      ],
-      demoUrl: TAIPEI_DAY_TRIP_DEMO_URL,
-      githubUrl: TAIPEI_DAY_TRIP_GITHUB_URL,
-    },
-    {
-      name: "Weather Forecast Web Application",
-      isFeatured: false,
-      category: "Weather forecast",
-      type: "Group project",
-      duration: "Jul 2024",
-      logoClass: "bg-weatherapp-logo",
-      description: "Provides a comprehensive 36-hour weather forecast for cities across Taiwan, including temperature, precipitation probability, UV index, and weather advisories.",
-      skillSections: [
-        {
-          heading: "Skills Highlight",
-          items: [
-            "Collaborated in a 4-person team using agile methodology and Git version control, implementing the MVC architectural pattern.",
-            "Implemented API response caching strategies to reduce external network requests while maintaining data freshness.",
-            "Integrated Discord bot webhooks to deliver automated weather notification messages.",
-          ],
-        },
-      ],
-      image: {
-        src: WEATHER_APP_SCREENSHOT_IMG,
-        alt: "Weather Forecast Web Application Screenshot",
-        containerClass: "max-w-lg mx-auto",
-      },
-      demoUrl: WEATHER_APP_DEMO_URL,
-      githubUrl: WEATHER_APP_GITHUB_URL,
     },
   ]);
 
