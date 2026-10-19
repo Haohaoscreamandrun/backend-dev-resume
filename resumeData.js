@@ -124,7 +124,7 @@
 
   /** @type {Record<string, any>} */
   const root = typeof window !== 'undefined' ? window : globalThis;
-  /** @type {ResumeConstants | Record<string, any>} */
+  /** @type {Record<string, any>} */
   const constants = root.ResumeConstants || {};
 
   const PLMS_DEMO_URL = constants.PLMS_DEMO_URL || "https://parkinglot.haohaoscreamandrun.online/";
@@ -138,7 +138,7 @@
   /** @type {UIText} */
   const EN_UI_TEXT = Object.freeze({
     profileSubtitle: "Full-Stack Software Engineer (TypeScript / Angular / Python / gRPC)",
-    summary: "Full-Stack Software Engineer with 2+ years of production web engineering experience and over 3 years in quantitative systems research. Architected high-throughput browser-to-cloud data transfer systems and reactive visual comparison tools supporting Google Camera 3A across Angular Signals, TypeScript, Python gRPC, and WebUSB, reducing data transfer latency by **76%–81%**. Certified **Google TypeScript Readability** reviewer with professional expertise spanning modern reactive frontend interfaces, distributed RPC services, and cloud architectures.",
+    summary: "Full-Stack Software Engineer with 2+ years of production web engineering experience, complemented by 5+ years of enterprise project execution and industrial data analysis. Architected high-throughput browser-to-cloud data transfer systems and reactive visual comparison tools supporting Google Camera 3A across Angular Signals, TypeScript, Python gRPC, and WebUSB, reducing data transfer latency by **76%–81%**. Certified **Google TypeScript Readability** reviewer with professional expertise spanning modern reactive frontend interfaces, distributed RPC services, and cloud architectures.",
     downloadCv: "Download CV",
     skillSet: "Skill Set",
     information: "Information",
@@ -204,7 +204,8 @@
   /** @type {readonly InfoItem[]} */
   const EN_INFO_DATA = Object.freeze([
     { label: "Software Engineering", value: "2+ years" },
-    { label: "Quantitative Systems & IoT", value: "3+ years" },
+    { label: "Regulatory Project Mgmt", value: "4+ years" },
+    { label: "Industrial Data Analysis", value: "1+ year" },
     { label: "Location", value: "Taipei, Taiwan" },
     { label: "Languages", value: "English (TOEIC 910 Gold) / Mandarin (Native)" },
     { label: "Certification", value: "Google TypeScript Readability" },
@@ -219,10 +220,10 @@
       duration: "Sep 2016 – Jul 2018",
       logoClass: "bg-ntu-logo",
       highlights: [
-        "GPA: **3.98 / 4.30** (49 credits) | Focus: Quantitative Modeling & Sensor Control Systems",
+        "GPA: **3.98 / 4.00** (49 credits) | Focus: Plant Physiology / Crop Molecular Breeding",
         "Honor: **Know-You Social Welfare Foundation Academic Scholarship**",
         "Entrepreneurship: Co-Founder, Cross Melon (**NTU Garage Incubator**, 2016–2017) — designed sensor-based automated environmental control systems for hydroponic plant growth.",
-        "Publication: Chen, H. and H. S. Lo (2017). Quantitative modeling of root-zone thermal control on hydroponic system growth dynamics (J. Taiw. Soc. Hortic. Sci. 64: 276–277).",
+        "Publication: Chen, H. and H. S. Lo (2017). Effect of nutrient temperature on growth and development of deep flow technique hydroponic netted melon. (J. Taiw. Soc. Hortic. Sci. 64: 276–277).",
       ],
     },
     {
@@ -232,7 +233,7 @@
       duration: "Sep 2012 – Jul 2016",
       logoClass: "bg-nchu-logo",
       highlights: [
-        "GPA: **3.85 / 4.30** (154 credits)",
+        "GPA: **3.85 / 4.00** (154 credits)",
         "Internship: Yu, Su-May's Lab, Institute of Molecular Biology, Academia Sinica",
         "Leadership: Deputy Director, International Agriculture Service Mission, NCHU",
       ],
@@ -271,7 +272,7 @@
       ],
     },
     {
-      role: "Regulatory Project & Data Specialist",
+      role: "Regulatory & Import Tolerance Specialist",
       badge: "Full-time",
       company: "ActiveHire (Supporting Corteva Agriscience & BASF Taiwan)",
       duration: "Feb 2020 – Apr 2024",
@@ -282,13 +283,13 @@
       ],
     },
     {
-      role: "Data & Research Analyst (Industrial IoT Telemetry)",
+      role: "Data & Research Analyst (Industrial Machine Data)",
       badge: "Full-time",
       company: "TECHS TECH Co., Ltd.",
       duration: "Oct 2018 – Jan 2020",
       logoClass: "bg-techs-logo",
       bullets: [
-        "Automated industrial fermentation machine sensor data analysis and anomaly detection by developing R data cleaning, statistical modeling, and visualization programs for production logs.",
+        "Harvested industrial fermentation machine sensor data via USB interfaces and developed R programs for data cleaning, statistical modeling, and visualization to analyze critical temperature logs and detect operational anomalies.",
         "Optimized product formulations and manufacturing efficiency, verifying performance across **more than 15 experimental trial groups** through multivariate statistical analysis and parameter optimization.",
       ],
     },
@@ -399,7 +400,7 @@
   /** @type {UIText} */
   const ZH_UI_TEXT = Object.freeze({
     profileSubtitle: "全端軟體工程師 (TypeScript / Angular / Python / gRPC)",
-    summary: "具備 2 年以上正式線上 Web 系統工程實戰經驗與 3 年以上量化系統研究背景之全端軟體工程師。專注於支援 Google Camera 3A 之高輸送量瀏覽器至雲端資料傳輸系統與響應式視覺比對平台，技術涵蓋 Angular Signals、TypeScript、Python gRPC 與 WebUSB，成功將端到端資料傳輸延遲降低 **76%–81%**。持有 **Google TypeScript Readability (可讀性認證)**，專精於現代響應式前端介面架構、分散式 RPC 服務與高可用雲端系統設計。",
+    summary: "具備 2 年以上正式線上 Web 系統工程實戰經驗之全端軟體工程師，並擁有逾 5 年企業專案管理與工業數據分析之扎實歷練。專注於支援 Google Camera 3A 之高輸送量瀏覽器至雲端資料傳輸系統與響應式視覺比對平台，技術涵蓋 Angular Signals、TypeScript、Python gRPC 與 WebUSB，成功將端到端資料傳輸延遲降低 **76%–81%**。持有 **Google TypeScript Readability (可讀性認證)**，專精於現代響應式前端介面架構、分散式 RPC 服務與高可用雲端系統設計。",
     downloadCv: "下載 PDF 履歷",
     skillSet: "專業技能",
     information: "基本資訊",
@@ -465,7 +466,8 @@
   /** @type {readonly InfoItem[]} */
   const ZH_INFO_DATA = Object.freeze([
     { label: "軟體工程經驗", value: "2+ 年" },
-    { label: "量化系統與物聯網", value: "3+ 年" },
+    { label: "跨國法規專案管理", value: "4+ 年" },
+    { label: "工業機台數據分析", value: "1+ 年" },
     { label: "所在地區", value: "台灣台北" },
     { label: "語言能力", value: "英文 (多益金色 910 分) / 中文 (母語)" },
     { label: "專業認證", value: "Google TypeScript 可讀性認證 (Readability)" },
@@ -480,10 +482,10 @@
       duration: "2016 年 9 月 – 2018 年 7 月",
       logoClass: "bg-ntu-logo",
       highlights: [
-        "學業成績 GPA：**3.98 / 4.30** (49 學分) | 研究領域：量化建模與感測器控制系統",
+        "學業成績 GPA：**3.98 / 4.00** (49 學分) | 研究領域：植物生理 / 作物分子育種",
         "榮譽獲獎：**財團法人農友社會福利基金會獎學金**",
         "創業經歷：共同創辦人，Cross Melon (**臺大創創車庫 NTU Garage 孵化器**，2016–2017) — 研發基於感測器之水耕生長環境自動化控制系統。",
-        "學術論文：Chen, H. and H. S. Lo (2017). Quantitative modeling of root-zone thermal control on hydroponic system growth dynamics (臺灣園藝 64: 276–277)。",
+        "學術論文：Chen, H. and H. S. Lo (2017). 養液溫度對水耕網紋洋香瓜生長與發育之影響 (臺灣園藝 64: 276–277)。",
       ],
     },
     {
@@ -493,7 +495,7 @@
       duration: "2012 年 9 月 – 2016 年 7 月",
       logoClass: "bg-nchu-logo",
       highlights: [
-        "學業成績 GPA：**3.85 / 4.30** (154 學分)",
+        "學業成績 GPA：**3.85 / 4.00** (154 學分)",
         "研究實習：中央研究院 分子生物研究所 余淑美院士實驗室",
         "學生組織領導：國立中興大學 國際農業服務團 副團長",
       ],
@@ -505,7 +507,7 @@
     {
       role: "全端軟體工程師 (Full-Stack Software Engineer)",
       badge: "正職",
-      company: "Intelligent Manpower Corp. (支援 Google — Camera 3A 相機演算法與影像平台團隊)",
+      company: "精英人力資源股份有限公司 (支援 Google — Camera 3A 相機演算法與影像平台團隊)",
       duration: "2024 年 11 月 – 至今",
       logoClass: "bg-imc-logo",
       bullets: [
@@ -532,9 +534,9 @@
       ],
     },
     {
-      role: "法規專案與數據專員 (Regulatory Project & Data Specialist)",
+      role: "法規專案與進口容許量專員 (Regulatory & Import Tolerance Specialist)",
       badge: "正職",
-      company: "ActiveHire 躍晉 (派駐服務 Corteva Agriscience 科迪華農業科技 與 BASF 台灣巴斯夫)",
+      company: "ActiveHire 捷招 (派駐服務 Corteva Agriscience 科迪華農業科技 與 BASF 台灣巴斯夫)",
       duration: "2020 年 2 月 – 2024 年 4 月",
       logoClass: "bg-activehire-logo",
       bullets: [
@@ -543,13 +545,13 @@
       ],
     },
     {
-      role: "數據與研發分析師 (工業物聯網感測與製程)",
+      role: "數據與研發分析師 (機台數據與製程分析)",
       badge: "正職",
-      company: "德勝科技股份有限公司 (TECHS TECH Co., Ltd.)",
+      company: "特克斯科技股份有限公司 (TECHS TECH Co., Ltd.)",
       duration: "2018 年 10 月 – 2020 年 1 月",
       logoClass: "bg-techs-logo",
       bullets: [
-        "開發 R 語言資料清洗、統計建模與可視化程式，針對工業發酵機台感測器數據進行即時生產日誌異常偵測與自動化分析。",
+        "透過 USB 介面採集工業發酵機台之感測器記錄，並開發 R 語言資料清洗、統計建模與可視化程式，分析關鍵溫度數據與生產日誌異常。",
         "運用多變量統計分析與製程參數最佳化，在**超過 15 組實驗試驗**中驗證配方效能，顯著提升產品品質穩定性與量產效率。",
       ],
     },
