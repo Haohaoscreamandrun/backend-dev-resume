@@ -33,7 +33,9 @@
     \IfFontExistsTF{TeX Gyre Schola}{
         \setmainfont{TeX Gyre Schola}
     }{
-        \setmainfont{FreeSerif}
+        \IfFontExistsTF{FreeSerif}{
+            \setmainfont{FreeSerif}
+        }{}
     }
 }
 
@@ -48,7 +50,9 @@
         \IfFontExistsTF{Noto Sans CJK TC}{
             \setCJKmainfont{Noto Sans CJK TC}
         }{
-            \setCJKmainfont{AR PL New Sung}
+            \IfFontExistsTF{AR PL New Sung}{
+                \setCJKmainfont{AR PL New Sung}
+            }{}
         }
     }
 }

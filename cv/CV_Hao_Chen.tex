@@ -32,7 +32,9 @@
     \IfFontExistsTF{TeX Gyre Schola}{
         \setmainfont{TeX Gyre Schola}
     }{
-        \setmainfont{FreeSerif}
+        \IfFontExistsTF{FreeSerif}{
+            \setmainfont{FreeSerif}
+        }{}
     }
 }
 
