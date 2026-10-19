@@ -1,2 +1,11 @@
 node_modules/
 input.css
+
+# Compiled CV Artifacts & LaTeX temp files
+cv/*.pdf
+cv/*.aux
+cv/*.log
+cv/*.out
+*.aux
+*.log
+*.out

@@ -1,0 +1,198 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=1.6cm,top=1.3cm,bottom=1.3cm]{geometry}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\usepackage{needspace}
+
+% Palette matching Curriculum-vitae / hao-chen-style
+\definecolor{maindark}{HTML}{323232}
+\definecolor{subgray}{HTML}{6B6B6B}
+\definecolor{locationcoral}{HTML}{FF4747}
+\definecolor{linkblue}{HTML}{0563C1}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=linkblue,
+    urlcolor=linkblue,
+    pdftitle={陳浩 (Hao Chen) - 個人簡歷},
+    pdfauthor={陳浩 (Hao Chen)},
+    pdfpagemode=UseNone
+}
+
+\IfFontExistsTF{Georgia}{
+    \setmainfont{Georgia}[
+        BoldFont = {* Bold},
+        ItalicFont = {* Italic},
+        BoldItalicFont = {* Bold Italic}
+    ]
+}{
+    \IfFontExistsTF{TeX Gyre Schola}{
+        \setmainfont{TeX Gyre Schola}
+    }{
+        \setmainfont{FreeSerif}
+    }
+}
+
+\IfFontExistsTF{Microsoft JhengHei}{
+    \setCJKmainfont{Microsoft JhengHei}[
+        BoldFont = {Microsoft JhengHei Bold}
+    ]
+}{
+    \IfFontExistsTF{Noto Serif CJK TC}{
+        \setCJKmainfont{Noto Serif CJK TC}
+    }{
+        \IfFontExistsTF{Noto Sans CJK TC}{
+            \setCJKmainfont{Noto Sans CJK TC}
+        }{
+            \setCJKmainfont{AR PL New Sung}
+        }
+    }
+}
+
+% Section headings: bold, maindark, with 0.8pt horizontal rule
+\titleformat{\section}
+  {\fontsize{11.5pt}{13.5pt}\bfseries\color{maindark}}
+  {}{0em}
+  {}[\vspace{-2pt}\rule{\textwidth}{0.8pt}\vspace{-4pt}]
+
+\titlespacing*{\section}{0pt}{7pt}{3pt}
+
+% Tight itemize list
+\setlist[itemize]{leftmargin=1.4em, itemsep=1.5pt, topsep=1.5pt, parsep=0pt}
+
+% Custom commands for entry formatting matching docx / hao-chen-style:
+\newcommand{\entryheader}[3]{%
+  \noindent%
+  \textbf{\color{maindark}#1}%
+  \ifx&#2&%
+  \else%
+    { \small\color{subgray}#2}%
+  \fi%
+  \hfill%
+  \textit{\color{locationcoral}#3}\par%
+}
+
+\newcommand{\entrysubheader}[2]{%
+  \noindent%
+  \textit{\color{subgray}#1}%
+  \hfill%
+  \textit{\color{subgray}#2}\par%
+  \vspace{1.5pt}%
+}
+
+\begin{document}
+\pagestyle{empty}
+
+% ============================================================
+%     HEADER (Centered, matching hao-chen-style layout)
+% ============================================================
+\begin{center}
+    {\fontsize{22pt}{25pt}\bfseries\color{maindark} 陳浩 (Hao Chen)}\\[3pt]
+    {\footnotesize\color{subgray} 台灣台北 (Taipei, Taiwan)}\\[2pt]
+    {\footnotesize\color{subgray} \href{mailto:J842671395@gmail.com}{J842671395@gmail.com} \hspace{0.5em}$|$\hspace{0.5em} \href{https://www.linkedin.com/in/hao-chen-804a8315a/}{LinkedIn} \hspace{0.5em}$|$\hspace{0.5em} \href{https://github.com/Haohaoscreamandrun}{GitHub} \hspace{0.5em}$|$\hspace{0.5em} \href{https://haohaoscreamandrun.github.io/backend-dev-resume/}{線上履歷作品集}}
+\end{center}
+
+\vspace{2pt}
+
+% ============================================================
+%     PROFILE STATEMENT
+% ============================================================
+\noindent\small{\color{maindark} 具備 2 年以上正式線上 Web 系統工程實戰經驗之全端軟體工程師，並擁有逾 5 年企業專案管理與工業數據分析之扎實歷練。專注於支援 Google Camera 3A 之高輸送量瀏覽器至雲端資料傳輸系統與響應式視覺比對平台，技術涵蓋 Angular Signals、TypeScript、Python gRPC 與 WebUSB，成功將端到端資料傳輸延遲降低 \textbf{76\%--81\%}。持有 \textbf{Google TypeScript Readability (可讀性認證)}，專精於現代響應式前端介面架構、分散式 RPC 服務與高可用雲端系統設計。}
+
+% ============================================================
+%     CORE COMPETENCIES
+% ============================================================
+\section{專業核心能力 (Core Competencies)}
+\begin{itemize}
+    \item \textbf{程式語言 (Languages)}: TypeScript, Python 3, JavaScript (ES6+), SQL (MySQL), HTML5 / CSS3, R.
+    \item \textbf{前端與 Web 系統 (Frontend)}: Angular (Signals, CDK), RxJS, WebUSB / WebADB API, IndexedDB, Semantic CSS / Bootstrap, OpenCV.js / Tesseract.js.
+    \item \textbf{後端與分散式系統 (Backend)}: Python (gRPC, FastAPI), Protocol Buffers (v3), 並行 I/O 處理 (Concurrent I/O), MySQL 空間索引 (Spatial Indexing), Redis, OAuth 2.0 / JWT.
+    \item \textbf{雲端架構、維運與工具 (DevOps)}: AWS (EC2, RDS, S3, CloudFront), Docker / Nginx, Linux (Ubuntu), Bazel, Git / Gerrit, 自動化測試套件 (Automated Test Suites).
+\end{itemize}
+
+% ============================================================
+%     WORK EXPERIENCE
+% ============================================================
+\section{工作經歷 (Work Experience)}
+
+\entryheader{精英人力資源股份有限公司}{派駐支援 Google --- Camera 3A 相機演算法與影像平台團隊}{台灣台北}
+\entrysubheader{全端軟體工程師 (Full-Stack Software Engineer)}{2024 年 11 月--至今}
+\begin{itemize}
+    \item {設計並開發全新 Angular 與 Python gRPC Web 平台，將原本繁瑣的 4 道手動命令列與伺服器搬運流程精簡為\textbf{一鍵式瀏覽器至雲端自動化管線}，將相機影像端到端傳輸延遲降低 \textbf{76\%--81\%} (由每張 43--59 秒大幅降至 \textbf{10--11 秒})。}
+    \item {設計三層式 WebUSB 至 HTTP 傳輸佇列架構，搭配即時物件記憶體釋放機制，徹底解決多 GB 大容量上傳時的瀏覽器記憶體崩潰問題，將客戶端記憶體佔用嚴密限制於 \textbf{105 MB 以內}。}
+    \item {實作 Python gRPC 高並行資料處理管線，整合批次 URL 檢索與安全 OAuth 2.0 憑證授權機制，加速雲端儲存與跨叢集分散式檔案系統間\textbf{數千筆檔案}的索引與遷移作業。}
+    \item {建立單檔 Checkpoint 斷點續傳追蹤、指數退避重試機制與嚴格 gRPC 狀態檢驗，避免不穩定網路環境下的資料損毀與重複上傳，\textbf{確保重試過程零重複傳輸}。}
+    \item {採用 Angular Signals 響應式狀態架構搭配自訂物件比對與 \textbf{24 小時本機 IndexedDB 快取}，消除多版本遙測數據與影像比對時對後端伺服器的冗餘請求。}
+    \item {為全系統\textbf{超過 150 個全端模組}建構高可靠度自動化測試與回歸防護網，並獲取 \textbf{Google TypeScript Readability (可讀性認證)}；打造可重用依賴注入測試套件、Angular CDK 元件測試 Harness 及獨立 Bazel 單元測試。}
+\end{itemize}
+
+\vspace{3pt}
+
+\entryheader{WeHelp 軟體工程培訓營 (Padax Ltd.)}{後端與雲端系統專攻 --- 第五屆}{台灣台北}
+\entrysubheader{軟體工程培訓生 (Software Engineer Trainee)}{2024 年 4 月--2024 年 9 月}
+\begin{itemize}
+    \item {完成為期 24 週的高強度軟體工程實戰訓練，專攻後端架構設計、關聯式資料庫規劃與雲端基礎設施部署。}
+    \item {獨立開發「停車場即時管理系統 (PLMS)」，導入 MySQL (AWS RDS) 空間索引、Redis 高效快取與 Python FastAPI RESTful 服務，搭配 Docker、Nginx 與 AWS (EC2, ELB, S3, CloudFront, Route53)，將地理空間空位查詢效能提升\textbf{高達 6 倍}。}
+    \item {整合 \textbf{OpenCV.js (WebAssembly)} 影像前處理、Tesseract.js 光學字元辨識、Google Maps API 與基於 JWT 之角色權限控管 (RBAC)，實現瀏覽器端車牌自動辨識與即時空位地圖導航。}
+    \item {獨立規劃關聯式資料庫 Schema、RESTful MVC API 端點、整合第三方支付金流 (TapPay SDK) 與前端動態載入體驗。}
+\end{itemize}
+
+\vspace{3pt}
+
+\entryheader{ActiveHire 捷招}{派駐服務 Corteva Agriscience 科迪華農業科技 與 BASF 台灣巴斯夫}{台灣台北}
+\entrysubheader{法規專案與進口容許量專員 (Regulatory \& Import Tolerance Specialist)}{2020 年 2 月--2024 年 4 月}
+\begin{itemize}
+    \item {主導植保產品 (包含 Adavelt\texttrademark{}) 多試驗點田間試驗數據管線、法規合規資料集與量化研發實驗標準，跨國協同 Corteva Agriscience 全球法規科學與工程團隊推進專案生命週期。}
+    \item {統籌主管機關溝通、法規數據呈審及營運合規程序，確保 BASF 農業解決方案產品順利通過審查並符合官方登記標準。}
+\end{itemize}
+
+\vspace{3pt}
+
+\entryheader{特克斯科技股份有限公司 (TECHS TECH Co., Ltd.)}{農業生物科技與工業設備數據分析}{台灣高雄}
+\entrysubheader{數據與研發分析師 (Data \& Research Analyst)}{2018 年 10 月--2020 年 1 月}
+\begin{itemize}
+    \item {透過 USB 介面採集工業發酵機台之感測器記錄，並開發 R 語言資料清洗、統計建模與可視化程式，分析關鍵溫度數據與生產日誌異常。}
+    \item {運用多變量統計分析與製程參數最佳化，在\textbf{超過 15 組實驗試驗}中驗證配方效能，顯著提升產品品質穩定性與量產效率。}
+\end{itemize}
+
+% ============================================================
+%     EDUCATION
+% ============================================================
+\section{學歷背景 (Education)}
+
+\entryheader{國立臺灣大學 (NTU)}{}{台灣台北}
+\entrysubheader{園藝暨景觀學系 碩士 (M.S.)}{2016 年 9 月--2018 年 7 月}
+\begin{itemize}
+    \item \textbf{學業成績 GPA}: \textbf{3.98 / 4.00} (49 學分) $|$ 研究領域: 植物生理 / 作物分子育種。
+    \item \textbf{榮譽獲獎}: \textbf{財團法人農友社會福利基金會獎學金}。
+    \item \textbf{創業經歷}: 共同創辦人，Cross Melon (\textbf{臺大創創車庫 NTU Garage 孵化器}，2016--2017) --- 研發基於感測器之水耕生長環境自動化控制系統。
+    \item \textbf{學術論文}: Chen, H. and H. S. Lo (2017). 養液溫度對水耕網紋洋香瓜生長與發育之影響。《臺灣園藝》64: 276--277。
+\end{itemize}
+
+\vspace{3pt}
+
+\entryheader{國立中興大學 (NCHU)}{}{台灣台中}
+\entrysubheader{園藝學系 學士 (B.S.)}{2012 年 9 月--2016 年 7 月}
+\begin{itemize}
+    \item \textbf{學業成績 GPA}: \textbf{3.85 / 4.00} (154 學分)。
+    \item \textbf{研究實習}: 中央研究院 分子生物研究所 余淑美院士實驗室。
+    \item \textbf{學生組織領導}: 國立中興大學 國際農業服務團 副團長。
+\end{itemize}
+
+% ============================================================
+%     SKILLS, CERTIFICATIONS \& PUBLICATIONS
+% ============================================================
+\section{專業認證、語言能力與學術發表}
+\begin{itemize}
+    \item \textbf{專業證照}: Google TypeScript Readability (可讀性認證評審員), 多益金色證書 TOEIC Gold (910/990), 雅思 IELTS (Overall: 6.5)。
+    \item \textbf{語言能力}: 英文 (專業工作流利能力 / 多益 910 分), 中文 (母語), 台灣台語。
+    \item \textbf{學術發表}: Chen, H. and H. S. Lo (2017). 養液溫度對水耕網紋洋香瓜生長與發育之影響。《臺灣園藝》64: 276--277。
+    \item \textbf{推薦人}: 可依需求隨時提供。
+\end{itemize}
+
+\end{document}
+

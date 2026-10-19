@@ -179,78 +179,29 @@
       });
     }
 
-    // PDF Download
+    // PDF Download: Deliver realtime XeLaTeX-compiled CV matching active language
     if (downLoadBtn) {
-      downLoadBtn.addEventListener('click', async () => {
+      downLoadBtn.addEventListener('click', () => {
         const spinnerIcon = document.getElementById('spinnerIcon');
         const downloadIcon = document.getElementById('downloadIcon');
-        const langBtn = document.querySelector('.lang-toggle-btn');
         if (downloadIcon) downloadIcon.hidden = true;
         if (spinnerIcon) spinnerIcon.hidden = false;
-        if (langBtn) /** @type {HTMLElement} */ (langBtn).hidden = true;
 
-        // Remember which tab was currently active so we can restore it accurately
-        const activeOption = document.querySelector('.panel-option.active');
-        const activeTab = activeOption ? activeOption.getAttribute('data-tab') : 'project';
+        const currentLang = document.documentElement.lang && document.documentElement.lang.startsWith('zh') ? 'zh' : 'en';
+        const fileName = currentLang === 'zh' ? 'CV_Hao_Chen_zh.pdf' : 'CV_Hao_Chen.pdf';
+        const fileUrl = `./cv/${fileName}`;
 
-        clampWords.forEach(clampWord => {
-          clampWord.classList.remove('line-clamp-2');
-        });
+        const link = document.createElement('a');
+        link.href = fileUrl;
+        link.download = fileName;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
 
-        resume.forEach(element => (/** @type {HTMLElement} */ (element).hidden = false));
-        if (project) /** @type {HTMLElement} */ (project).hidden = false;
-        if (panel) panel.hidden = true;
-
-        const qrcodeBlock = document.getElementById('QRcodeBlock');
-        if (qrcodeBlock) qrcodeBlock.hidden = false;
-
-        try {
-          const html2canvasLib = root.html2canvas;
-          const jsPDFLib = root.jsPDF;
-          if (typeof html2canvasLib !== 'undefined' && typeof jsPDFLib !== 'undefined') {
-            const canvas = await html2canvasLib(document.body, {
-              backgroundColor: '#e5e7eb',
-              windowWidth: 1300,
-              windowHeight: 4000,
-              scrollY: 0,
-            });
-
-            const imgData = canvas.toDataURL('image/jpeg', 1.0);
-            const pdf = new jsPDFLib('p', 'mm', 'a4');
-            const imgWidth = 210; // A4 width in mm
-            const pageHeight = pdf.internal.pageSize.getHeight();
-            const imgHeight = (canvas.height * imgWidth) / canvas.width;
-            const totalPageSize = Math.ceil(imgHeight / pageHeight);
-            let yPosition = 0;
-
-            pdf.addImage(imgData, 'PNG', 0, yPosition, imgWidth, imgHeight);
-
-            for (let pageIndex = 1; pageIndex < totalPageSize; pageIndex++) {
-              yPosition = -pageIndex * pageHeight;
-              pdf.addPage();
-              pdf.addImage(imgData, 'PNG', 0, yPosition, imgWidth, imgHeight);
-            }
-
-            pdf.save(CV_FILE_NAME);
-          }
-        } catch (err) {
-          console.error("PDF generation failed:", err);
-        } finally {
+        setTimeout(() => {
           if (downloadIcon) downloadIcon.hidden = false;
           if (spinnerIcon) spinnerIcon.hidden = true;
-          if (langBtn) /** @type {HTMLElement} */ (langBtn).hidden = false;
-
-          // Restore previous active tab state
-          if (activeTab === 'resume') {
-            resume.forEach(element => (/** @type {HTMLElement} */ (element).hidden = false));
-            if (project) /** @type {HTMLElement} */ (project).hidden = true;
-          } else {
-            resume.forEach(element => (/** @type {HTMLElement} */ (element).hidden = true));
-            if (project) /** @type {HTMLElement} */ (project).hidden = false;
-          }
-          if (panel) panel.hidden = false;
-          if (qrcodeBlock) qrcodeBlock.hidden = true;
-        }
+        }, 400);
       });
     }
   });

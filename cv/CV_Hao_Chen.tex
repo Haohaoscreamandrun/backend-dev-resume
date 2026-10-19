@@ -1,0 +1,181 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=1.6cm,top=1.3cm,bottom=1.3cm]{geometry}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{fontspec}
+\usepackage{needspace}
+
+% Palette matching Curriculum-vitae / hao-chen-style
+\definecolor{maindark}{HTML}{323232}
+\definecolor{subgray}{HTML}{6B6B6B}
+\definecolor{locationcoral}{HTML}{FF4747}
+\definecolor{linkblue}{HTML}{0563C1}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=linkblue,
+    urlcolor=linkblue,
+    pdftitle={Hao Chen - Curriculum Vitae},
+    pdfauthor={Hao Chen},
+    pdfpagemode=UseNone
+}
+
+\IfFontExistsTF{Georgia}{
+    \setmainfont{Georgia}[
+        BoldFont = {* Bold},
+        ItalicFont = {* Italic},
+        BoldItalicFont = {* Bold Italic}
+    ]
+}{
+    \IfFontExistsTF{TeX Gyre Schola}{
+        \setmainfont{TeX Gyre Schola}
+    }{
+        \setmainfont{FreeSerif}
+    }
+}
+
+% Section headings: bold, maindark, with 0.8pt horizontal rule
+\titleformat{\section}
+  {\fontsize{11.5pt}{13.5pt}\bfseries\color{maindark}}
+  {}{0em}
+  {}[\vspace{-2pt}\rule{\textwidth}{0.8pt}\vspace{-4pt}]
+
+\titlespacing*{\section}{0pt}{7pt}{3pt}
+
+% Tight itemize list
+\setlist[itemize]{leftmargin=1.4em, itemsep=1.5pt, topsep=1.5pt, parsep=0pt}
+
+% Custom commands for entry formatting matching docx / hao-chen-style:
+\newcommand{\entryheader}[3]{%
+  \noindent%
+  \textbf{\color{maindark}#1}%
+  \ifx&#2&%
+  \else%
+    { \small\color{subgray}#2}%
+  \fi%
+  \hfill%
+  \textit{\color{locationcoral}#3}\par%
+}
+
+\newcommand{\entrysubheader}[2]{%
+  \noindent%
+  \textit{\color{subgray}#1}%
+  \hfill%
+  \textit{\color{subgray}#2}\par%
+  \vspace{1.5pt}%
+}
+
+\begin{document}
+\pagestyle{empty}
+
+% ============================================================
+%     HEADER (Centered, matching hao-chen-style layout)
+% ============================================================
+\begin{center}
+    {\fontsize{22pt}{25pt}\bfseries\color{maindark} Hao Chen}\\[3pt]
+    {\footnotesize\color{subgray} Taipei, Taiwan}\\[2pt]
+    {\footnotesize\color{subgray} \href{mailto:J842671395@gmail.com}{J842671395@gmail.com} \hspace{0.5em}$|$\hspace{0.5em} \href{https://www.linkedin.com/in/hao-chen-804a8315a/}{LinkedIn} \hspace{0.5em}$|$\hspace{0.5em} \href{https://github.com/Haohaoscreamandrun}{GitHub} \hspace{0.5em}$|$\hspace{0.5em} \href{https://haohaoscreamandrun.github.io/backend-dev-resume/}{Portfolio}}
+\end{center}
+
+\vspace{2pt}
+
+% ============================================================
+%     PROFILE STATEMENT
+% ============================================================
+\noindent\small{\color{maindark} Full-Stack Software Engineer with 2+ years of production web engineering experience, complemented by 5+ years of enterprise project execution and industrial data analysis. Architected high-throughput browser-to-cloud data transfer systems and reactive visual comparison tools supporting Google Camera 3A across Angular Signals, TypeScript, Python gRPC, and WebUSB, reducing data transfer latency by \textbf{76\%--81\%}. Certified \textbf{Google TypeScript Readability} reviewer with professional expertise spanning modern reactive frontend interfaces, distributed RPC services, and cloud architectures.}
+
+% ============================================================
+%     CORE COMPETENCIES
+% ============================================================
+\section{Core Competencies}
+\begin{itemize}
+    \item \textbf{Languages}: TypeScript, Python 3, JavaScript (ES6+), SQL (MySQL), HTML5 / CSS3, R.
+    \item \textbf{Frontend \& Web Systems}: Angular (Signals, CDK), RxJS, WebUSB / WebADB API, IndexedDB, Semantic CSS / Bootstrap, OpenCV.js / Tesseract.js.
+    \item \textbf{Backend \& Distributed}: Python (gRPC, FastAPI), Protocol Buffers (v3), Concurrent I/O, MySQL (Spatial Indexing), Redis, OAuth 2.0 / JWT.
+    \item \textbf{Cloud, DevOps \& Tools}: AWS (EC2, RDS, S3, CloudFront), Docker / Nginx, Linux (Ubuntu), Bazel, Git / Gerrit, Automated Test Suites.
+\end{itemize}
+
+% ============================================================
+%     WORK EXPERIENCE
+% ============================================================
+\section{Work Experience}
+
+\entryheader{Intelligent Manpower Corp.}{Supporting Google, Camera 3A \& Imaging Platform}{Taipei, Taiwan}
+\entrysubheader{Full-Stack Software Engineer}{Nov. 2024--Present}
+\begin{itemize}
+    \item {Reduced end-to-end camera image transfer latency by \textbf{76\%--81\%} (from 43--59s down to \textbf{10--11s per image}) by designing and developing a new Angular and Python gRPC web platform that replaced 4 manual command-line and server steps with a streamlined \textbf{single-click browser-to-cloud workflow}.}
+    \item {Eliminated browser out-of-memory errors during large multi-gigabyte uploads, limiting client memory consumption to \textbf{under 105 MB} by designing a three-tier WebUSB-to-HTTP transfer queue with immediate object memory release.}
+    \item {Accelerated dataset indexing and cross-cluster storage transfers for \textbf{thousands of files} across cloud storage and distributed file systems by implementing concurrent Python gRPC pipelines with batch URL retrieval and secure OAuth 2.0 token authorization.}
+    \item {Prevented partial data corruption and redundant uploads across unstable connections, \textbf{eliminating duplicate transfers upon retry} through per-file checkpoint tracking, exponential backoff intervals, and strict gRPC status validation.}
+    \item {Reduced redundant backend server requests during multi-version telemetry and image comparison by developing an Angular Signals reactive state architecture with custom equality comparison and a \textbf{24-hour local IndexedDB client cache}.}
+    \item {Maintained reliable automated testing and regression protection across \textbf{more than 150 full-stack modules} and earned \textbf{Google TypeScript Readability certification}, creating reusable dependency-injection test suites, Angular CDK component testing harnesses, and isolated Bazel unit tests.}
+\end{itemize}
+
+\vspace{3pt}
+
+\entryheader{WeHelp Software Engineering Bootcamp}{Backend \& Cloud Systems Specialization}{Taipei, Taiwan}
+\entrysubheader{Software Engineer Trainee (Batch \#5)}{Apr. 2024--Sep. 2024}
+\begin{itemize}
+    \item {Completed 24 weeks of intensive software engineering training specializing in backend architecture, relational database design, and cloud infrastructure.}
+    \item {Accelerated geospatial parking vacancy queries by \textbf{up to 6 times} in an independently developed Parking Lot Management System (PLMS) by implementing MySQL (AWS RDS) spatial indexing, Redis caching, and Python FastAPI RESTful services deployed using Docker, Nginx, and AWS (EC2, ELB, S3, CloudFront, Route53).}
+    \item {Automated browser-side license plate recognition and real-time vacancy mapping in PLMS by integrating \textbf{OpenCV.js (WebAssembly)} image preprocessing, Tesseract.js OCR, Google Maps API, and JWT role-based administrator authentication.}
+    \item {Engineered relational database schemas, RESTful MVC endpoints, third-party payment integration (TapPay SDK), and dynamic client-side loading.}
+\end{itemize}
+
+\vspace{3pt}
+
+\entryheader{ActiveHire}{Supporting Corteva Agriscience \& BASF Taiwan}{Taipei, Taiwan}
+\entrysubheader{Regulatory \& Import Tolerance Specialist}{Feb. 2020--Apr. 2024}
+\begin{itemize}
+    \item {Spearheaded multi-site experimental trial data pipelines, compliance datasets, and quantitative research protocols for crop protection products (including Adavelt\texttrademark{}), coordinating project lifecycle execution with international regulatory and engineering teams across Corteva Agriscience.}
+    \item {Managed government communications, regulatory data submissions, and operational compliance procedures to ensure product registration and regulatory standards for BASF Agricultural Solutions.}
+\end{itemize}
+
+\vspace{3pt}
+
+\entryheader{TECHS TECH Co., Ltd.}{Agricultural Biotechnology \& Environmental Systems}{Kaohsiung, Taiwan}
+\entrysubheader{Data \& Research Analyst (Industrial Machine Data)}{Oct. 2018--Jan. 2020}
+\begin{itemize}
+    \item {Harvested industrial fermentation machine sensor data via USB interfaces and developed R programs for data cleaning, statistical modeling, and visualization to analyze critical temperature logs and detect operational anomalies.}
+    \item {Optimized product formulations and manufacturing efficiency, verifying performance across \textbf{more than 15 experimental trial groups} through multivariate statistical analysis and parameter optimization.}
+\end{itemize}
+
+% ============================================================
+%     EDUCATION
+% ============================================================
+\section{Education}
+
+\entryheader{National Taiwan University (NTU)}{}{Taipei, Taiwan}
+\entrysubheader{Master of Science (M.S.), Horticulture and Landscape Architecture}{Sep. 2016--Jul. 2018}
+\begin{itemize}
+    \item \textbf{GPA}: \textbf{3.98 / 4.00} (49 credits) $|$ Focus: Plant Physiology / Crop Molecular Breeding.
+    \item \textbf{Honor}: \textbf{Know-You Social Welfare Foundation Academic Scholarship}.
+    \item \textbf{Entrepreneurship}: Co-Founder, Cross Melon (\textbf{NTU Garage Incubator}, 2016--2017) --- designed sensor-based automated environmental control systems for hydroponic plant growth.
+    \item \textbf{Publication}: Chen, H. and H. S. Lo (2017). Effect of nutrient temperature on growth and development of deep flow technique hydroponic netted melon. \textit{J. Taiw. Soc. Hortic. Sci.} 64: 276--277.
+\end{itemize}
+
+\vspace{3pt}
+
+\entryheader{National Chung Hsing University (NCHU)}{}{Taichung, Taiwan}
+\entrysubheader{Bachelor of Science (B.S.), Horticulture}{Sep. 2012--Jul. 2016}
+\begin{itemize}
+    \item \textbf{GPA}: \textbf{3.85 / 4.00} (154 credits).
+    \item \textbf{Internship}: Yu, Su-May's Lab, Institute of Molecular Biology, Academia Sinica.
+    \item \textbf{Leadership}: Deputy Director, International Agriculture Service Mission, NCHU.
+\end{itemize}
+
+% ============================================================
+%     SKILLS, CERTIFICATIONS \& PUBLICATIONS
+% ============================================================
+\section{Skills, Certifications \& Publications}
+\begin{itemize}
+    \item \textbf{Certifications}: Google TypeScript Readability Reviewer, TOEIC Gold Certificate (Score: 910/990), IELTS (Overall: 6.5).
+    \item \textbf{Languages}: English (Professional working proficiency / TOEIC 910 Gold), Mandarin (Native), Taiwanese.
+    \item \textbf{Publication}: Chen, H. and H. S. Lo (2017). Effect of nutrient temperature on growth and development of deep flow technique hydroponic netted melon. \textit{J. Taiw. Soc. Hortic. Sci.} 64: 276--277.
+    \item \textbf{References}: Available upon request.
+\end{itemize}
+
+\end{document}
+
