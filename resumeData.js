@@ -86,9 +86,6 @@
  * @property {string} downloadCv
  * @property {string} skillSet
  * @property {string} information
- * @property {string} viewOnline
- * @property {string} accessLatestVersion
- * @property {string} qrcodeDesc
  * @property {string} resumeTab
  * @property {string} projectTab
  * @property {string} education
@@ -142,9 +139,6 @@
     downloadCv: "Download CV",
     skillSet: "Skill Set",
     information: "Information",
-    viewOnline: "View Online",
-    accessLatestVersion: "Access Latest Version",
-    qrcodeDesc: "This resume is available online; scan the QR code on the left to view the latest version.",
     resumeTab: "Resume",
     projectTab: "Project",
     education: "Education",
@@ -404,9 +398,6 @@
     downloadCv: "下載 PDF 履歷",
     skillSet: "專業技能",
     information: "基本資訊",
-    viewOnline: "線上查閱",
-    accessLatestVersion: "查閱最新線上版本",
-    qrcodeDesc: "本履歷持續更新於線上網頁；手機掃描左側 QR Code 即可即時查閱最新版本。",
     resumeTab: "個人履歷",
     projectTab: "精選專案",
     education: "學歷背景",

@@ -660,39 +660,6 @@ img {
   margin-bottom: 1.5rem;
 }
 
-/* ----------------------------------------------------------------------------
- * 11. QR Code Box
- * ---------------------------------------------------------------------------- */
-.qrcode-box {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.qrcode-target {
-  min-width: 8rem;
-  min-height: 8rem;
-  display: inline-block;
-}
-
-.qrcode-desc {
-  margin-left: 0.75rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  font-size: 0.875rem;
-}
-
-.qrcode-title {
-  font-weight: 600;
-  margin-bottom: 0.25rem;
-}
-
-.qrcode-caption {
-  font-weight: 600;
-  margin-top: 0.25rem;
-}
 
 /* ----------------------------------------------------------------------------
  * 12. Dynamic Background Image Classes (Logos & Patterns)

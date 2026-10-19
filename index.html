@@ -7,8 +7,6 @@
   <!-- Anti-crawling & search engine privacy directives -->
   <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
   <meta name="googlebot" content="noindex, nofollow, noarchive">
-  <!-- qrcode.js -->
-  <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js" defer></script>
   <!-- Application Scripts: ordered deferred execution for seamless file:// and http:// support -->
   <script defer src="./constants.js"></script>
   <script defer src="./resumeData.js"></script>
@@ -107,19 +105,6 @@
             <div class="separation" x-show="index < info.length - 1"></div>
           </div>
         </template>
-      </div>
-    </div>
-    <!-- QRcode block -->
-    <div class="white-block" id="QRcodeBlock" hidden>
-      <span class="title-indicator"></span>
-      <p class="title" x-text="ui.viewOnline">View Online</p>
-      <div class="gray-block qrcode-box">
-        <div class="qrcode-target" id="QRcode"></div>
-        <div class="qrcode-desc">
-          <p class="qrcode-title" x-text="ui.accessLatestVersion">Access Latest Version</p>
-          <p x-text="ui.qrcodeDesc">This resume is available online; scan the QR code on the left to view the latest version.</p>
-          <p class="qrcode-caption">@created by qrcode.js</p>
-        </div>
       </div>
     </div>
   </div>

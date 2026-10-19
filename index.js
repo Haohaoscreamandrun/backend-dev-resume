@@ -15,8 +15,6 @@
   /** @type {Record<string, any>} */
   const data = root.ResumeData || {};
 
-  const ONLINE_RESUME_URL = constants.ONLINE_RESUME_URL || "https://haohaoscreamandrun.github.io/backend-dev-resume/index.html";
-  const CV_FILE_NAME = constants.CV_FILE_NAME || "CV_hao_chen.pdf";
   const bindLinksAndResources = constants.bindLinksAndResources;
   const setupEmailCopy = constants.setupEmailCopy;
 
@@ -166,18 +164,6 @@
       });
     }
 
-    // Generate QR code
-    const qrcodeTarget = document.getElementById('QRcode');
-    const QRCodeLib = root.QRCode;
-    if (qrcodeTarget && typeof QRCodeLib !== 'undefined') {
-      new QRCodeLib(qrcodeTarget, {
-        text: ONLINE_RESUME_URL,
-        width: 124,
-        height: 124,
-        colorDark: '#000000',
-        colorLight: '#ffffff',
-      });
-    }
 
     // PDF Download: Deliver realtime XeLaTeX-compiled CV matching active language
     if (downLoadBtn) {
