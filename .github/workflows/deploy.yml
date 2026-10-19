@@ -27,11 +27,13 @@ jobs:
 
       - name: Install TeX Live and fonts
         run: |
+          export DEBIAN_FRONTEND=noninteractive
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends \
             texlive-xetex \
             texlive-latex-extra \
             texlive-fonts-recommended \
+            texlive-lang-chinese \
             fonts-texgyre \
             fonts-freefont-ttf \
             fonts-noto-cjk
